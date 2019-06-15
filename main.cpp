@@ -3808,7 +3808,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         {
             int y = 600; int h = 48;
             int x = 443; int w = 124;
-  	    mein.hwnd_new_game = CreateWindowEx(0, "BUTTON", "> Restart Play <", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+  	    mein.hwnd_new_game = CreateWindowEx(0, "BUTTON", "> exit(); <", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
 								x, y, w, h, hwnd, (HMENU) PLAY_AGAIN_BUTTON, GetModuleHandle(NULL), NULL);
         }
         case WM_COMMAND:
