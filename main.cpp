@@ -1869,20 +1869,20 @@ public:
     }
 
     void erasePreview() {
-//        HBRUSH brush11 = CreateSolidBrush(RGB(255, 0, 0));
-//        RECT rrect11 = {0, 12, 143, 233};
-//        FillRect(hdc2, &rrect11, brush11);
-//        DeleteObject(brush11);
-//
-//        HBRUSH brush = CreateSolidBrush(RGB(200, 200, 200));
-//        RECT rrect5 = {0, 20, 129, 220};
-//        FillRect(hdc2, &rrect5, brush);
-//        DeleteObject(brush);
+        HBRUSH brush11 = CreateSolidBrush(RGB(255, 0, 0));
+        RECT rrect11 = {0, 12, 143, 233};
+        FillRect(hdc2, &rrect11, brush11);
+        DeleteObject(brush11);
+
+        HBRUSH brush = CreateSolidBrush(RGB(100, 100, 100));
+        RECT rrect5 = {0, 20, 129, 220};
+        FillRect(hdc2, &rrect5, brush);
+        DeleteObject(brush);
     }
 
     void showNextPiece() {
         if(choicepre == "sq") {
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+            HBRUSH brush = CreateSolidBrush(RGB(80, 0, 0));
             RECT rrect5 = {-90+100, 100, -90+100 + 20, 100 + 20};
             FillRect(hdc2, &rrect5, brush);
             RECT rrect6 = {-90+120, 100, -90+120 + 20, 100 + 20};
@@ -1893,7 +1893,7 @@ public:
             FillRect(hdc2, &rrect8, brush);
             DeleteObject(brush);
         } else if(choicepre == "lne") {
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+            HBRUSH brush = CreateSolidBrush(RGB(80, 0, 0));
             RECT rrect5 = {-90+100, 100, -90+100 + 20, 100 + 20};
             FillRect(hdc2, &rrect5, brush);
             RECT rrect6 = {-90+100, 120, -90+100 + 20, 120 + 20};
@@ -1904,7 +1904,7 @@ public:
             FillRect(hdc2, &rrect8, brush);
             DeleteObject(brush);
         } else if(choicepre == "ht") {
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+            HBRUSH brush = CreateSolidBrush(RGB(80, 0, 0));
             RECT rrect5 = {-90+120, 100, -90+120 + 20, 100 + 20};
             FillRect(hdc2, &rrect5, brush);
             RECT rrect6 = {-90+100, 120, -90+100 + 20, 120 + 20};
@@ -1915,7 +1915,7 @@ public:
             FillRect(hdc2, &rrect8, brush);
             DeleteObject(brush);
         } else if(choicepre == "larm") {
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+            HBRUSH brush = CreateSolidBrush(RGB(80, 0, 0));
             RECT rrect5 = {-90+120, 100, -90+120 + 20, 100 + 20};
             FillRect(hdc2, &rrect5, brush);
             RECT rrect6 = {-90+120, 120, -90+120 + 20, 120 + 20};
@@ -1926,7 +1926,7 @@ public:
             FillRect(hdc2, &rrect8, brush);
             DeleteObject(brush);
         } else if(choicepre == "rarm") {
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+            HBRUSH brush = CreateSolidBrush(RGB(80, 0, 0));
             RECT rrect5 = {-90+120-20, 100, -90+120 + 20-20, 100 + 20};
             FillRect(hdc2, &rrect5, brush);
             RECT rrect6 = {-90+120-20, 120, -90+120 + 20-20, 120 + 20};
@@ -1937,7 +1937,7 @@ public:
             FillRect(hdc2, &rrect8, brush);
             DeleteObject(brush);
         } else if(choicepre == "lsh") {
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+            HBRUSH brush = CreateSolidBrush(RGB(80, 0, 0));
             RECT rrect5 = {-90+120, 100, -90+120 + 20, 100 + 20};
             FillRect(hdc2, &rrect5, brush);
             RECT rrect6 = {-90+120, 120, -90+120 + 20, 120 + 20};
@@ -1948,7 +1948,7 @@ public:
             FillRect(hdc2, &rrect8, brush);
             DeleteObject(brush);
         } else if(choicepre == "rsh") {
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+            HBRUSH brush = CreateSolidBrush(RGB(80, 0, 0));
             RECT rrect5 = {-90+100, 100, -90+100 + 20, 100 + 20};
             FillRect(hdc2, &rrect5, brush);
             RECT rrect6 = {-90+100, 120, -90+100 + 20, 120 + 20};
@@ -2589,92 +2589,92 @@ public:
     }
 
     void printMiscLabels(int stage) {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint (hwnd, &ps);
-
-        HFONT font;
-
-        font = CreateFont(16, 0, 0, 0,
-                          FW_BOLD, FALSE, FALSE, FALSE,
-                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
-                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-                        DEFAULT_PITCH | FF_ROMAN,
-                       "Helvetica");
-
-        char aa[16];sprintf(aa,"LEVEL: %d of 40",level);
-
-        SelectObject(hdc2, font);
-        TextOut(hdc2, 450, 20, aa, 15);
-        DeleteObject(font);
-
-        font = CreateFont(16, 0, 0, 0,
-                          FW_NORMAL, FALSE, FALSE, FALSE,
-                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
-                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-                        DEFAULT_PITCH | FF_ROMAN,
-                       "Helvetica");
-
-        HBRUSH brush1 = CreateSolidBrush(RGB(255, 255, 0));
-        RECT rrect1 = {40, 310, 150, 420};
-        FillRect(hdc2, &rrect1, brush1);
-        DeleteObject(brush1);
-
-        char dd[16];sprintf(dd,"Level: %d", level);
-
-        SelectObject(hdc2, font);
-        TextOut(hdc2, 50, 320, dd, 9);
-        DeleteObject(font);
-
-        font = CreateFont(16, 0, 0, 0,
-                          FW_NORMAL, FALSE, FALSE, FALSE,
-                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
-                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-                        DEFAULT_PITCH | FF_ROMAN,
-                       "Helvetica");
-
-        char cc[16];sprintf(cc,"Blocks: %d", blocks);
-
-        SelectObject(hdc2, font);
-        TextOut(hdc2, 50, 340, cc, 10);
-        DeleteObject(font);
-
-        font = CreateFont(16, 0, 0, 0,
-                          FW_NORMAL, FALSE, FALSE, FALSE,
-                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
-                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-                        DEFAULT_PITCH | FF_ROMAN,
-                       "Helvetica");
-
-        char bb[16];sprintf(bb,"Lines: %d", lines);
-
-        SelectObject(hdc2, font);
-        TextOut(hdc2, 50, 360, bb, 9);
-        DeleteObject(font);
-
-        font = CreateFont(16, 0, 0, 0,
-                          FW_NORMAL, FALSE, FALSE, FALSE,
-                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
-                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-                        DEFAULT_PITCH | FF_ROMAN,
-                       "Helvetica");
-
-        font = CreateFont(16, 0, 0, 0,
-                          FW_BOLD, FALSE, FALSE, FALSE,
-                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
-                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-                        DEFAULT_PITCH | FF_ROMAN,
-                       "Verdana");
-
-        SelectObject(hdc2, font);
-        TextOut(hdc2, 450, 480, "MPC Martus", 10);
-
-        SelectObject(hdc2, font);
-        TextOut(hdc2, 10, 480, "I MADE THIS!", 12);
-
-        SelectObject(hdc2, font);
-        TextOut(hdc2, 10, 440, "By OkelyKodely", 14);
-
-        DeleteObject(font);
+//        PAINTSTRUCT ps;
+//        HDC hdc = BeginPaint (hwnd, &ps);
+//
+//        HFONT font;
+//
+//        font = CreateFont(16, 0, 0, 0,
+//                          FW_BOLD, FALSE, FALSE, FALSE,
+//                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
+//                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+//                        DEFAULT_PITCH | FF_ROMAN,
+//                       "Helvetica");
+//
+//        char aa[16];sprintf(aa,"LEVEL: %d of 40",level);
+//
+//        SelectObject(hdc2, font);
+//        TextOut(hdc2, 450, 20, aa, 15);
+//        DeleteObject(font);
+//
+//        font = CreateFont(16, 0, 0, 0,
+//                          FW_NORMAL, FALSE, FALSE, FALSE,
+//                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
+//                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+//                        DEFAULT_PITCH | FF_ROMAN,
+//                       "Helvetica");
+//
+//        HBRUSH brush1 = CreateSolidBrush(RGB(255, 255, 0));
+//        RECT rrect1 = {40, 310, 150, 420};
+//        FillRect(hdc2, &rrect1, brush1);
+//        DeleteObject(brush1);
+//
+//        char dd[16];sprintf(dd,"Level: %d", level);
+//
+//        SelectObject(hdc2, font);
+//        TextOut(hdc2, 50, 320, dd, 9);
+//        DeleteObject(font);
+//
+//        font = CreateFont(16, 0, 0, 0,
+//                          FW_NORMAL, FALSE, FALSE, FALSE,
+//                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
+//                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+//                        DEFAULT_PITCH | FF_ROMAN,
+//                       "Helvetica");
+//
+//        char cc[16];sprintf(cc,"Blocks: %d", blocks);
+//
+//        SelectObject(hdc2, font);
+//        TextOut(hdc2, 50, 340, cc, 10);
+//        DeleteObject(font);
+//
+//        font = CreateFont(16, 0, 0, 0,
+//                          FW_NORMAL, FALSE, FALSE, FALSE,
+//                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
+//                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+//                        DEFAULT_PITCH | FF_ROMAN,
+//                       "Helvetica");
+//
+//        char bb[16];sprintf(bb,"Lines: %d", lines);
+//
+//        SelectObject(hdc2, font);
+//        TextOut(hdc2, 50, 360, bb, 9);
+//        DeleteObject(font);
+//
+//        font = CreateFont(16, 0, 0, 0,
+//                          FW_NORMAL, FALSE, FALSE, FALSE,
+//                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
+//                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+//                        DEFAULT_PITCH | FF_ROMAN,
+//                       "Helvetica");
+//
+//        font = CreateFont(16, 0, 0, 0,
+//                          FW_BOLD, FALSE, FALSE, FALSE,
+//                          ANSI_CHARSET, OUT_DEFAULT_PRECIS,
+//                        CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+//                        DEFAULT_PITCH | FF_ROMAN,
+//                       "Verdana");
+//
+//        SelectObject(hdc2, font);
+//        TextOut(hdc2, 450, 480, "MPC Martus", 10);
+//
+//        SelectObject(hdc2, font);
+//        TextOut(hdc2, 10, 480, "I MADE THIS!", 12);
+//
+//        SelectObject(hdc2, font);
+//        TextOut(hdc2, 10, 440, "By OkelyKodely", 14);
+//
+//        DeleteObject(font);
     }
 };
 
@@ -3159,7 +3159,9 @@ DWORD WINAPI downs(void* data) {
         mein.erasePreview();
         mein.printMiscLabels(mein.level);
         mein.showNextPiece();
-        mein.clearLine();
+        for(int x=0; x<4; x++) {
+            mein.clearLine();
+        }
 
         usleep(1103000);
 
@@ -3773,7 +3775,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_PAINT:
         {
             if(mein.fist) {
-                HBRUSH brush = CreateSolidBrush(RGB(150, 130, 7));
+                HBRUSH brush = CreateSolidBrush(RGB(50, 230, 7));
                 RECT rrect = {0, 0, 640, 750};
                 FillRect(mein.hdc2, &rrect, brush);
                 DeleteObject(brush);
@@ -3818,6 +3820,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             SelectObject(mein.hdc2, font);
             TextOut(mein.hdc2, 450, 20, aa, 15);
+            TextOut(mein.hdc2, 50, 260, "PREVIEW", 7);
             DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
@@ -3864,12 +3867,16 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             TextOut(mein.hdc2, 50, 360, bb, 9);
             DeleteObject(font);
 
-            font = CreateFont(16, 0, 0, 0,
+            font = CreateFont(26, 0, 0, 0,
                               FW_NORMAL, FALSE, FALSE, FALSE,
                               ANSI_CHARSET, OUT_DEFAULT_PRECIS,
                             CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
                             DEFAULT_PITCH | FF_ROMAN,
                            "Helvetica");
+
+            SelectObject(mein.hdc2, font);
+            TextOut(mein.hdc2, 450, 480, "MPC Martus", 10);
+            DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
                               FW_BOLD, FALSE, FALSE, FALSE,
@@ -3879,37 +3886,30 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                            "Verdana");
 
             SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 450, 480, "MPC Martus", 10);
-
+            TextOut(mein.hdc2, 10, 640, "By OkelyKodely", 14);
             SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 10, 480, "I MADE THIS!", 12);
-
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 10, 440, "By OkelyKodely", 14);
-
+            TextOut(mein.hdc2, 10, 680, "I MADE THIS!", 12);
             DeleteObject(font);
 
-
-            HBRUSH brush11 = CreateSolidBrush(RGB(255, 0, 0));
-            RECT rrect11 = {0, 12, 143, 233};
-            FillRect(mein.hdc2, &rrect11, brush11);
-            DeleteObject(brush11);
-
-            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 200));
-            RECT rrect5 = {0, 20, 129, 220};
-            FillRect(mein.hdc2, &rrect5, brush);
-            DeleteObject(brush);
-
+//            HBRUSH brush11 = CreateSolidBrush(RGB(255, 0, 0));
+//            RECT rrect11 = {0, 12, 143, 233};
+//            FillRect(mein.hdc2, &rrect11, brush11);
+//            DeleteObject(brush11);
+//
+//            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 200));
+//            RECT rrect5 = {0, 20, 129, 220};
+//            FillRect(mein.hdc2, &rrect5, brush);
+//            DeleteObject(brush);
             
             EndPaint (hwnd, &ps);
         }
         break;
         case WM_CREATE:
         {
-            int y = 600; int h = 48;
-            int x = 443; int w = 124;
-  	    mein.hwnd_new_game = CreateWindowEx(0, "BUTTON", "> exit(); <", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
-								x, y, w, h, hwnd, (HMENU) PLAY_AGAIN_BUTTON, GetModuleHandle(NULL), NULL);
+//            int y = 600; int h = 48;
+//            int x = 443; int w = 124;
+//  	    mein.hwnd_new_game = CreateWindowEx(0, "BUTTON", "> exit(); <", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+//								x, y, w, h, hwnd, (HMENU) PLAY_AGAIN_BUTTON, GetModuleHandle(NULL), NULL);
         }
         case WM_COMMAND:
             switch(LOWORD(wParam))
