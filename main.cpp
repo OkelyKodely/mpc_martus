@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 #include <windows.h>
 #include <stdio.h>
 #include <mmsystem.h>
@@ -109,14 +110,14 @@ const char g_szClassName[] = "Martus";
 
 DWORD WINAPI moveSound(void *data) {
 
-    PlaySound(TEXT("selection.wav"), NULL, SND_ASYNC);
+    //PlaySound(TEXT("selection.wav"), NULL, SND_FILENAME);
 
     return 0;
 }
 
 DWORD WINAPI fallSound(void *data) {
 
-    PlaySound(TEXT("fall.wav"), NULL, SND_FILENAME);
+    //PlaySound(TEXT("fall.wav"), NULL, SND_FILENAME);
 
     return 0;
 }
@@ -474,7 +475,7 @@ public:
 
         BOOL canGoDown = FALSE;
 
-        HBRUSH brush = CreateSolidBrush(RGB(200, 2, 2));
+        HBRUSH brush = CreateSolidBrush(RGB(255, 122, 185));
 
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(hdc2, &rrect3, brush);
@@ -951,7 +952,7 @@ public:
 
         thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
-        HBRUSH brush = CreateSolidBrush(RGB(200, 2, 2));
+        HBRUSH brush = CreateSolidBrush(RGB(225, 122, 185));
 
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(hdc2, &rrect3, brush);
@@ -1413,7 +1414,7 @@ public:
 
         thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
-        HBRUSH brush = CreateSolidBrush(RGB(200, 2, 2));
+        HBRUSH brush = CreateSolidBrush(RGB(255, 122, 185));
 
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(hdc2, &rrect3, brush);
@@ -1873,7 +1874,7 @@ public:
         FillRect(hdc2, &rrect1, brush1);
         DeleteObject(brush1);
 
-        HBRUSH brush = CreateSolidBrush(RGB(0, 0, 0));
+        HBRUSH brush = CreateSolidBrush(RGB(200, 200, 200));
         RECT rrect5 = {0, 20, 129, 220};
         FillRect(hdc2, &rrect5, brush);
         DeleteObject(brush);
@@ -2035,7 +2036,7 @@ public:
 
         thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
-        HBRUSH brush = CreateSolidBrush(RGB(200, 2, 2));
+        HBRUSH brush = CreateSolidBrush(RGB(255, 122, 185));
 
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(hdc2, &rrect3, brush);
@@ -2684,7 +2685,7 @@ DWORD WINAPI downs(void* data) {
 
         mein.hdcMems = CreateCompatibleDC(mein.hdc2);
 
-        HBRUSH brush = CreateSolidBrush(RGB(155, 2, 2));
+        HBRUSH brush = CreateSolidBrush(RGB(225, 122, 185));
 
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(mein.hdc2, &rrect3, brush);
@@ -3769,7 +3770,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_PAINT:
         {
             if(mein.fist) {
-                HBRUSH brush = CreateSolidBrush(RGB(255, 255, 255));
+                HBRUSH brush = CreateSolidBrush(RGB(150, 130, 7));
                 RECT rrect = {0, 0, 640, 750};
                 FillRect(mein.hdc2, &rrect, brush);
                 DeleteObject(brush);
@@ -3782,13 +3783,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 FillRect(mein.hdc2, &rrect3, brush2);
                 DeleteObject(brush2);
 
-                //thread t1(downs);
-                // thrd = CreateThread(NULL, 0, callMe, NULL, 0, NULL);
-   
-  // //thrad = CreateThread(NULL, 0, paintMe, NULL, 0, NULL);
-                
                 mein.threa = CreateThread(0, 0, downs, 0, 0, NULL);
-                //srand(time(NULL));
+                srand(time(NULL));
                 mein.prep();
             }
 
