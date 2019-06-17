@@ -14,7 +14,7 @@ int c = 0;
 #define ID_TRACKBAR 210
 
 #ifdef WINDOWS
-#include <direct.h>
+#include <direct->h>
 #define GetCurrentDir _getcwd
 #else
 #include <unistd.h>
@@ -23,7 +23,8 @@ int c = 0;
 #define GetCurrentDir getcwd
 #endif
 
-struct hat {
+class hat {
+public:
   int x0;
   int y0;
   int x1;
@@ -33,9 +34,12 @@ struct hat {
   int x3;
   int y3;
   int dir;
-} ht;
+};
 
-struct square {
+hat* ht = new hat();
+
+class square {
+public:
   int x0;
   int y0;
   int x1;
@@ -44,33 +48,12 @@ struct square {
   int y2;
   int x3;
   int y3;
-} sq;
+};
 
-struct line {
-  int x0;
-  int y0;
-  int x1;
-  int y1;
-  int x2;
-  int y2;
-  int x3;
-  int y3;
-  int dir;
-} lne;
+square* sq = new square();
 
-struct lsho {
-  int x0;
-  int y0;
-  int x1;
-  int y1;
-  int x2;
-  int y2;
-  int x3;
-  int y3;
-  int dir;
-} lsh;
-
-struct rsho {
+class line {
+public:
   int x0;
   int y0;
   int x1;
@@ -80,9 +63,12 @@ struct rsho {
   int x3;
   int y3;
   int dir;
-} rsh;
+};
 
-struct larm {
+line* lne = new line();
+
+class lsho {
+public:
   int x0;
   int y0;
   int x1;
@@ -92,9 +78,12 @@ struct larm {
   int x3;
   int y3;
   int dir;
-} larm;
+};
 
-struct rarm {
+lsho* lsh = new lsho();
+
+class rsho {
+public:
   int x0;
   int y0;
   int x1;
@@ -104,20 +93,52 @@ struct rarm {
   int x3;
   int y3;
   int dir;
-} rarm;
+};
+
+rsho* rsh = new rsho();
+
+class Larm {
+public:
+  int x0;
+  int y0;
+  int x1;
+  int y1;
+  int x2;
+  int y2;
+  int x3;
+  int y3;
+  int dir;
+};
+
+Larm* larm = new Larm();
+
+class Rarm {
+public:
+  int x0;
+  int y0;
+  int x1;
+  int y1;
+  int x2;
+  int y2;
+  int x3;
+  int y3;
+  int dir;
+};
+
+Rarm* rarm = new Rarm();
 
 const char g_szClassName[] = "Martus";
 
 DWORD WINAPI moveSound(void *data) {
 
-    //PlaySound(TEXT("selection.wav"), NULL, SND_FILENAME);
+    //PlaySound(TEXT("selection->wav"), NULL, SND_FILENAME);
 
     return 0;
 }
 
 DWORD WINAPI fallSound(void *data) {
 
-    //PlaySound(TEXT("fall.wav"), NULL, SND_FILENAME);
+    //PlaySound(TEXT("fall->wav"), NULL, SND_FILENAME);
 
     return 0;
 }
@@ -209,261 +230,261 @@ public:
           choicepre = "lsh";
         else
           choicepre = "rsh";
-        lsh.x0 = 300;
-        lsh.y0 = 50;
-        lsh.x1 = 280;
-        lsh.y1 = 70;
-        lsh.x2 = 300;
-        lsh.y2 = 70;
-        lsh.x3 = 280;
-        lsh.y3 = 90;
-        lsh.dir = 0;
-        rsh.x0 = 300;
-        rsh.y0 = 50;
-        rsh.x1 = 300;
-        rsh.y1 = 70;
-        rsh.x2 = 320;
-        rsh.y2 = 70;
-        rsh.x3 = 320;
-        rsh.y3 = 90;
-        rsh.dir = 0;
-        larm.x0 = 300;
-        larm.y0 = 50;
-        larm.x1 = 300;
-        larm.y1 = 70;
-        larm.x2 = 300;
-        larm.y2 = 90;
-        larm.x3 = 280;
-        larm.y3 = 90;
-        larm.dir = 0;
-        rarm.x0 = 300;
-        rarm.y0 = 50;
-        rarm.x1 = 300;
-        rarm.y1 = 70;
-        rarm.x2 = 300;
-        rarm.y2 = 90;
-        rarm.x3 = 320;
-        rarm.y3 = 90;
-        rarm.dir = 0;
-        ht.x0 = 300;
-        ht.y0 = 50;
-        ht.x1 = 280;
-        ht.y1 = 70;
-        ht.x2 = 300;
-        ht.y2 = 70;
-        ht.x3 = 320;
-        ht.y3 = 70;
-        ht.dir = 0;
-        sq.x0 = 300;
-        sq.y0 = 50;
-        sq.x1 = 320;
-        sq.y1 = 50;
-        sq.x2 = 300;
-        sq.y2 = 70;
-        sq.x3 = 320;
-        sq.y3 = 70;
-        lne.x0 = 300;
-        lne.y0 = 50;
-        lne.x1 = 300;
-        lne.y1 = 70;
-        lne.x2 = 300;
-        lne.y2 = 90;
-        lne.x3 = 300;
-        lne.y3 = 110;
-        lne.dir = 0;
+        lsh->x0 = 300;
+        lsh->y0 = 50;
+        lsh->x1 = 280;
+        lsh->y1 = 70;
+        lsh->x2 = 300;
+        lsh->y2 = 70;
+        lsh->x3 = 280;
+        lsh->y3 = 90;
+        lsh->dir = 0;
+        rsh->x0 = 300;
+        rsh->y0 = 50;
+        rsh->x1 = 300;
+        rsh->y1 = 70;
+        rsh->x2 = 320;
+        rsh->y2 = 70;
+        rsh->x3 = 320;
+        rsh->y3 = 90;
+        rsh->dir = 0;
+        larm->x0 = 300;
+        larm->y0 = 50;
+        larm->x1 = 300;
+        larm->y1 = 70;
+        larm->x2 = 300;
+        larm->y2 = 90;
+        larm->x3 = 280;
+        larm->y3 = 90;
+        larm->dir = 0;
+        rarm->x0 = 300;
+        rarm->y0 = 50;
+        rarm->x1 = 300;
+        rarm->y1 = 70;
+        rarm->x2 = 300;
+        rarm->y2 = 90;
+        rarm->x3 = 320;
+        rarm->y3 = 90;
+        rarm->dir = 0;
+        ht->x0 = 300;
+        ht->y0 = 50;
+        ht->x1 = 280;
+        ht->y1 = 70;
+        ht->x2 = 300;
+        ht->y2 = 70;
+        ht->x3 = 320;
+        ht->y3 = 70;
+        ht->dir = 0;
+        sq->x0 = 300;
+        sq->y0 = 50;
+        sq->x1 = 320;
+        sq->y1 = 50;
+        sq->x2 = 300;
+        sq->y2 = 70;
+        sq->x3 = 320;
+        sq->y3 = 70;
+        lne->x0 = 300;
+        lne->y0 = 50;
+        lne->x1 = 300;
+        lne->y1 = 70;
+        lne->x2 = 300;
+        lne->y2 = 90;
+        lne->x3 = 300;
+        lne->y3 = 110;
+        lne->dir = 0;
 
-        if(b[rarm.x0][rarm.y0+20] == 1
+        if(b[rarm->x0][rarm->y0+20] == 1
             ||        
-            b[rarm.x1][rarm.y1+20] == 1
+            b[rarm->x1][rarm->y1+20] == 1
             ||
-            b[rarm.x2][rarm.y2+20] == 1
+            b[rarm->x2][rarm->y2+20] == 1
             ||
-            b[rarm.x3][rarm.y3+20] == 1
+            b[rarm->x3][rarm->y3+20] == 1
             ||
-            b[larm.x0][larm.y0+20] == 1
+            b[larm->x0][larm->y0+20] == 1
             ||        
-            b[larm.x1][larm.y1+20] == 1
+            b[larm->x1][larm->y1+20] == 1
             ||
-            b[larm.x2][larm.y2+20] == 1
+            b[larm->x2][larm->y2+20] == 1
             ||
-            b[larm.x3][larm.y3+20] == 1
+            b[larm->x3][larm->y3+20] == 1
             ||
-            b[rsh.x0][rsh.y0+20] == 1
+            b[rsh->x0][rsh->y0+20] == 1
             ||        
-            b[rsh.x1][rsh.y1+20] == 1
+            b[rsh->x1][rsh->y1+20] == 1
             ||
-            b[rsh.x2][rsh.y2+20] == 1
+            b[rsh->x2][rsh->y2+20] == 1
             ||
-            b[rsh.x3][rsh.y3+20] == 1
+            b[rsh->x3][rsh->y3+20] == 1
             ||
-            b[lsh.x0][lsh.y0+20] == 1
+            b[lsh->x0][lsh->y0+20] == 1
             ||        
-            b[lsh.x1][lsh.y1+20] == 1
+            b[lsh->x1][lsh->y1+20] == 1
             ||
-            b[lsh.x2][lsh.y2+20] == 1
+            b[lsh->x2][lsh->y2+20] == 1
             ||
-            b[lsh.x3][lsh.y3+20] == 1               
+            b[lsh->x3][lsh->y3+20] == 1               
             ||
-            b[sq.x0][sq.y0+20] == 1
+            b[sq->x0][sq->y0+20] == 1
             ||        
-            b[sq.x1][sq.y1+20] == 1
+            b[sq->x1][sq->y1+20] == 1
             ||
-            b[sq.x2][sq.y2+20] == 1
+            b[sq->x2][sq->y2+20] == 1
             ||
-            b[sq.x3][sq.y3+20] == 1
+            b[sq->x3][sq->y3+20] == 1
             ||
-            b[lne.x0][lne.y0+20] == 1
+            b[lne->x0][lne->y0+20] == 1
             ||        
-            b[lne.x1][lne.y1+20] == 1
+            b[lne->x1][lne->y1+20] == 1
             ||
-            b[lne.x2][lne.y2+20] == 1
+            b[lne->x2][lne->y2+20] == 1
             ||
-            b[lne.x3][lne.y3+20] == 1
+            b[lne->x3][lne->y3+20] == 1
             ||
-            b[ht.x0][ht.y0+20] == 1
+            b[ht->x0][ht->y0+20] == 1
             ||        
-            b[ht.x1][ht.y1+20] == 1
+            b[ht->x1][ht->y1+20] == 1
             ||
-            b[ht.x2][ht.y2+20] == 1
+            b[ht->x2][ht->y2+20] == 1
             ||
-            b[ht.x3][ht.y3+20] == 1) {
+            b[ht->x3][ht->y3+20] == 1) {
 
             GetCurrentDir( buff, FILENAME_MAX );
             STARTUPINFO startUpInfo = { 0 };
             PROCESS_INFORMATION procInfo = { 0 };
             startUpInfo.cb = sizeof( startUpInfo );
-            //CreateProcess( "\\martus.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
-            system("\\martus.exe");
+            //CreateProcess( "\\martus->exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
+            system("\\martus->exe");
             exit(0);
         }
 
-        if(b[rarm.x0][rarm.y0-20] == 1
+        if(b[rarm->x0][rarm->y0-20] == 1
             ||        
-            b[rarm.x1][rarm.y1-20] == 1
+            b[rarm->x1][rarm->y1-20] == 1
             ||
-            b[rarm.x2][rarm.y2-20] == 1
+            b[rarm->x2][rarm->y2-20] == 1
             ||
-            b[rarm.x3][rarm.y3-20] == 1
+            b[rarm->x3][rarm->y3-20] == 1
             ||
-            b[larm.x0][larm.y0-20] == 1
+            b[larm->x0][larm->y0-20] == 1
             ||        
-            b[larm.x1][larm.y1-20] == 1
+            b[larm->x1][larm->y1-20] == 1
             ||
-            b[larm.x2][larm.y2-20] == 1
+            b[larm->x2][larm->y2-20] == 1
             ||
-            b[larm.x3][larm.y3-20] == 1
+            b[larm->x3][larm->y3-20] == 1
             ||
-            b[rsh.x0][rsh.y0-20] == 1
+            b[rsh->x0][rsh->y0-20] == 1
             ||        
-            b[rsh.x1][rsh.y1-20] == 1
+            b[rsh->x1][rsh->y1-20] == 1
             ||
-            b[rsh.x2][rsh.y2-20] == 1
+            b[rsh->x2][rsh->y2-20] == 1
             ||
-            b[rsh.x3][rsh.y3-20] == 1
+            b[rsh->x3][rsh->y3-20] == 1
             ||
-            b[lsh.x0][lsh.y0-20] == 1
+            b[lsh->x0][lsh->y0-20] == 1
             ||        
-            b[lsh.x1][lsh.y1-20] == 1
+            b[lsh->x1][lsh->y1-20] == 1
             ||
-            b[lsh.x2][lsh.y2-20] == 1
+            b[lsh->x2][lsh->y2-20] == 1
             ||
-            b[lsh.x3][lsh.y3-20] == 1               
+            b[lsh->x3][lsh->y3-20] == 1               
             ||
-            b[sq.x0][sq.y0-20] == 1
+            b[sq->x0][sq->y0-20] == 1
             ||        
-            b[sq.x1][sq.y1-20] == 1
+            b[sq->x1][sq->y1-20] == 1
             ||
-            b[sq.x2][sq.y2-20] == 1
+            b[sq->x2][sq->y2-20] == 1
             ||
-            b[sq.x3][sq.y3-20] == 1
+            b[sq->x3][sq->y3-20] == 1
             ||
-            b[lne.x0][lne.y0-20] == 1
+            b[lne->x0][lne->y0-20] == 1
             ||        
-            b[lne.x1][lne.y1-20] == 1
+            b[lne->x1][lne->y1-20] == 1
             ||
-            b[lne.x2][lne.y2-20] == 1
+            b[lne->x2][lne->y2-20] == 1
             ||
-            b[lne.x3][lne.y3-20] == 1
+            b[lne->x3][lne->y3-20] == 1
             ||
-            b[ht.x0][ht.y0-20] == 1
+            b[ht->x0][ht->y0-20] == 1
             ||        
-            b[ht.x1][ht.y1-20] == 1
+            b[ht->x1][ht->y1-20] == 1
             ||
-            b[ht.x2][ht.y2-20] == 1
+            b[ht->x2][ht->y2-20] == 1
             ||
-            b[ht.x3][ht.y3-20] == 1) {
+            b[ht->x3][ht->y3-20] == 1) {
 
             GetCurrentDir( buff, FILENAME_MAX );
             STARTUPINFO startUpInfo = { 0 };
             PROCESS_INFORMATION procInfo = { 0 };
             startUpInfo.cb = sizeof( startUpInfo );
-            //CreateProcess( "\\martus.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
-            system("\\martus.exe");
+            //CreateProcess( "\\martus->exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
+            system("\\martus->exe");
             exit(0);
         }
 
-        if(b[rarm.x0][rarm.y0] == 1
+        if(b[rarm->x0][rarm->y0] == 1
             ||        
-            b[rarm.x1][rarm.y1] == 1
+            b[rarm->x1][rarm->y1] == 1
             ||
-            b[rarm.x2][rarm.y2] == 1
+            b[rarm->x2][rarm->y2] == 1
             ||
-            b[rarm.x3][rarm.y3] == 1
+            b[rarm->x3][rarm->y3] == 1
             ||
-            b[larm.x0][larm.y0] == 1
+            b[larm->x0][larm->y0] == 1
             ||        
-            b[larm.x1][larm.y1] == 1
+            b[larm->x1][larm->y1] == 1
             ||
-            b[larm.x2][larm.y2] == 1
+            b[larm->x2][larm->y2] == 1
             ||
-            b[larm.x3][larm.y3] == 1
+            b[larm->x3][larm->y3] == 1
             ||
-            b[rsh.x0][rsh.y0] == 1
+            b[rsh->x0][rsh->y0] == 1
             ||        
-            b[rsh.x1][rsh.y1] == 1
+            b[rsh->x1][rsh->y1] == 1
             ||
-            b[rsh.x2][rsh.y2] == 1
+            b[rsh->x2][rsh->y2] == 1
             ||
-            b[rsh.x3][rsh.y3] == 1
+            b[rsh->x3][rsh->y3] == 1
             ||
-            b[lsh.x0][lsh.y0] == 1
+            b[lsh->x0][lsh->y0] == 1
             ||        
-            b[lsh.x1][lsh.y1] == 1
+            b[lsh->x1][lsh->y1] == 1
             ||
-            b[lsh.x2][lsh.y2] == 1
+            b[lsh->x2][lsh->y2] == 1
             ||
-            b[lsh.x3][lsh.y3] == 1               
+            b[lsh->x3][lsh->y3] == 1               
             ||
-            b[sq.x0][sq.y0] == 1
+            b[sq->x0][sq->y0] == 1
             ||        
-            b[sq.x1][sq.y1] == 1
+            b[sq->x1][sq->y1] == 1
             ||
-            b[sq.x2][sq.y2] == 1
+            b[sq->x2][sq->y2] == 1
             ||
-            b[sq.x3][sq.y3] == 1
+            b[sq->x3][sq->y3] == 1
             ||
-            b[lne.x0][lne.y0] == 1
+            b[lne->x0][lne->y0] == 1
             ||        
-            b[lne.x1][lne.y1] == 1
+            b[lne->x1][lne->y1] == 1
             ||
-            b[lne.x2][lne.y2] == 1
+            b[lne->x2][lne->y2] == 1
             ||
-            b[lne.x3][lne.y3] == 1
+            b[lne->x3][lne->y3] == 1
             ||
-            b[ht.x0][ht.y0] == 1
+            b[ht->x0][ht->y0] == 1
             ||        
-            b[ht.x1][ht.y1] == 1
+            b[ht->x1][ht->y1] == 1
             ||
-            b[ht.x2][ht.y2] == 1
+            b[ht->x2][ht->y2] == 1
             ||
-            b[ht.x3][ht.y3] == 1) {
+            b[ht->x3][ht->y3] == 1) {
 
             GetCurrentDir( buff, FILENAME_MAX );
             STARTUPINFO startUpInfo = { 0 };
             PROCESS_INFORMATION procInfo = { 0 };
             startUpInfo.cb = sizeof( startUpInfo );
-            //CreateProcess( "\\martus.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
-            system("\\martus.exe");
+            //CreateProcess( "\\martus->exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
+            system("\\martus->exe");
             exit(0);
         }
     }
@@ -480,56 +501,56 @@ public:
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(hdc2, &rrect3, brush);
 
-        if(choice == "sq" && (sq.y0 <= 630 && sq.y1 <= 630 && sq.y2 <= 630 && sq.y3 <= 630)) {
-            sq.y0 += 20;
-            sq.y1 += 20;
-            sq.y2 += 20;
-            sq.y3 += 20;
+        if(choice == "sq" && (sq->y0 <= 630 && sq->y1 <= 630 && sq->y2 <= 630 && sq->y3 <= 630)) {
+            sq->y0 += 20;
+            sq->y1 += 20;
+            sq->y2 += 20;
+            sq->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {sq.x0, sq.y0, sq.x0 + 20, sq.y0 + 20};
+            RECT rrect3 = {sq->x0, sq->y0, sq->x0 + 20, sq->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {sq.x1, sq.y1, sq.x1 + 20, sq.y1 + 20};
+            RECT rrect4 = {sq->x1, sq->y1, sq->x1 + 20, sq->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {sq.x2, sq.y2, sq.x2 + 20, sq.y2 + 20};
+            RECT rrect5 = {sq->x2, sq->y2, sq->x2 + 20, sq->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {sq.x3, sq.y3, sq.x3 + 20, sq.y3 + 20};
+            RECT rrect6 = {sq->x3, sq->y3, sq->x3 + 20, sq->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(sq.y0 > 650 || sq.y1 > 650 || sq.y2 > 650 || sq.y3 > 650) {
-                b[sq.x0][sq.y0] = 1;
-                b[sq.x1][sq.y1] = 1;
-                b[sq.x2][sq.y2] = 1;
-                b[sq.x3][sq.y3] = 1;
-                blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
+            if(sq->y0 > 650 || sq->y1 > 650 || sq->y2 > 650 || sq->y3 > 650) {
+                b[sq->x0][sq->y0] = 1;
+                b[sq->x1][sq->y1] = 1;
+                b[sq->x2][sq->y2] = 1;
+                b[sq->x3][sq->y3] = 1;
+                blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,"sdf");
                 prep();
             } else {
             }
 
             BOOLEAN flag = FALSE;
-            if(b[sq.x0][sq.y0+20] == 1) {
+            if(b[sq->x0][sq->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[sq.x1][sq.y1+20] == 1) {
+            else if(b[sq->x1][sq->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[sq.x2][sq.y2+20] == 1) {
+            else if(b[sq->x2][sq->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[sq.x3][sq.y3+20] == 1) {
+            else if(b[sq->x3][sq->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 canGoDown = FALSE;
-                b[sq.x0][sq.y0] = 1;
-                b[sq.x1][sq.y1] = 1;
-                b[sq.x2][sq.y2] = 1;
-                b[sq.x3][sq.y3] = 1;
+                b[sq->x0][sq->y0] = 1;
+                b[sq->x1][sq->y1] = 1;
+                b[sq->x2][sq->y2] = 1;
+                b[sq->x3][sq->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else
@@ -537,56 +558,56 @@ public:
 
             if(level < 40 && lines >= linenext) {level++;linenext+=10;sleeptime-=15;}
         }
-        else if(choice == "lne" && (lne.y0 <= 580 || lne.y1 <= 580 || lne.y2 <= 580 || lne.y3 <= 580)) {
-            lne.y0 += 20;
-            lne.y1 += 20;
-            lne.y2 += 20;
-            lne.y3 += 20;
+        else if(choice == "lne" && (lne->y0 <= 580 || lne->y1 <= 580 || lne->y2 <= 580 || lne->y3 <= 580)) {
+            lne->y0 += 20;
+            lne->y1 += 20;
+            lne->y2 += 20;
+            lne->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lne.x0, lne.y0, lne.x0 + 20, lne.y0 + 20};
+            RECT rrect3 = {lne->x0, lne->y0, lne->x0 + 20, lne->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lne.x1, lne.y1, lne.x1 + 20, lne.y1 + 20};
+            RECT rrect4 = {lne->x1, lne->y1, lne->x1 + 20, lne->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lne.x2, lne.y2, lne.x2 + 20, lne.y2 + 20};
+            RECT rrect5 = {lne->x2, lne->y2, lne->x2 + 20, lne->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lne.x3, lne.y3, lne.x3 + 20, lne.y3 + 20};
+            RECT rrect6 = {lne->x3, lne->y3, lne->x3 + 20, lne->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(lne.y0 > 650 || lne.y1 > 650 || lne.y2 > 650 || lne.y3 > 650) {
-                b[lne.x0][lne.y0] = 1;
-                b[lne.x1][lne.y1] = 1;
-                b[lne.x2][lne.y2] = 1;
-                b[lne.x3][lne.y3] = 1;
+            if(lne->y0 > 650 || lne->y1 > 650 || lne->y2 > 650 || lne->y3 > 650) {
+                b[lne->x0][lne->y0] = 1;
+                b[lne->x1][lne->y1] = 1;
+                b[lne->x2][lne->y2] = 1;
+                b[lne->x3][lne->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else {
             }
 
             BOOLEAN flag = FALSE;
-            if(b[lne.x0][lne.y0+20] == 1) {
+            if(b[lne->x0][lne->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lne.x1][lne.y1+20] == 1) {
+            else if(b[lne->x1][lne->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lne.x2][lne.y2+20] == 1) {
+            else if(b[lne->x2][lne->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lne.x3][lne.y3+20] == 1) {
+            else if(b[lne->x3][lne->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 canGoDown = FALSE;
-                b[lne.x0][lne.y0] = 1;
-                b[lne.x1][lne.y1] = 1;
-                b[lne.x2][lne.y2] = 1;
-                b[lne.x3][lne.y3] = 1;
+                b[lne->x0][lne->y0] = 1;
+                b[lne->x1][lne->y1] = 1;
+                b[lne->x2][lne->y2] = 1;
+                b[lne->x3][lne->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else
@@ -594,112 +615,112 @@ public:
 
             if(level < 40 && lines >= linenext) {level++;linenext+=10;sleeptime-=15;}
         }
-        else if(choice == "ht" && (ht.y0 <= 650 && ht.y1 <= 650 && ht.y2 <= 650 && ht.y3 <= 650)) {
-            ht.y0 += 20;
-            ht.y1 += 20;
-            ht.y2 += 20;
-            ht.y3 += 20;
+        else if(choice == "ht" && (ht->y0 <= 650 && ht->y1 <= 650 && ht->y2 <= 650 && ht->y3 <= 650)) {
+            ht->y0 += 20;
+            ht->y1 += 20;
+            ht->y2 += 20;
+            ht->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {ht.x0, ht.y0, ht.x0 + 20, ht.y0 + 20};
+            RECT rrect3 = {ht->x0, ht->y0, ht->x0 + 20, ht->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {ht.x1, ht.y1, ht.x1 + 20, ht.y1 + 20};
+            RECT rrect4 = {ht->x1, ht->y1, ht->x1 + 20, ht->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {ht.x2, ht.y2, ht.x2 + 20, ht.y2 + 20};
+            RECT rrect5 = {ht->x2, ht->y2, ht->x2 + 20, ht->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {ht.x3, ht.y3, ht.x3 + 20, ht.y3 + 20};
+            RECT rrect6 = {ht->x3, ht->y3, ht->x3 + 20, ht->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(ht.y0 > 650 || ht.y1 > 650 || ht.y2 > 650 || ht.y3 > 650) {
-                b[ht.x0][ht.y0] = 1;
-                b[ht.x1][ht.y1] = 1;
-                b[ht.x2][ht.y2] = 1;
-                b[ht.x3][ht.y3] = 1;
+            if(ht->y0 > 650 || ht->y1 > 650 || ht->y2 > 650 || ht->y3 > 650) {
+                b[ht->x0][ht->y0] = 1;
+                b[ht->x1][ht->y1] = 1;
+                b[ht->x2][ht->y2] = 1;
+                b[ht->x3][ht->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else {
             }
 
             BOOLEAN flag = FALSE;
-            if(b[ht.x0][ht.y0+20] == 1) {
+            if(b[ht->x0][ht->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x1][ht.y1+20] == 1) {
+            else if(b[ht->x1][ht->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x2][ht.y2+20] == 1) {
+            else if(b[ht->x2][ht->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x3][ht.y3+20] == 1) {
+            else if(b[ht->x3][ht->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 canGoDown = FALSE;
-                b[ht.x0][ht.y0] = 1;
-                b[ht.x1][ht.y1] = 1;
-                b[ht.x2][ht.y2] = 1;
-                b[ht.x3][ht.y3] = 1;
+                b[ht->x0][ht->y0] = 1;
+                b[ht->x1][ht->y1] = 1;
+                b[ht->x2][ht->y2] = 1;
+                b[ht->x3][ht->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else
                 canGoDown = TRUE;
             if(level < 40 && lines >= linenext) {level++;linenext+=10;sleeptime-=15;}
         }
-        else if(choice == "larm" && (larm.y0 <= 650 && larm.y1 <= 650 && larm.y2 <= 650 && larm.y3 <= 650)) {
-            larm.y0 += 20;
-            larm.y1 += 20;
-            larm.y2 += 20;
-            larm.y3 += 20;
+        else if(choice == "larm" && (larm->y0 <= 650 && larm->y1 <= 650 && larm->y2 <= 650 && larm->y3 <= 650)) {
+            larm->y0 += 20;
+            larm->y1 += 20;
+            larm->y2 += 20;
+            larm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {larm.x0, larm.y0, larm.x0 + 20, larm.y0 + 20};
+            RECT rrect3 = {larm->x0, larm->y0, larm->x0 + 20, larm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {larm.x1, larm.y1, larm.x1 + 20, larm.y1 + 20};
+            RECT rrect4 = {larm->x1, larm->y1, larm->x1 + 20, larm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {larm.x2, larm.y2, larm.x2 + 20, larm.y2 + 20};
+            RECT rrect5 = {larm->x2, larm->y2, larm->x2 + 20, larm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {larm.x3, larm.y3, larm.x3 + 20, larm.y3 + 20};
+            RECT rrect6 = {larm->x3, larm->y3, larm->x3 + 20, larm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(larm.y0 > 650 || larm.y1 > 650 || larm.y2 > 650 || larm.y3 > 650) {
-                b[larm.x0][larm.y0] = 1;
-                b[larm.x1][larm.y1] = 1;
-                b[larm.x2][larm.y2] = 1;
-                b[larm.x3][larm.y3] = 1;
+            if(larm->y0 > 650 || larm->y1 > 650 || larm->y2 > 650 || larm->y3 > 650) {
+                b[larm->x0][larm->y0] = 1;
+                b[larm->x1][larm->y1] = 1;
+                b[larm->x2][larm->y2] = 1;
+                b[larm->x3][larm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else {
             }
 
             BOOLEAN flag = FALSE;
-            if(b[larm.x0][larm.y0+20] == 1) {
+            if(b[larm->x0][larm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x1][larm.y1+20] == 1) {
+            else if(b[larm->x1][larm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x2][larm.y2+20] == 1) {
+            else if(b[larm->x2][larm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x3][larm.y3+20] == 1) {
+            else if(b[larm->x3][larm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 canGoDown = FALSE;
-                b[larm.x0][larm.y0] = 1;
-                b[larm.x1][larm.y1] = 1;
-                b[larm.x2][larm.y2] = 1;
-                b[larm.x3][larm.y3] = 1;
+                b[larm->x0][larm->y0] = 1;
+                b[larm->x1][larm->y1] = 1;
+                b[larm->x2][larm->y2] = 1;
+                b[larm->x3][larm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else
@@ -723,56 +744,56 @@ public:
                 }
             }
         }
-        else if(choice == "rarm" && (rarm.y0 <= 650 && rarm.y1 <= 650 && rarm.y2 <= 650 && rarm.y3 <= 650)) {
-            rarm.y0 += 20;
-            rarm.y1 += 20;
-            rarm.y2 += 20;
-            rarm.y3 += 20;
+        else if(choice == "rarm" && (rarm->y0 <= 650 && rarm->y1 <= 650 && rarm->y2 <= 650 && rarm->y3 <= 650)) {
+            rarm->y0 += 20;
+            rarm->y1 += 20;
+            rarm->y2 += 20;
+            rarm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rarm.x0, rarm.y0, rarm.x0 + 20, rarm.y0 + 20};
+            RECT rrect3 = {rarm->x0, rarm->y0, rarm->x0 + 20, rarm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rarm.x1, rarm.y1, rarm.x1 + 20, rarm.y1 + 20};
+            RECT rrect4 = {rarm->x1, rarm->y1, rarm->x1 + 20, rarm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rarm.x2, rarm.y2, rarm.x2 + 20, rarm.y2 + 20};
+            RECT rrect5 = {rarm->x2, rarm->y2, rarm->x2 + 20, rarm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rarm.x3, rarm.y3, rarm.x3 + 20, rarm.y3 + 20};
+            RECT rrect6 = {rarm->x3, rarm->y3, rarm->x3 + 20, rarm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rarm.y0 > 650 || rarm.y1 > 650 || rarm.y2 > 650 || rarm.y3 > 650) {
-                b[rarm.x0][rarm.y0] = 1;
-                b[rarm.x1][rarm.y1] = 1;
-                b[rarm.x2][rarm.y2] = 1;
-                b[rarm.x3][rarm.y3] = 1;
+            if(rarm->y0 > 650 || rarm->y1 > 650 || rarm->y2 > 650 || rarm->y3 > 650) {
+                b[rarm->x0][rarm->y0] = 1;
+                b[rarm->x1][rarm->y1] = 1;
+                b[rarm->x2][rarm->y2] = 1;
+                b[rarm->x3][rarm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else {
             }
 
             BOOLEAN flag = FALSE;
-            if(b[rarm.x0][rarm.y0+20] == 1) {
+            if(b[rarm->x0][rarm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rarm.x1][rarm.y1+20] == 1) {
+            else if(b[rarm->x1][rarm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rarm.x2][rarm.y2+20] == 1) {
+            else if(b[rarm->x2][rarm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rarm.x3][rarm.y3+20] == 1) {
+            else if(b[rarm->x3][rarm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 canGoDown = FALSE;
-                b[rarm.x0][rarm.y0] = 1;
-                b[rarm.x1][rarm.y1] = 1;
-                b[rarm.x2][rarm.y2] = 1;
-                b[rarm.x3][rarm.y3] = 1;
+                b[rarm->x0][rarm->y0] = 1;
+                b[rarm->x1][rarm->y1] = 1;
+                b[rarm->x2][rarm->y2] = 1;
+                b[rarm->x3][rarm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else
@@ -796,56 +817,56 @@ public:
                 }
             }
         }
-        else if(choice == "lsh" && (lsh.y0 <= 650 && lsh.y1 <= 650 && lsh.y2 <= 650 && lsh.y3 <= 650)) {
-            lsh.y0 += 20;
-            lsh.y1 += 20;
-            lsh.y2 += 20;
-            lsh.y3 += 20;
+        else if(choice == "lsh" && (lsh->y0 <= 650 && lsh->y1 <= 650 && lsh->y2 <= 650 && lsh->y3 <= 650)) {
+            lsh->y0 += 20;
+            lsh->y1 += 20;
+            lsh->y2 += 20;
+            lsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lsh.x0, lsh.y0, lsh.x0 + 20, lsh.y0 + 20};
+            RECT rrect3 = {lsh->x0, lsh->y0, lsh->x0 + 20, lsh->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lsh.x1, lsh.y1, lsh.x1 + 20, lsh.y1 + 20};
+            RECT rrect4 = {lsh->x1, lsh->y1, lsh->x1 + 20, lsh->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lsh.x2, lsh.y2, lsh.x2 + 20, lsh.y2 + 20};
+            RECT rrect5 = {lsh->x2, lsh->y2, lsh->x2 + 20, lsh->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lsh.x3, lsh.y3, lsh.x3 + 20, lsh.y3 + 20};
+            RECT rrect6 = {lsh->x3, lsh->y3, lsh->x3 + 20, lsh->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(lsh.y0 > 650 || lsh.y1 > 650 || lsh.y2 > 650 || lsh.y3 > 650) {
-                b[lsh.x0][lsh.y0] = 1;
-                b[lsh.x1][lsh.y1] = 1;
-                b[lsh.x2][lsh.y2] = 1;
-                b[lsh.x3][lsh.y3] = 1;
+            if(lsh->y0 > 650 || lsh->y1 > 650 || lsh->y2 > 650 || lsh->y3 > 650) {
+                b[lsh->x0][lsh->y0] = 1;
+                b[lsh->x1][lsh->y1] = 1;
+                b[lsh->x2][lsh->y2] = 1;
+                b[lsh->x3][lsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else {
             }
 
             BOOLEAN flag = FALSE;
-            if(b[lsh.x0][lsh.y0+20] == 1) {
+            if(b[lsh->x0][lsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x1][lsh.y1+20] == 1) {
+            else if(b[lsh->x1][lsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x2][lsh.y2+20] == 1) {
+            else if(b[lsh->x2][lsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x3][lsh.y3+20] == 1) {
+            else if(b[lsh->x3][lsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 canGoDown = FALSE;
-                b[lsh.x0][lsh.y0] = 1;
-                b[lsh.x1][lsh.y1] = 1;
-                b[lsh.x2][lsh.y2] = 1;
-                b[lsh.x3][lsh.y3] = 1;
+                b[lsh->x0][lsh->y0] = 1;
+                b[lsh->x1][lsh->y1] = 1;
+                b[lsh->x2][lsh->y2] = 1;
+                b[lsh->x3][lsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else
@@ -869,56 +890,56 @@ public:
                 }
             }
         }
-        else if(choice == "rsh" && (rsh.y0 <= 650 && rsh.y1 <= 650 && rsh.y2 <= 650 && rsh.y3 <= 650)) {
-            rsh.y0 += 20;
-            rsh.y1 += 20;
-            rsh.y2 += 20;
-            rsh.y3 += 20;
+        else if(choice == "rsh" && (rsh->y0 <= 650 && rsh->y1 <= 650 && rsh->y2 <= 650 && rsh->y3 <= 650)) {
+            rsh->y0 += 20;
+            rsh->y1 += 20;
+            rsh->y2 += 20;
+            rsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rsh.x0, rsh.y0, rsh.x0 + 20, rsh.y0 + 20};
+            RECT rrect3 = {rsh->x0, rsh->y0, rsh->x0 + 20, rsh->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rsh.x1, rsh.y1, rsh.x1 + 20, rsh.y1 + 20};
+            RECT rrect4 = {rsh->x1, rsh->y1, rsh->x1 + 20, rsh->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rsh.x2, rsh.y2, rsh.x2 + 20, rsh.y2 + 20};
+            RECT rrect5 = {rsh->x2, rsh->y2, rsh->x2 + 20, rsh->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rsh.x3, rsh.y3, rsh.x3 + 20, rsh.y3 + 20};
+            RECT rrect6 = {rsh->x3, rsh->y3, rsh->x3 + 20, rsh->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rsh.y0 > 650 || rsh.y1 > 650 || rsh.y2 > 650 || rsh.y3 > 650) {
-                b[rsh.x0][rsh.y0] = 1;
-                b[rsh.x1][rsh.y1] = 1;
-                b[rsh.x2][rsh.y2] = 1;
-                b[rsh.x3][rsh.y3] = 1;
+            if(rsh->y0 > 650 || rsh->y1 > 650 || rsh->y2 > 650 || rsh->y3 > 650) {
+                b[rsh->x0][rsh->y0] = 1;
+                b[rsh->x1][rsh->y1] = 1;
+                b[rsh->x2][rsh->y2] = 1;
+                b[rsh->x3][rsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else {
             }
 
             BOOLEAN flag = FALSE;
-            if(b[rsh.x0][rsh.y0+20] == 1) {
+            if(b[rsh->x0][rsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x1][rsh.y1+20] == 1) {
+            else if(b[rsh->x1][rsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x2][rsh.y2+20] == 1) {
+            else if(b[rsh->x2][rsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x3][rsh.y3+20] == 1) {
+            else if(b[rsh->x3][rsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 canGoDown = FALSE;
-                b[rsh.x0][rsh.y0] = 1;
-                b[rsh.x1][rsh.y1] = 1;
-                b[rsh.x2][rsh.y2] = 1;
-                b[rsh.x3][rsh.y3] = 1;
+                b[rsh->x0][rsh->y0] = 1;
+                b[rsh->x1][rsh->y1] = 1;
+                b[rsh->x2][rsh->y2] = 1;
+                b[rsh->x3][rsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             } else
@@ -957,164 +978,164 @@ public:
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(hdc2, &rrect3, brush);
 
-        if(choice == "sq" && (sq.y0 <= 650 && sq.y1 <= 650 && sq.y2 <= 650 && sq.y3 <= 650)) {
-            if(b[sq.x0+20][sq.y0] == 0 &&
-               b[sq.x1+20][sq.y1] == 0 &&
-               b[sq.x2+20][sq.y2] == 0 &&
-               b[sq.x3+20][sq.y3] == 0 &&
+        if(choice == "sq" && (sq->y0 <= 650 && sq->y1 <= 650 && sq->y2 <= 650 && sq->y3 <= 650)) {
+            if(b[sq->x0+20][sq->y0] == 0 &&
+               b[sq->x1+20][sq->y1] == 0 &&
+               b[sq->x2+20][sq->y2] == 0 &&
+               b[sq->x3+20][sq->y3] == 0 &&
 
-               sq.x0 < 400 &&
-               sq.x1 < 400 &&
-               sq.x2 < 400 &&
-               sq.x3 < 400
+               sq->x0 < 400 &&
+               sq->x1 < 400 &&
+               sq->x2 < 400 &&
+               sq->x3 < 400
                ) {
-                sq.x0 += 20;
-                sq.x1 += 20;
-                sq.x2 += 20;
-                sq.x3 += 20;
+                sq->x0 += 20;
+                sq->x1 += 20;
+                sq->x2 += 20;
+                sq->x3 += 20;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {sq.x0, sq.y0, sq.x0 + 20, sq.y0 + 20};
+            RECT rrect3 = {sq->x0, sq->y0, sq->x0 + 20, sq->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {sq.x1, sq.y1, sq.x1 + 20, sq.y1 + 20};
+            RECT rrect4 = {sq->x1, sq->y1, sq->x1 + 20, sq->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {sq.x2, sq.y2, sq.x2 + 20, sq.y2 + 20};
+            RECT rrect5 = {sq->x2, sq->y2, sq->x2 + 20, sq->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {sq.x3, sq.y3, sq.x3 + 20, sq.y3 + 20};
+            RECT rrect6 = {sq->x3, sq->y3, sq->x3 + 20, sq->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
-        else if(choice == "lne" && (lne.y0 <= 650 && lne.y1 <= 650 && lne.y2 <= 650 && lne.y3 <= 650)) {
-            if(b[lne.x0+20][lne.y0] == 0 &&
-               b[lne.x1+20][lne.y1] == 0 &&
-               b[lne.x2+20][lne.y2] == 0 &&
-               b[lne.x3+20][lne.y3] == 0 &&
+        else if(choice == "lne" && (lne->y0 <= 650 && lne->y1 <= 650 && lne->y2 <= 650 && lne->y3 <= 650)) {
+            if(b[lne->x0+20][lne->y0] == 0 &&
+               b[lne->x1+20][lne->y1] == 0 &&
+               b[lne->x2+20][lne->y2] == 0 &&
+               b[lne->x3+20][lne->y3] == 0 &&
 
-               lne.x0 < 400 &&
-               lne.x1 < 400 &&
-               lne.x2 < 400 &&
-               lne.x3 < 400
+               lne->x0 < 400 &&
+               lne->x1 < 400 &&
+               lne->x2 < 400 &&
+               lne->x3 < 400
                ) {
-                lne.x0 += 20;
-                lne.x1 += 20;
-                lne.x2 += 20;
-                lne.x3 += 20;
+                lne->x0 += 20;
+                lne->x1 += 20;
+                lne->x2 += 20;
+                lne->x3 += 20;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lne.x0, lne.y0, lne.x0 + 20, lne.y0 + 20};
+            RECT rrect3 = {lne->x0, lne->y0, lne->x0 + 20, lne->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lne.x1, lne.y1, lne.x1 + 20, lne.y1 + 20};
+            RECT rrect4 = {lne->x1, lne->y1, lne->x1 + 20, lne->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lne.x2, lne.y2, lne.x2 + 20, lne.y2 + 20};
+            RECT rrect5 = {lne->x2, lne->y2, lne->x2 + 20, lne->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lne.x3, lne.y3, lne.x3 + 20, lne.y3 + 20};
+            RECT rrect6 = {lne->x3, lne->y3, lne->x3 + 20, lne->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
-        else if(choice == "ht" && (ht.y0 <= 650 && ht.y1 <= 650 && ht.y2 <= 650 && ht.y3 <= 650)) {
-            if(b[ht.x0+20][ht.y0] == 0 &&
-               b[ht.x1+20][ht.y1] == 0 &&
-               b[ht.x2+20][ht.y2] == 0 &&
-               b[ht.x3+20][ht.y3] == 0 &&
+        else if(choice == "ht" && (ht->y0 <= 650 && ht->y1 <= 650 && ht->y2 <= 650 && ht->y3 <= 650)) {
+            if(b[ht->x0+20][ht->y0] == 0 &&
+               b[ht->x1+20][ht->y1] == 0 &&
+               b[ht->x2+20][ht->y2] == 0 &&
+               b[ht->x3+20][ht->y3] == 0 &&
 
-               ht.x0 < 400 &&
-               ht.x1 < 400 &&
-               ht.x2 < 400 &&
-               ht.x3 < 400
+               ht->x0 < 400 &&
+               ht->x1 < 400 &&
+               ht->x2 < 400 &&
+               ht->x3 < 400
                ) {
-                ht.x0 += 20;
-                ht.x1 += 20;
-                ht.x2 += 20;
-                ht.x3 += 20;
+                ht->x0 += 20;
+                ht->x1 += 20;
+                ht->x2 += 20;
+                ht->x3 += 20;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {ht.x0, ht.y0, ht.x0 + 20, ht.y0 + 20};
+            RECT rrect3 = {ht->x0, ht->y0, ht->x0 + 20, ht->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {ht.x1, ht.y1, ht.x1 + 20, ht.y1 + 20};
+            RECT rrect4 = {ht->x1, ht->y1, ht->x1 + 20, ht->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {ht.x2, ht.y2, ht.x2 + 20, ht.y2 + 20};
+            RECT rrect5 = {ht->x2, ht->y2, ht->x2 + 20, ht->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {ht.x3, ht.y3, ht.x3 + 20, ht.y3 + 20};
+            RECT rrect6 = {ht->x3, ht->y3, ht->x3 + 20, ht->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[ht.x0][ht.y0+20] == 1) {
+            if(b[ht->x0][ht->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x1][ht.y1+20] == 1) {
+            else if(b[ht->x1][ht->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x2][ht.y2+20] == 1) {
+            else if(b[ht->x2][ht->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x3][ht.y3+20] == 1) {
+            else if(b[ht->x3][ht->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[ht.x0][ht.y0] = 1;
-                b[ht.x1][ht.y1] = 1;
-                b[ht.x2][ht.y2] = 1;
-                b[ht.x3][ht.y3] = 1;
+                b[ht->x0][ht->y0] = 1;
+                b[ht->x1][ht->y1] = 1;
+                b[ht->x2][ht->y2] = 1;
+                b[ht->x3][ht->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
             if(level < 40 && lines >= linenext) {level++;linenext+=10;sleeptime-=15;}
         }
-        else if(choice == "larm" && (larm.y0 <= 650 && larm.y1 <= 650 && larm.y2 <= 650 && larm.y3 <= 650)) {
-            if(b[larm.x0+20][larm.y0] == 0 &&
-               b[larm.x1+20][larm.y1] == 0 &&
-               b[larm.x2+20][larm.y2] == 0 &&
-               b[larm.x3+20][larm.y3] == 0 &&
+        else if(choice == "larm" && (larm->y0 <= 650 && larm->y1 <= 650 && larm->y2 <= 650 && larm->y3 <= 650)) {
+            if(b[larm->x0+20][larm->y0] == 0 &&
+               b[larm->x1+20][larm->y1] == 0 &&
+               b[larm->x2+20][larm->y2] == 0 &&
+               b[larm->x3+20][larm->y3] == 0 &&
 
-               larm.x0 < 400 &&
-               larm.x1 < 400 &&
-               larm.x2 < 400 &&
-               larm.x3 < 400
+               larm->x0 < 400 &&
+               larm->x1 < 400 &&
+               larm->x2 < 400 &&
+               larm->x3 < 400
                ) {
-                larm.x0 += 20;
-                larm.x1 += 20;
-                larm.x2 += 20;
-                larm.x3 += 20;
+                larm->x0 += 20;
+                larm->x1 += 20;
+                larm->x2 += 20;
+                larm->x3 += 20;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {larm.x0, larm.y0, larm.x0 + 20, larm.y0 + 20};
+            RECT rrect3 = {larm->x0, larm->y0, larm->x0 + 20, larm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {larm.x1, larm.y1, larm.x1 + 20, larm.y1 + 20};
+            RECT rrect4 = {larm->x1, larm->y1, larm->x1 + 20, larm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {larm.x2, larm.y2, larm.x2 + 20, larm.y2 + 20};
+            RECT rrect5 = {larm->x2, larm->y2, larm->x2 + 20, larm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {larm.x3, larm.y3, larm.x3 + 20, larm.y3 + 20};
+            RECT rrect6 = {larm->x3, larm->y3, larm->x3 + 20, larm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(larm.y0 > 650 || larm.y1 > 650 || larm.y2 > 650 || larm.y3 > 650) {
-                b[larm.x0][larm.y0] = 1;
-                b[larm.x1][larm.y1] = 1;
-                b[larm.x2][larm.y2] = 1;
-                b[larm.x3][larm.y3] = 1;
+            if(larm->y0 > 650 || larm->y1 > 650 || larm->y2 > 650 || larm->y3 > 650) {
+                b[larm->x0][larm->y0] = 1;
+                b[larm->x1][larm->y1] = 1;
+                b[larm->x2][larm->y2] = 1;
+                b[larm->x3][larm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1122,23 +1143,23 @@ public:
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[larm.x0][larm.y0+20] == 1) {
+            if(b[larm->x0][larm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x1][larm.y1+20] == 1) {
+            else if(b[larm->x1][larm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x2][larm.y2+20] == 1) {
+            else if(b[larm->x2][larm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x3][larm.y3+20] == 1) {
+            else if(b[larm->x3][larm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[larm.x0][larm.y0] = 1;
-                b[larm.x1][larm.y1] = 1;
-                b[larm.x2][larm.y2] = 1;
-                b[larm.x3][larm.y3] = 1;
+                b[larm->x0][larm->y0] = 1;
+                b[larm->x1][larm->y1] = 1;
+                b[larm->x2][larm->y2] = 1;
+                b[larm->x3][larm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1160,43 +1181,43 @@ public:
                 }
             }
         }
-        else if(choice == "rarm" && (rarm.y0 <= 650 && rarm.y1 <= 650 && rarm.y2 <= 650 && rarm.y3 <= 650)) {
-            if(b[rarm.x0+20][rarm.y0] == 0 &&
-               b[rarm.x1+20][rarm.y1] == 0 &&
-               b[rarm.x2+20][rarm.y2] == 0 &&
-               b[rarm.x3+20][rarm.y3] == 0 &&
+        else if(choice == "rarm" && (rarm->y0 <= 650 && rarm->y1 <= 650 && rarm->y2 <= 650 && rarm->y3 <= 650)) {
+            if(b[rarm->x0+20][rarm->y0] == 0 &&
+               b[rarm->x1+20][rarm->y1] == 0 &&
+               b[rarm->x2+20][rarm->y2] == 0 &&
+               b[rarm->x3+20][rarm->y3] == 0 &&
 
-               rarm.x0 < 400 &&
-               rarm.x1 < 400 &&
-               rarm.x2 < 400 &&
-               rarm.x3 < 400
+               rarm->x0 < 400 &&
+               rarm->x1 < 400 &&
+               rarm->x2 < 400 &&
+               rarm->x3 < 400
                ) {
-                rarm.x0 += 20;
-                rarm.x1 += 20;
-                rarm.x2 += 20;
-                rarm.x3 += 20;
+                rarm->x0 += 20;
+                rarm->x1 += 20;
+                rarm->x2 += 20;
+                rarm->x3 += 20;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rarm.x0, rarm.y0, rarm.x0 + 20, rarm.y0 + 20};
+            RECT rrect3 = {rarm->x0, rarm->y0, rarm->x0 + 20, rarm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rarm.x1, rarm.y1, rarm.x1 + 20, rarm.y1 + 20};
+            RECT rrect4 = {rarm->x1, rarm->y1, rarm->x1 + 20, rarm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rarm.x2, rarm.y2, rarm.x2 + 20, rarm.y2 + 20};
+            RECT rrect5 = {rarm->x2, rarm->y2, rarm->x2 + 20, rarm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rarm.x3, rarm.y3, rarm.x3 + 20, rarm.y3 + 20};
+            RECT rrect6 = {rarm->x3, rarm->y3, rarm->x3 + 20, rarm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rarm.y0 > 650 || rarm.y1 > 650 || rarm.y2 > 650 || rarm.y3 > 650) {
-                b[rarm.x0][rarm.y0] = 1;
-                b[rarm.x1][rarm.y1] = 1;
-                b[rarm.x2][rarm.y2] = 1;
-                b[rarm.x3][rarm.y3] = 1;
+            if(rarm->y0 > 650 || rarm->y1 > 650 || rarm->y2 > 650 || rarm->y3 > 650) {
+                b[rarm->x0][rarm->y0] = 1;
+                b[rarm->x1][rarm->y1] = 1;
+                b[rarm->x2][rarm->y2] = 1;
+                b[rarm->x3][rarm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1204,23 +1225,23 @@ public:
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[rarm.x0][rarm.y0+20] == 1) {
+            if(b[rarm->x0][rarm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rarm.x1][rarm.y1+20] == 1) {
+            else if(b[rarm->x1][rarm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rarm.x2][rarm.y2+20] == 1) {
+            else if(b[rarm->x2][rarm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rarm.x3][rarm.y3+20] == 1) {
+            else if(b[rarm->x3][rarm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[rarm.x0][rarm.y0] = 1;
-                b[rarm.x1][rarm.y1] = 1;
-                b[rarm.x2][rarm.y2] = 1;
-                b[rarm.x3][rarm.y3] = 1;
+                b[rarm->x0][rarm->y0] = 1;
+                b[rarm->x1][rarm->y1] = 1;
+                b[rarm->x2][rarm->y2] = 1;
+                b[rarm->x3][rarm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1242,43 +1263,43 @@ public:
                 }
             }
         }
-        else if(choice == "lsh" && (lsh.y0 <= 650 && lsh.y1 <= 650 && lsh.y2 <= 650 && lsh.y3 <= 650)) {
-            if(b[lsh.x0+20][lsh.y0] == 0 &&
-               b[lsh.x1+20][lsh.y1] == 0 &&
-               b[lsh.x2+20][lsh.y2] == 0 &&
-               b[lsh.x3+20][lsh.y3] == 0 &&
+        else if(choice == "lsh" && (lsh->y0 <= 650 && lsh->y1 <= 650 && lsh->y2 <= 650 && lsh->y3 <= 650)) {
+            if(b[lsh->x0+20][lsh->y0] == 0 &&
+               b[lsh->x1+20][lsh->y1] == 0 &&
+               b[lsh->x2+20][lsh->y2] == 0 &&
+               b[lsh->x3+20][lsh->y3] == 0 &&
 
-               lsh.x0 < 400 &&
-               lsh.x1 < 400 &&
-               lsh.x2 < 400 &&
-               lsh.x3 < 400
+               lsh->x0 < 400 &&
+               lsh->x1 < 400 &&
+               lsh->x2 < 400 &&
+               lsh->x3 < 400
                ) {
-                lsh.x0 += 20;
-                lsh.x1 += 20;
-                lsh.x2 += 20;
-                lsh.x3 += 20;
+                lsh->x0 += 20;
+                lsh->x1 += 20;
+                lsh->x2 += 20;
+                lsh->x3 += 20;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lsh.x0, lsh.y0, lsh.x0 + 20, lsh.y0 + 20};
+            RECT rrect3 = {lsh->x0, lsh->y0, lsh->x0 + 20, lsh->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lsh.x1, lsh.y1, lsh.x1 + 20, lsh.y1 + 20};
+            RECT rrect4 = {lsh->x1, lsh->y1, lsh->x1 + 20, lsh->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lsh.x2, lsh.y2, lsh.x2 + 20, lsh.y2 + 20};
+            RECT rrect5 = {lsh->x2, lsh->y2, lsh->x2 + 20, lsh->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lsh.x3, lsh.y3, lsh.x3 + 20, lsh.y3 + 20};
+            RECT rrect6 = {lsh->x3, lsh->y3, lsh->x3 + 20, lsh->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(lsh.y0 > 650 || lsh.y1 > 650 || lsh.y2 > 650 || lsh.y3 > 650) {
-                b[lsh.x0][lsh.y0] = 1;
-                b[lsh.x1][lsh.y1] = 1;
-                b[lsh.x2][lsh.y2] = 1;
-                b[lsh.x3][lsh.y3] = 1;
+            if(lsh->y0 > 650 || lsh->y1 > 650 || lsh->y2 > 650 || lsh->y3 > 650) {
+                b[lsh->x0][lsh->y0] = 1;
+                b[lsh->x1][lsh->y1] = 1;
+                b[lsh->x2][lsh->y2] = 1;
+                b[lsh->x3][lsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1286,23 +1307,23 @@ public:
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[lsh.x0][lsh.y0+20] == 1) {
+            if(b[lsh->x0][lsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x1][lsh.y1+20] == 1) {
+            else if(b[lsh->x1][lsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x2][lsh.y2+20] == 1) {
+            else if(b[lsh->x2][lsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x3][lsh.y3+20] == 1) {
+            else if(b[lsh->x3][lsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[lsh.x0][lsh.y0] = 1;
-                b[lsh.x1][lsh.y1] = 1;
-                b[lsh.x2][lsh.y2] = 1;
-                b[lsh.x3][lsh.y3] = 1;
+                b[lsh->x0][lsh->y0] = 1;
+                b[lsh->x1][lsh->y1] = 1;
+                b[lsh->x2][lsh->y2] = 1;
+                b[lsh->x3][lsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1324,43 +1345,43 @@ public:
                 }
             }
         }
-        else if(choice == "rsh" && (rsh.y0 <= 650 && rsh.y1 <= 650 && rsh.y2 <= 650 && rsh.y3 <= 650)) {
-            if(b[rsh.x0+20][rsh.y0] == 0 &&
-               b[rsh.x1+20][rsh.y1] == 0 &&
-               b[rsh.x2+20][rsh.y2] == 0 &&
-               b[rsh.x3+20][rsh.y3] == 0 &&
+        else if(choice == "rsh" && (rsh->y0 <= 650 && rsh->y1 <= 650 && rsh->y2 <= 650 && rsh->y3 <= 650)) {
+            if(b[rsh->x0+20][rsh->y0] == 0 &&
+               b[rsh->x1+20][rsh->y1] == 0 &&
+               b[rsh->x2+20][rsh->y2] == 0 &&
+               b[rsh->x3+20][rsh->y3] == 0 &&
 
-               rsh.x0 < 400 &&
-               rsh.x1 < 400 &&
-               rsh.x2 < 400 &&
-               rsh.x3 < 400
+               rsh->x0 < 400 &&
+               rsh->x1 < 400 &&
+               rsh->x2 < 400 &&
+               rsh->x3 < 400
                ) {
-                rsh.x0 += 20;
-                rsh.x1 += 20;
-                rsh.x2 += 20;
-                rsh.x3 += 20;
+                rsh->x0 += 20;
+                rsh->x1 += 20;
+                rsh->x2 += 20;
+                rsh->x3 += 20;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rsh.x0, rsh.y0, rsh.x0 + 20, rsh.y0 + 20};
+            RECT rrect3 = {rsh->x0, rsh->y0, rsh->x0 + 20, rsh->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rsh.x1, rsh.y1, rsh.x1 + 20, rsh.y1 + 20};
+            RECT rrect4 = {rsh->x1, rsh->y1, rsh->x1 + 20, rsh->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rsh.x2, rsh.y2, rsh.x2 + 20, rsh.y2 + 20};
+            RECT rrect5 = {rsh->x2, rsh->y2, rsh->x2 + 20, rsh->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rsh.x3, rsh.y3, rsh.x3 + 20, rsh.y3 + 20};
+            RECT rrect6 = {rsh->x3, rsh->y3, rsh->x3 + 20, rsh->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rsh.y0 > 650 || rsh.y1 > 650 || rsh.y2 > 650 || rsh.y3 > 650) {
-                b[rsh.x0][rsh.y0] = 1;
-                b[rsh.x1][rsh.y1] = 1;
-                b[rsh.x2][rsh.y2] = 1;
-                b[rsh.x3][rsh.y3] = 1;
+            if(rsh->y0 > 650 || rsh->y1 > 650 || rsh->y2 > 650 || rsh->y3 > 650) {
+                b[rsh->x0][rsh->y0] = 1;
+                b[rsh->x1][rsh->y1] = 1;
+                b[rsh->x2][rsh->y2] = 1;
+                b[rsh->x3][rsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1368,23 +1389,23 @@ public:
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[rsh.x0][rsh.y0+20] == 1) {
+            if(b[rsh->x0][rsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x1][rsh.y1+20] == 1) {
+            else if(b[rsh->x1][rsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x2][rsh.y2+20] == 1) {
+            else if(b[rsh->x2][rsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x3][rsh.y3+20] == 1) {
+            else if(b[rsh->x3][rsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[rsh.x0][rsh.y0] = 1;
-                b[rsh.x1][rsh.y1] = 1;
-                b[rsh.x2][rsh.y2] = 1;
-                b[rsh.x3][rsh.y3] = 1;
+                b[rsh->x0][rsh->y0] = 1;
+                b[rsh->x1][rsh->y1] = 1;
+                b[rsh->x2][rsh->y2] = 1;
+                b[rsh->x3][rsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1419,161 +1440,161 @@ public:
         RECT rrect3 = {219, 20, 420, 690};
         FillRect(hdc2, &rrect3, brush);
 
-        if(choice == "sq" && (sq.y0 <= 650 && sq.y1 <= 650 && sq.y2 <= 650 && sq.y3 <= 650)) {
-            if(sq.x0 > 220 &&
-               sq.x1 > 220 &&
-               sq.x2 > 220 &&
-               sq.x3 > 220) {
-                if(b[sq.x0-20][sq.y0] == 0 &&
-                   b[sq.x1-20][sq.y1] == 0 &&
-                   b[sq.x2-20][sq.y2] == 0 &&
-                   b[sq.x3-20][sq.y3] == 0) {
-                    sq.x0 -= 20;
-                    sq.x1 -= 20;
-                    sq.x2 -= 20;
-                    sq.x3 -= 20;
+        if(choice == "sq" && (sq->y0 <= 650 && sq->y1 <= 650 && sq->y2 <= 650 && sq->y3 <= 650)) {
+            if(sq->x0 > 220 &&
+               sq->x1 > 220 &&
+               sq->x2 > 220 &&
+               sq->x3 > 220) {
+                if(b[sq->x0-20][sq->y0] == 0 &&
+                   b[sq->x1-20][sq->y1] == 0 &&
+                   b[sq->x2-20][sq->y2] == 0 &&
+                   b[sq->x3-20][sq->y3] == 0) {
+                    sq->x0 -= 20;
+                    sq->x1 -= 20;
+                    sq->x2 -= 20;
+                    sq->x3 -= 20;
                 }
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
-            RECT rrect3 = {sq.x0, sq.y0, sq.x0 + 20, sq.y0 + 20};
+            RECT rrect3 = {sq->x0, sq->y0, sq->x0 + 20, sq->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {sq.x1, sq.y1, sq.x1 + 20, sq.y1 + 20};
+            RECT rrect4 = {sq->x1, sq->y1, sq->x1 + 20, sq->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {sq.x2, sq.y2, sq.x2 + 20, sq.y2 + 20};
+            RECT rrect5 = {sq->x2, sq->y2, sq->x2 + 20, sq->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {sq.x3, sq.y3, sq.x3 + 20, sq.y3 + 20};
+            RECT rrect6 = {sq->x3, sq->y3, sq->x3 + 20, sq->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
 
             DeleteObject(brush);
         }
-        if(choice == "lne" && (lne.y0 <= 650 && lne.y1 <= 650 && lne.y2 <= 650 && lne.y3 <= 650)) {
-            if(lne.x0 > 220 &&
-               lne.x1 > 220 &&
-               lne.x2 > 220 &&
-               lne.x3 > 220) {
-                if(b[lne.x0-20][lne.y0] == 0 &&
-                   b[lne.x1-20][lne.y1] == 0 &&
-                   b[lne.x2-20][lne.y2] == 0 &&
-                   b[lne.x3-20][lne.y3] == 0) {
-                    lne.x0 -= 20;
-                    lne.x1 -= 20;
-                    lne.x2 -= 20;
-                    lne.x3 -= 20;
+        if(choice == "lne" && (lne->y0 <= 650 && lne->y1 <= 650 && lne->y2 <= 650 && lne->y3 <= 650)) {
+            if(lne->x0 > 220 &&
+               lne->x1 > 220 &&
+               lne->x2 > 220 &&
+               lne->x3 > 220) {
+                if(b[lne->x0-20][lne->y0] == 0 &&
+                   b[lne->x1-20][lne->y1] == 0 &&
+                   b[lne->x2-20][lne->y2] == 0 &&
+                   b[lne->x3-20][lne->y3] == 0) {
+                    lne->x0 -= 20;
+                    lne->x1 -= 20;
+                    lne->x2 -= 20;
+                    lne->x3 -= 20;
                 }
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lne.x0, lne.y0, lne.x0 + 20, lne.y0 + 20};
+            RECT rrect3 = {lne->x0, lne->y0, lne->x0 + 20, lne->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lne.x1, lne.y1, lne.x1 + 20, lne.y1 + 20};
+            RECT rrect4 = {lne->x1, lne->y1, lne->x1 + 20, lne->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lne.x2, lne.y2, lne.x2 + 20, lne.y2 + 20};
+            RECT rrect5 = {lne->x2, lne->y2, lne->x2 + 20, lne->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lne.x3, lne.y3, lne.x3 + 20, lne.y3 + 20};
+            RECT rrect6 = {lne->x3, lne->y3, lne->x3 + 20, lne->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
 
             DeleteObject(brush);
         }
-        else if(choice == "ht" && (ht.y0 <= 650 && ht.y1 <= 650 && ht.y2 <= 650 && ht.y3 <= 650)) {
-            if(ht.x0 > 220 &&
-               ht.x1 > 220 &&
-               ht.x2 > 220 &&
-               ht.x3 > 220) {
-                if(b[ht.x0-20][ht.y0] == 0 &&
-                   b[ht.x1-20][ht.y1] == 0 &&
-                   b[ht.x2-20][ht.y2] == 0 &&
-                   b[ht.x3-20][ht.y3] == 0) {
-                    ht.x0 -= 20;
-                    ht.x1 -= 20;
-                    ht.x2 -= 20;
-                    ht.x3 -= 20;
+        else if(choice == "ht" && (ht->y0 <= 650 && ht->y1 <= 650 && ht->y2 <= 650 && ht->y3 <= 650)) {
+            if(ht->x0 > 220 &&
+               ht->x1 > 220 &&
+               ht->x2 > 220 &&
+               ht->x3 > 220) {
+                if(b[ht->x0-20][ht->y0] == 0 &&
+                   b[ht->x1-20][ht->y1] == 0 &&
+                   b[ht->x2-20][ht->y2] == 0 &&
+                   b[ht->x3-20][ht->y3] == 0) {
+                    ht->x0 -= 20;
+                    ht->x1 -= 20;
+                    ht->x2 -= 20;
+                    ht->x3 -= 20;
                 }
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {ht.x0, ht.y0, ht.x0 + 20, ht.y0 + 20};
+            RECT rrect3 = {ht->x0, ht->y0, ht->x0 + 20, ht->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {ht.x1, ht.y1, ht.x1 + 20, ht.y1 + 20};
+            RECT rrect4 = {ht->x1, ht->y1, ht->x1 + 20, ht->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {ht.x2, ht.y2, ht.x2 + 20, ht.y2 + 20};
+            RECT rrect5 = {ht->x2, ht->y2, ht->x2 + 20, ht->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {ht.x3, ht.y3, ht.x3 + 20, ht.y3 + 20};
+            RECT rrect6 = {ht->x3, ht->y3, ht->x3 + 20, ht->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
 
             DeleteObject(brush);
 
             BOOLEAN flag = FALSE;
-            if(b[ht.x0][ht.y0+20] == 1) {
+            if(b[ht->x0][ht->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x1][ht.y1+20] == 1) {
+            else if(b[ht->x1][ht->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x2][ht.y2+20] == 1) {
+            else if(b[ht->x2][ht->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[ht.x3][ht.y3+20] == 1) {
+            else if(b[ht->x3][ht->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[ht.x0][ht.y0] = 1;
-                b[ht.x1][ht.y1] = 1;
-                b[ht.x2][ht.y2] = 1;
-                b[ht.x3][ht.y3] = 1;
+                b[ht->x0][ht->y0] = 1;
+                b[ht->x1][ht->y1] = 1;
+                b[ht->x2][ht->y2] = 1;
+                b[ht->x3][ht->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
             if(level < 40 && lines >= linenext) {level++;linenext+=10;sleeptime-=15;}
         }
-        else if(choice == "larm" && (larm.y0 <= 650 && larm.y1 <= 650 && larm.y2 <= 650 && larm.y3 <= 650)) {
-            if(larm.x0 > 220 &&
-               larm.x1 > 220 &&
-               larm.x2 > 220 &&
-               larm.x3 > 220) {
-                if(b[larm.x0-20][larm.y0] == 0 &&
-                   b[larm.x1-20][larm.y1] == 0 &&
-                   b[larm.x2-20][larm.y2] == 0 &&
-                   b[larm.x3-20][larm.y3] == 0) {
-                    larm.x0 -= 20;
-                    larm.x1 -= 20;
-                    larm.x2 -= 20;
-                    larm.x3 -= 20;
+        else if(choice == "larm" && (larm->y0 <= 650 && larm->y1 <= 650 && larm->y2 <= 650 && larm->y3 <= 650)) {
+            if(larm->x0 > 220 &&
+               larm->x1 > 220 &&
+               larm->x2 > 220 &&
+               larm->x3 > 220) {
+                if(b[larm->x0-20][larm->y0] == 0 &&
+                   b[larm->x1-20][larm->y1] == 0 &&
+                   b[larm->x2-20][larm->y2] == 0 &&
+                   b[larm->x3-20][larm->y3] == 0) {
+                    larm->x0 -= 20;
+                    larm->x1 -= 20;
+                    larm->x2 -= 20;
+                    larm->x3 -= 20;
                 }
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {larm.x0, larm.y0, larm.x0 + 20, larm.y0 + 20};
+            RECT rrect3 = {larm->x0, larm->y0, larm->x0 + 20, larm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {larm.x1, larm.y1, larm.x1 + 20, larm.y1 + 20};
+            RECT rrect4 = {larm->x1, larm->y1, larm->x1 + 20, larm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {larm.x2, larm.y2, larm.x2 + 20, larm.y2 + 20};
+            RECT rrect5 = {larm->x2, larm->y2, larm->x2 + 20, larm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {larm.x3, larm.y3, larm.x3 + 20, larm.y3 + 20};
+            RECT rrect6 = {larm->x3, larm->y3, larm->x3 + 20, larm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
 
             DeleteObject(brush);
 
-            if(larm.y0 > 650 || larm.y1 > 650 || larm.y2 > 650 || larm.y3 > 650) {
-                b[larm.x0][larm.y0] = 1;
-                b[larm.x1][larm.y1] = 1;
-                b[larm.x2][larm.y2] = 1;
-                b[larm.x3][larm.y3] = 1;
+            if(larm->y0 > 650 || larm->y1 > 650 || larm->y2 > 650 || larm->y3 > 650) {
+                b[larm->x0][larm->y0] = 1;
+                b[larm->x1][larm->y1] = 1;
+                b[larm->x2][larm->y2] = 1;
+                b[larm->x3][larm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1581,105 +1602,23 @@ public:
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[larm.x0][larm.y0+20] == 1) {
+            if(b[larm->x0][larm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x1][larm.y1+20] == 1) {
+            else if(b[larm->x1][larm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x2][larm.y2+20] == 1) {
+            else if(b[larm->x2][larm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[larm.x3][larm.y3+20] == 1) {
-                flag = TRUE;
-            }
-            if(flag) {
-                b[larm.x0][larm.y0] = 1;
-                b[larm.x1][larm.y1] = 1;
-                b[larm.x2][larm.y2] = 1;
-                b[larm.x3][larm.y3] = 1;
-                blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
-                prep();
-            }
-            if(level < 40 && lines >= linenext) {level++;linenext+=10;sleeptime-=15;}
-            for(int i=0; i<700; i++) {
-                for(int j=0; j<700; j++) {
-                    if(b[i][j] == 1) {
-                        HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
-                        RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(hdc2, &rrect6, brush);
-                        DeleteObject(brush);
-
-                        HGDIOBJ hOldBsh = SelectObject(hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(hdc2, hOldPen));
-                        SelectObject(hdc2, hOldBsh);
-                    }
-                }
-            }
-        }
-        else if(choice == "rarm" && (rarm.y0 <= 650 && rarm.y1 <= 650 && rarm.y2 <= 650 && rarm.y3 <= 650)) {
-            if(rarm.x0 > 220 &&
-               rarm.x1 > 220 &&
-               rarm.x2 > 220 &&
-               rarm.x3 > 220) {
-                if(b[rarm.x0-20][rarm.y0] == 0 &&
-                   b[rarm.x1-20][rarm.y1] == 0 &&
-                   b[rarm.x2-20][rarm.y2] == 0 &&
-                   b[rarm.x3-20][rarm.y3] == 0) {
-                    rarm.x0 -= 20;
-                    rarm.x1 -= 20;
-                    rarm.x2 -= 20;
-                    rarm.x3 -= 20;
-                }
-            }
-
-            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
-
-            RECT rrect3 = {rarm.x0, rarm.y0, rarm.x0 + 20, rarm.y0 + 20};
-            FillRect(hdc2, &rrect3, brush);
-
-            RECT rrect4 = {rarm.x1, rarm.y1, rarm.x1 + 20, rarm.y1 + 20};
-            FillRect(hdc2, &rrect4, brush);
-
-            RECT rrect5 = {rarm.x2, rarm.y2, rarm.x2 + 20, rarm.y2 + 20};
-            FillRect(hdc2, &rrect5, brush);
-
-            RECT rrect6 = {rarm.x3, rarm.y3, rarm.x3 + 20, rarm.y3 + 20};
-            FillRect(hdc2, &rrect6, brush);
-
-            DeleteObject(brush);
-
-            if(rarm.y0 > 650 || rarm.y1 > 650 || rarm.y2 > 650 || rarm.y3 > 650) {
-                b[rarm.x0][rarm.y0] = 1;
-                b[rarm.x1][rarm.y1] = 1;
-                b[rarm.x2][rarm.y2] = 1;
-                b[rarm.x3][rarm.y3] = 1;
-                blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
-                prep();
-            }
-
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
-
-            BOOLEAN flag = FALSE;
-            if(b[rarm.x0][rarm.y0+20] == 1) {
-                flag = TRUE;
-            }
-            else if(b[rarm.x1][rarm.y1+20] == 1) {
-                flag = TRUE;
-            }
-            else if(b[rarm.x2][rarm.y2+20] == 1) {
-                flag = TRUE;
-            }
-            else if(b[rarm.x3][rarm.y3+20] == 1) {
+            else if(b[larm->x3][larm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[rarm.x0][rarm.y0] = 1;
-                b[rarm.x1][rarm.y1] = 1;
-                b[rarm.x2][rarm.y2] = 1;
-                b[rarm.x3][rarm.y3] = 1;
+                b[larm->x0][larm->y0] = 1;
+                b[larm->x1][larm->y1] = 1;
+                b[larm->x2][larm->y2] = 1;
+                b[larm->x3][larm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1701,43 +1640,43 @@ public:
                 }
             }
         }
-        else if(choice == "lsh" && (lsh.y0 <= 650 && lsh.y1 <= 650 && lsh.y2 <= 650 && lsh.y3 <= 650)) {
-            if(lsh.x0 > 220 &&
-               lsh.x1 > 220 &&
-               lsh.x2 > 220 &&
-               lsh.x3 > 220) {
-                if(b[lsh.x0-20][lsh.y0] == 0 &&
-                   b[lsh.x1-20][lsh.y1] == 0 &&
-                   b[lsh.x2-20][lsh.y2] == 0 &&
-                   b[lsh.x3-20][lsh.y3] == 0) {
-                    lsh.x0 -= 20;
-                    lsh.x1 -= 20;
-                    lsh.x2 -= 20;
-                    lsh.x3 -= 20;
+        else if(choice == "rarm" && (rarm->y0 <= 650 && rarm->y1 <= 650 && rarm->y2 <= 650 && rarm->y3 <= 650)) {
+            if(rarm->x0 > 220 &&
+               rarm->x1 > 220 &&
+               rarm->x2 > 220 &&
+               rarm->x3 > 220) {
+                if(b[rarm->x0-20][rarm->y0] == 0 &&
+                   b[rarm->x1-20][rarm->y1] == 0 &&
+                   b[rarm->x2-20][rarm->y2] == 0 &&
+                   b[rarm->x3-20][rarm->y3] == 0) {
+                    rarm->x0 -= 20;
+                    rarm->x1 -= 20;
+                    rarm->x2 -= 20;
+                    rarm->x3 -= 20;
                 }
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lsh.x0, lsh.y0, lsh.x0 + 20, lsh.y0 + 20};
+            RECT rrect3 = {rarm->x0, rarm->y0, rarm->x0 + 20, rarm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lsh.x1, lsh.y1, lsh.x1 + 20, lsh.y1 + 20};
+            RECT rrect4 = {rarm->x1, rarm->y1, rarm->x1 + 20, rarm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lsh.x2, lsh.y2, lsh.x2 + 20, lsh.y2 + 20};
+            RECT rrect5 = {rarm->x2, rarm->y2, rarm->x2 + 20, rarm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lsh.x3, lsh.y3, lsh.x3 + 20, lsh.y3 + 20};
+            RECT rrect6 = {rarm->x3, rarm->y3, rarm->x3 + 20, rarm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
 
             DeleteObject(brush);
 
-            if(lsh.y0 > 650 || lsh.y1 > 650 || lsh.y2 > 650 || lsh.y3 > 650) {
-                b[lsh.x0][lsh.y0] = 1;
-                b[lsh.x1][lsh.y1] = 1;
-                b[lsh.x2][lsh.y2] = 1;
-                b[lsh.x3][lsh.y3] = 1;
+            if(rarm->y0 > 650 || rarm->y1 > 650 || rarm->y2 > 650 || rarm->y3 > 650) {
+                b[rarm->x0][rarm->y0] = 1;
+                b[rarm->x1][rarm->y1] = 1;
+                b[rarm->x2][rarm->y2] = 1;
+                b[rarm->x3][rarm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1745,23 +1684,23 @@ public:
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[lsh.x0][lsh.y0+20] == 1) {
+            if(b[rarm->x0][rarm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x1][lsh.y1+20] == 1) {
+            else if(b[rarm->x1][rarm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x2][lsh.y2+20] == 1) {
+            else if(b[rarm->x2][rarm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[lsh.x3][lsh.y3+20] == 1) {
+            else if(b[rarm->x3][rarm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[lsh.x0][lsh.y0] = 1;
-                b[lsh.x1][lsh.y1] = 1;
-                b[lsh.x2][lsh.y2] = 1;
-                b[lsh.x3][lsh.y3] = 1;
+                b[rarm->x0][rarm->y0] = 1;
+                b[rarm->x1][rarm->y1] = 1;
+                b[rarm->x2][rarm->y2] = 1;
+                b[rarm->x3][rarm->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1783,42 +1722,43 @@ public:
                 }
             }
         }
-        else if(choice == "rsh" && (rsh.y0 <= 650 && rsh.y1 <= 650 && rsh.y2 <= 650 && rsh.y3 <= 650)) {
-            if(rsh.x0 > 220 &&
-               rsh.x1 > 220 &&
-               rsh.x2 > 220 &&
-               rsh.x3 > 220) {
-                if(b[rsh.x0-20][rsh.y0] == 0 &&
-                   b[rsh.x1-20][rsh.y1] == 0 &&
-                   b[rsh.x2-20][rsh.y2] == 0 &&
-                   b[rsh.x3-20][rsh.y3] == 0) {
-                    rsh.x0 -= 20;
-                    rsh.x1 -= 20;
-                    rsh.x2 -= 20;
-                    rsh.x3 -= 20;
+        else if(choice == "lsh" && (lsh->y0 <= 650 && lsh->y1 <= 650 && lsh->y2 <= 650 && lsh->y3 <= 650)) {
+            if(lsh->x0 > 220 &&
+               lsh->x1 > 220 &&
+               lsh->x2 > 220 &&
+               lsh->x3 > 220) {
+                if(b[lsh->x0-20][lsh->y0] == 0 &&
+                   b[lsh->x1-20][lsh->y1] == 0 &&
+                   b[lsh->x2-20][lsh->y2] == 0 &&
+                   b[lsh->x3-20][lsh->y3] == 0) {
+                    lsh->x0 -= 20;
+                    lsh->x1 -= 20;
+                    lsh->x2 -= 20;
+                    lsh->x3 -= 20;
                 }
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rsh.x0, rsh.y0, rsh.x0 + 20, rsh.y0 + 20};
+            RECT rrect3 = {lsh->x0, lsh->y0, lsh->x0 + 20, lsh->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rsh.x1, rsh.y1, rsh.x1 + 20, rsh.y1 + 20};
+            RECT rrect4 = {lsh->x1, lsh->y1, lsh->x1 + 20, lsh->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rsh.x2, rsh.y2, rsh.x2 + 20, rsh.y2 + 20};
+            RECT rrect5 = {lsh->x2, lsh->y2, lsh->x2 + 20, lsh->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rsh.x3, rsh.y3, rsh.x3 + 20, rsh.y3 + 20};
+            RECT rrect6 = {lsh->x3, lsh->y3, lsh->x3 + 20, lsh->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
+
             DeleteObject(brush);
 
-            if(rsh.y0 > 650 || rsh.y1 > 650 || rsh.y2 > 650 || rsh.y3 > 650) {
-                b[rsh.x0][rsh.y0] = 1;
-                b[rsh.x1][rsh.y1] = 1;
-                b[rsh.x2][rsh.y2] = 1;
-                b[rsh.x3][rsh.y3] = 1;
+            if(lsh->y0 > 650 || lsh->y1 > 650 || lsh->y2 > 650 || lsh->y3 > 650) {
+                b[lsh->x0][lsh->y0] = 1;
+                b[lsh->x1][lsh->y1] = 1;
+                b[lsh->x2][lsh->y2] = 1;
+                b[lsh->x3][lsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -1826,23 +1766,104 @@ public:
             ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
-            if(b[rsh.x0][rsh.y0+20] == 1) {
+            if(b[lsh->x0][lsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x1][rsh.y1+20] == 1) {
+            else if(b[lsh->x1][lsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x2][rsh.y2+20] == 1) {
+            else if(b[lsh->x2][lsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(b[rsh.x3][rsh.y3+20] == 1) {
+            else if(b[lsh->x3][lsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
-                b[rsh.x0][rsh.y0] = 1;
-                b[rsh.x1][rsh.y1] = 1;
-                b[rsh.x2][rsh.y2] = 1;
-                b[rsh.x3][rsh.y3] = 1;
+                b[lsh->x0][lsh->y0] = 1;
+                b[lsh->x1][lsh->y1] = 1;
+                b[lsh->x2][lsh->y2] = 1;
+                b[lsh->x3][lsh->y3] = 1;
+                blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
+                prep();
+            }
+            if(level < 40 && lines >= linenext) {level++;linenext+=10;sleeptime-=15;}
+            for(int i=0; i<700; i++) {
+                for(int j=0; j<700; j++) {
+                    if(b[i][j] == 1) {
+                        HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+                        RECT rrect6 = {i, j, i + 20, j + 20};
+                        FillRect(hdc2, &rrect6, brush);
+                        DeleteObject(brush);
+
+                        HGDIOBJ hOldBsh = SelectObject(hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(hdc2, hOldPen));
+                        SelectObject(hdc2, hOldBsh);
+                    }
+                }
+            }
+        }
+        else if(choice == "rsh" && (rsh->y0 <= 650 && rsh->y1 <= 650 && rsh->y2 <= 650 && rsh->y3 <= 650)) {
+            if(rsh->x0 > 220 &&
+               rsh->x1 > 220 &&
+               rsh->x2 > 220 &&
+               rsh->x3 > 220) {
+                if(b[rsh->x0-20][rsh->y0] == 0 &&
+                   b[rsh->x1-20][rsh->y1] == 0 &&
+                   b[rsh->x2-20][rsh->y2] == 0 &&
+                   b[rsh->x3-20][rsh->y3] == 0) {
+                    rsh->x0 -= 20;
+                    rsh->x1 -= 20;
+                    rsh->x2 -= 20;
+                    rsh->x3 -= 20;
+                }
+            }
+
+            HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
+
+            RECT rrect3 = {rsh->x0, rsh->y0, rsh->x0 + 20, rsh->y0 + 20};
+            FillRect(hdc2, &rrect3, brush);
+
+            RECT rrect4 = {rsh->x1, rsh->y1, rsh->x1 + 20, rsh->y1 + 20};
+            FillRect(hdc2, &rrect4, brush);
+
+            RECT rrect5 = {rsh->x2, rsh->y2, rsh->x2 + 20, rsh->y2 + 20};
+            FillRect(hdc2, &rrect5, brush);
+
+            RECT rrect6 = {rsh->x3, rsh->y3, rsh->x3 + 20, rsh->y3 + 20};
+            FillRect(hdc2, &rrect6, brush);
+            DeleteObject(brush);
+
+            if(rsh->y0 > 650 || rsh->y1 > 650 || rsh->y2 > 650 || rsh->y3 > 650) {
+                b[rsh->x0][rsh->y0] = 1;
+                b[rsh->x1][rsh->y1] = 1;
+                b[rsh->x2][rsh->y2] = 1;
+                b[rsh->x3][rsh->y3] = 1;
+                blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
+                prep();
+            }
+
+            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
+
+            BOOLEAN flag = FALSE;
+            if(b[rsh->x0][rsh->y0+20] == 1) {
+                flag = TRUE;
+            }
+            else if(b[rsh->x1][rsh->y1+20] == 1) {
+                flag = TRUE;
+            }
+            else if(b[rsh->x2][rsh->y2+20] == 1) {
+                flag = TRUE;
+            }
+            else if(b[rsh->x3][rsh->y3+20] == 1) {
+                flag = TRUE;
+            }
+            if(flag) {
+                b[rsh->x0][rsh->y0] = 1;
+                b[rsh->x1][rsh->y1] = 1;
+                b[rsh->x2][rsh->y2] = 1;
+                b[rsh->x3][rsh->y3] = 1;
                 blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                 prep();
             }
@@ -2044,23 +2065,23 @@ public:
 
         if(choice == "sq") {
 
-            sq.y0 += 0;
-            sq.y1 += 0;
-            sq.y2 += 0;
-            sq.y3 += 0;
+            sq->y0 += 0;
+            sq->y1 += 0;
+            sq->y2 += 0;
+            sq->y3 += 0;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {sq.x0, sq.y0, sq.x0 + 20, sq.y0 + 20};
+            RECT rrect3 = {sq->x0, sq->y0, sq->x0 + 20, sq->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {sq.x1, sq.y1, sq.x1 + 20, sq.y1 + 20};
+            RECT rrect4 = {sq->x1, sq->y1, sq->x1 + 20, sq->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {sq.x2, sq.y2, sq.x2 + 20, sq.y2 + 20};
+            RECT rrect5 = {sq->x2, sq->y2, sq->x2 + 20, sq->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {sq.x3, sq.y3, sq.x3 + 20, sq.y3 + 20};
+            RECT rrect6 = {sq->x3, sq->y3, sq->x3 + 20, sq->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
@@ -2068,86 +2089,86 @@ public:
 
             int lnex0, lney0, lnex1, lney1, lnex2, lney2, lnex3, lney3, lnedir;
 
-            lnedir = lne.dir;
-            lnex0 = lne.x0;
-            lney0 = lne.y0;
-            lnex1 = lne.x1;
-            lney1 = lne.y1;
-            lnex2 = lne.x2;
-            lney2 = lne.y2;
-            lnex3 = lne.x3;
-            lney3 = lne.y3;
+            lnedir = lne->dir;
+            lnex0 = lne->x0;
+            lney0 = lne->y0;
+            lnex1 = lne->x1;
+            lney1 = lne->y1;
+            lnex2 = lne->x2;
+            lney2 = lne->y2;
+            lnex3 = lne->x3;
+            lney3 = lne->y3;
 
-            if(lne.dir == 0) {
-                lne.dir = 1;
-                lne.x0 += 20* 3;
-                lne.y0 += 20* 3;
-                lne.x1 += 20* 2;
-                lne.y1 += 20* 2;
-                lne.x2 += 20* 1;
-                lne.y2 += 20* 1;
-                lne.x3 += 20* 0;
-                lne.y3 += 20* 0;
+            if(lne->dir == 0) {
+                lne->dir = 1;
+                lne->x0 += 20* 3;
+                lne->y0 += 20* 3;
+                lne->x1 += 20* 2;
+                lne->y1 += 20* 2;
+                lne->x2 += 20* 1;
+                lne->y2 += 20* 1;
+                lne->x3 += 20* 0;
+                lne->y3 += 20* 0;
             }
-            else if(lne.dir == 1) {
-                lne.dir = 2;
-                lne.x0 -= 20* 3;
-                lne.y0 += 20* 3;
-                lne.x1 -= 20* 2;
-                lne.y1 += 20* 2;
-                lne.x2 -= 20* 1;
-                lne.y2 += 20* 1;
-                lne.x3 -= 20* 0;
-                lne.y3 += 20* 0;
+            else if(lne->dir == 1) {
+                lne->dir = 2;
+                lne->x0 -= 20* 3;
+                lne->y0 += 20* 3;
+                lne->x1 -= 20* 2;
+                lne->y1 += 20* 2;
+                lne->x2 -= 20* 1;
+                lne->y2 += 20* 1;
+                lne->x3 -= 20* 0;
+                lne->y3 += 20* 0;
             }
-            else if(lne.dir == 2) {
-                lne.dir = 3;
-                lne.x0 -= 20* 3;
-                lne.y0 -= 20* 3;
-                lne.x1 -= 20* 2;
-                lne.y1 -= 20* 2;
-                lne.x2 -= 20* 1;
-                lne.y2 -= 20* 1;
-                lne.x3 -= 20* 0;
-                lne.y3 -= 20* 0;
+            else if(lne->dir == 2) {
+                lne->dir = 3;
+                lne->x0 -= 20* 3;
+                lne->y0 -= 20* 3;
+                lne->x1 -= 20* 2;
+                lne->y1 -= 20* 2;
+                lne->x2 -= 20* 1;
+                lne->y2 -= 20* 1;
+                lne->x3 -= 20* 0;
+                lne->y3 -= 20* 0;
             }
-            else if(lne.dir == 3) {
-                lne.dir = 0;
-                lne.x0 += 20* 3;
-                lne.y0 -= 20* 3;
-                lne.x1 += 20* 2;
-                lne.y1 -= 20* 2;
-                lne.x2 += 20* 1;
-                lne.y2 -= 20* 1;
-                lne.x3 += 20* 0;
-                lne.y3 -= 20* 0;
+            else if(lne->dir == 3) {
+                lne->dir = 0;
+                lne->x0 += 20* 3;
+                lne->y0 -= 20* 3;
+                lne->x1 += 20* 2;
+                lne->y1 -= 20* 2;
+                lne->x2 += 20* 1;
+                lne->y2 -= 20* 1;
+                lne->x3 += 20* 0;
+                lne->y3 -= 20* 0;
             }
 
-            if(lne.x0 > 400 || lne.x1 > 400 || lne.x2 > 400 || lne.x3 > 400 ||
-               lne.x0 < 220 || lne.x1 < 220 || lne.x2 < 220 || lne.x3 < 220) {
-                lne.dir = lnedir;
-                lne.x0 = lnex0;
-                lne.y0 = lney0;
-                lne.x1 = lnex1;
-                lne.y1 = lney1;
-                lne.x2 = lnex2;
-                lne.y2 = lney2;
-                lne.x3 = lnex3;
-                lne.y3 = lney3;
+            if(lne->x0 > 400 || lne->x1 > 400 || lne->x2 > 400 || lne->x3 > 400 ||
+               lne->x0 < 220 || lne->x1 < 220 || lne->x2 < 220 || lne->x3 < 220) {
+                lne->dir = lnedir;
+                lne->x0 = lnex0;
+                lne->y0 = lney0;
+                lne->x1 = lnex1;
+                lne->y1 = lney1;
+                lne->x2 = lnex2;
+                lne->y2 = lney2;
+                lne->x3 = lnex3;
+                lne->y3 = lney3;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lne.x0, lne.y0, lne.x0 + 20, lne.y0 + 20};
+            RECT rrect3 = {lne->x0, lne->y0, lne->x0 + 20, lne->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lne.x1, lne.y1, lne.x1 + 20, lne.y1 + 20};
+            RECT rrect4 = {lne->x1, lne->y1, lne->x1 + 20, lne->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lne.x2, lne.y2, lne.x2 + 20, lne.y2 + 20};
+            RECT rrect5 = {lne->x2, lne->y2, lne->x2 + 20, lne->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lne.x3, lne.y3, lne.x3 + 20, lne.y3 + 20};
+            RECT rrect6 = {lne->x3, lne->y3, lne->x3 + 20, lne->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
@@ -2155,86 +2176,86 @@ public:
 
             int htx0, hty0, htx1, hty1, htx2, hty2, htx3, hty3, htdir;
 
-            htdir = ht.dir;
-            htx0 = ht.x0;
-            hty0 = ht.y0;
-            htx1 = ht.x1;
-            hty1 = ht.y1;
-            htx2 = ht.x2;
-            hty2 = ht.y2;
-            htx3 = ht.x3;
-            hty3 = ht.y3;
+            htdir = ht->dir;
+            htx0 = ht->x0;
+            hty0 = ht->y0;
+            htx1 = ht->x1;
+            hty1 = ht->y1;
+            htx2 = ht->x2;
+            hty2 = ht->y2;
+            htx3 = ht->x3;
+            hty3 = ht->y3;
 
-            if(ht.dir == 0) {
-                ht.dir = 1;
-                ht.x0 += 20* 0;
-                ht.y0 += 20* 0;
-                ht.x1 += 20* 0;
-                ht.y1 -= 20* 2;
-                ht.x2 -= 20* 1;
-                ht.y2 -= 20* 1;
-                ht.x3 -= 20* 2;
-                ht.y3 -= 20* 0;
+            if(ht->dir == 0) {
+                ht->dir = 1;
+                ht->x0 += 20* 0;
+                ht->y0 += 20* 0;
+                ht->x1 += 20* 0;
+                ht->y1 -= 20* 2;
+                ht->x2 -= 20* 1;
+                ht->y2 -= 20* 1;
+                ht->x3 -= 20* 2;
+                ht->y3 -= 20* 0;
             }
-            else if(ht.dir == 1) {
-                ht.dir = 2;
-                ht.x0 -= 20* 0;
-                ht.y0 += 20* 0;
-                ht.x1 += 20* 2;
-                ht.y1 += 20* 0;
-                ht.x2 += 20* 1;
-                ht.y2 -= 20* 1;
-                ht.x3 -= 20* 0;
-                ht.y3 -= 20* 2;
+            else if(ht->dir == 1) {
+                ht->dir = 2;
+                ht->x0 -= 20* 0;
+                ht->y0 += 20* 0;
+                ht->x1 += 20* 2;
+                ht->y1 += 20* 0;
+                ht->x2 += 20* 1;
+                ht->y2 -= 20* 1;
+                ht->x3 -= 20* 0;
+                ht->y3 -= 20* 2;
             }
-            else if(ht.dir == 2) {
-                ht.dir = 3;
-                ht.x0 -= 20* 0;
-                ht.y0 -= 20* 0;
-                ht.x1 -= 20* 0;
-                ht.y1 += 20* 2;
-                ht.x2 += 20* 1;
-                ht.y2 += 20* 1;
-                ht.x3 += 20* 2;
-                ht.y3 += 20* 0;
+            else if(ht->dir == 2) {
+                ht->dir = 3;
+                ht->x0 -= 20* 0;
+                ht->y0 -= 20* 0;
+                ht->x1 -= 20* 0;
+                ht->y1 += 20* 2;
+                ht->x2 += 20* 1;
+                ht->y2 += 20* 1;
+                ht->x3 += 20* 2;
+                ht->y3 += 20* 0;
             }
-            else if(ht.dir == 3) {
-                ht.dir = 0;
-                ht.x0 += 20* 0;
-                ht.y0 -= 20* 0;
-                ht.x1 -= 20* 2;
-                ht.y1 -= 20* 0;
-                ht.x2 -= 20* 1;
-                ht.y2 += 20* 1;
-                ht.x3 -= 20* 0;
-                ht.y3 += 20* 2;
+            else if(ht->dir == 3) {
+                ht->dir = 0;
+                ht->x0 += 20* 0;
+                ht->y0 -= 20* 0;
+                ht->x1 -= 20* 2;
+                ht->y1 -= 20* 0;
+                ht->x2 -= 20* 1;
+                ht->y2 += 20* 1;
+                ht->x3 -= 20* 0;
+                ht->y3 += 20* 2;
             }
 
-            if(ht.x0 > 400 || ht.x1 > 400 || ht.x2 > 400 || ht.x3 > 400 ||
-               ht.x0 < 220 || ht.x1 < 220 || ht.x2 < 220 || ht.x3 < 220) {
-                ht.dir = htdir;
-                ht.x0 = htx0;
-                ht.y0 = hty0;
-                ht.x1 = htx1;
-                ht.y1 = hty1;
-                ht.x2 = htx2;
-                ht.y2 = hty2;
-                ht.x3 = htx3;
-                ht.y3 = hty3;
+            if(ht->x0 > 400 || ht->x1 > 400 || ht->x2 > 400 || ht->x3 > 400 ||
+               ht->x0 < 220 || ht->x1 < 220 || ht->x2 < 220 || ht->x3 < 220) {
+                ht->dir = htdir;
+                ht->x0 = htx0;
+                ht->y0 = hty0;
+                ht->x1 = htx1;
+                ht->y1 = hty1;
+                ht->x2 = htx2;
+                ht->y2 = hty2;
+                ht->x3 = htx3;
+                ht->y3 = hty3;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {ht.x0, ht.y0, ht.x0 + 20, ht.y0 + 20};
+            RECT rrect3 = {ht->x0, ht->y0, ht->x0 + 20, ht->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {ht.x1, ht.y1, ht.x1 + 20, ht.y1 + 20};
+            RECT rrect4 = {ht->x1, ht->y1, ht->x1 + 20, ht->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {ht.x2, ht.y2, ht.x2 + 20, ht.y2 + 20};
+            RECT rrect5 = {ht->x2, ht->y2, ht->x2 + 20, ht->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {ht.x3, ht.y3, ht.x3 + 20, ht.y3 + 20};
+            RECT rrect6 = {ht->x3, ht->y3, ht->x3 + 20, ht->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
@@ -2242,86 +2263,86 @@ public:
 
             int larmx0, larmy0, larmx1, larmy1, larmx2, larmy2, larmx3, larmy3, larmdir;
 
-            larmdir = larm.dir;
-            larmx0 = larm.x0;
-            larmy0 = larm.y0;
-            larmx1 = larm.x1;
-            larmy1 = larm.y1;
-            larmx2 = larm.x2;
-            larmy2 = larm.y2;
-            larmx3 = larm.x3;
-            larmy3 = larm.y3;
+            larmdir = larm->dir;
+            larmx0 = larm->x0;
+            larmy0 = larm->y0;
+            larmx1 = larm->x1;
+            larmy1 = larm->y1;
+            larmx2 = larm->x2;
+            larmy2 = larm->y2;
+            larmx3 = larm->x3;
+            larmy3 = larm->y3;
 
-            if(larm.dir == 0) {
-                larm.dir = 1;
-                larm.x0 += 20* 2;
-                larm.y0 += 20* 2;
-                larm.x1 += 20* 1;
-                larm.y1 += 20* 1;
-                larm.x2 += 20* 0;
-                larm.y2 += 20* 0;
-                larm.x3 += 20* 1;
-                larm.y3 -= 20* 1;
+            if(larm->dir == 0) {
+                larm->dir = 1;
+                larm->x0 += 20* 2;
+                larm->y0 += 20* 2;
+                larm->x1 += 20* 1;
+                larm->y1 += 20* 1;
+                larm->x2 += 20* 0;
+                larm->y2 += 20* 0;
+                larm->x3 += 20* 1;
+                larm->y3 -= 20* 1;
             }
-            else if(larm.dir == 1) {
-                larm.dir = 2;
-                larm.x0 -= 20* 2;
-                larm.y0 += 20* 2;
-                larm.x1 -= 20* 1;
-                larm.y1 += 20* 1;
-                larm.x2 -= 20* 0;
-                larm.y2 += 20* 0;
-                larm.x3 += 20* 1;
-                larm.y3 += 20* 1;
+            else if(larm->dir == 1) {
+                larm->dir = 2;
+                larm->x0 -= 20* 2;
+                larm->y0 += 20* 2;
+                larm->x1 -= 20* 1;
+                larm->y1 += 20* 1;
+                larm->x2 -= 20* 0;
+                larm->y2 += 20* 0;
+                larm->x3 += 20* 1;
+                larm->y3 += 20* 1;
             }
-            else if(larm.dir == 2) {
-                larm.dir = 3;
-                larm.x0 -= 20* 2;
-                larm.y0 -= 20* 2;
-                larm.x1 -= 20* 1;
-                larm.y1 -= 20* 1;
-                larm.x2 -= 20* 0;
-                larm.y2 -= 20* 0;
-                larm.x3 -= 20* 1;
-                larm.y3 += 20* 1;
+            else if(larm->dir == 2) {
+                larm->dir = 3;
+                larm->x0 -= 20* 2;
+                larm->y0 -= 20* 2;
+                larm->x1 -= 20* 1;
+                larm->y1 -= 20* 1;
+                larm->x2 -= 20* 0;
+                larm->y2 -= 20* 0;
+                larm->x3 -= 20* 1;
+                larm->y3 += 20* 1;
             }
-            else if(larm.dir == 3) {
-                larm.dir = 0;
-                larm.x0 += 20* 2;
-                larm.y0 -= 20* 2;
-                larm.x1 += 20* 1;
-                larm.y1 -= 20* 1;
-                larm.x2 += 20* 0;
-                larm.y2 -= 20* 0;
-                larm.x3 -= 20* 1;
-                larm.y3 -= 20* 1;
+            else if(larm->dir == 3) {
+                larm->dir = 0;
+                larm->x0 += 20* 2;
+                larm->y0 -= 20* 2;
+                larm->x1 += 20* 1;
+                larm->y1 -= 20* 1;
+                larm->x2 += 20* 0;
+                larm->y2 -= 20* 0;
+                larm->x3 -= 20* 1;
+                larm->y3 -= 20* 1;
             }
 
-            if(larm.x0 > 400 || larm.x1 > 400 || larm.x2 > 400 || larm.x3 > 400 ||
-               larm.x0 < 220 || larm.x1 < 220 || larm.x2 < 220 || larm.x3 < 220) {
-                larm.dir = larmdir;
-                larm.x0 = larmx0;
-                larm.y0 = larmy0;
-                larm.x1 = larmx1;
-                larm.y1 = larmy1;
-                larm.x2 = larmx2;
-                larm.y2 = larmy2;
-                larm.x3 = larmx3;
-                larm.y3 = larmy3;
+            if(larm->x0 > 400 || larm->x1 > 400 || larm->x2 > 400 || larm->x3 > 400 ||
+               larm->x0 < 220 || larm->x1 < 220 || larm->x2 < 220 || larm->x3 < 220) {
+                larm->dir = larmdir;
+                larm->x0 = larmx0;
+                larm->y0 = larmy0;
+                larm->x1 = larmx1;
+                larm->y1 = larmy1;
+                larm->x2 = larmx2;
+                larm->y2 = larmy2;
+                larm->x3 = larmx3;
+                larm->y3 = larmy3;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {larm.x0, larm.y0, larm.x0 + 20, larm.y0 + 20};
+            RECT rrect3 = {larm->x0, larm->y0, larm->x0 + 20, larm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {larm.x1, larm.y1, larm.x1 + 20, larm.y1 + 20};
+            RECT rrect4 = {larm->x1, larm->y1, larm->x1 + 20, larm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {larm.x2, larm.y2, larm.x2 + 20, larm.y2 + 20};
+            RECT rrect5 = {larm->x2, larm->y2, larm->x2 + 20, larm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {larm.x3, larm.y3, larm.x3 + 20, larm.y3 + 20};
+            RECT rrect6 = {larm->x3, larm->y3, larm->x3 + 20, larm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
@@ -2329,86 +2350,86 @@ public:
 
             int rarmx0, rarmy0, rarmx1, rarmy1, rarmx2, rarmy2, rarmx3, rarmy3, rarmdir;
 
-            rarmdir = rarm.dir;
-            rarmx0 = rarm.x0;
-            rarmy0 = rarm.y0;
-            rarmx1 = rarm.x1;
-            rarmy1 = rarm.y1;
-            rarmx2 = rarm.x2;
-            rarmy2 = rarm.y2;
-            rarmx3 = rarm.x3;
-            rarmy3 = rarm.y3;
+            rarmdir = rarm->dir;
+            rarmx0 = rarm->x0;
+            rarmy0 = rarm->y0;
+            rarmx1 = rarm->x1;
+            rarmy1 = rarm->y1;
+            rarmx2 = rarm->x2;
+            rarmy2 = rarm->y2;
+            rarmx3 = rarm->x3;
+            rarmy3 = rarm->y3;
 
-            if(rarm.dir == 0) {
-                rarm.dir = 1;
-                rarm.x0 += 20* 2;
-                rarm.y0 += 20* 2;
-                rarm.x1 += 20* 1;
-                rarm.y1 += 20* 1;
-                rarm.x2 += 20* 0;
-                rarm.y2 += 20* 0;
-                rarm.x3 -= 20* 1;
-                rarm.y3 += 20* 1;
+            if(rarm->dir == 0) {
+                rarm->dir = 1;
+                rarm->x0 += 20* 2;
+                rarm->y0 += 20* 2;
+                rarm->x1 += 20* 1;
+                rarm->y1 += 20* 1;
+                rarm->x2 += 20* 0;
+                rarm->y2 += 20* 0;
+                rarm->x3 -= 20* 1;
+                rarm->y3 += 20* 1;
             }
-            else if(rarm.dir == 1) {
-                rarm.dir = 2;
-                rarm.x0 -= 20* 2;
-                rarm.y0 += 20* 2;
-                rarm.x1 -= 20* 1;
-                rarm.y1 += 20* 1;
-                rarm.x2 -= 20* 0;
-                rarm.y2 += 20* 0;
-                rarm.x3 -= 20* 1;
-                rarm.y3 -= 20* 1;
+            else if(rarm->dir == 1) {
+                rarm->dir = 2;
+                rarm->x0 -= 20* 2;
+                rarm->y0 += 20* 2;
+                rarm->x1 -= 20* 1;
+                rarm->y1 += 20* 1;
+                rarm->x2 -= 20* 0;
+                rarm->y2 += 20* 0;
+                rarm->x3 -= 20* 1;
+                rarm->y3 -= 20* 1;
             }
-            else if(rarm.dir == 2) {
-                rarm.dir = 3;
-                rarm.x0 -= 20* 2;
-                rarm.y0 -= 20* 2;
-                rarm.x1 -= 20* 1;
-                rarm.y1 -= 20* 1;
-                rarm.x2 -= 20* 0;
-                rarm.y2 -= 20* 0;
-                rarm.x3 += 20* 1;
-                rarm.y3 -= 20* 1;
+            else if(rarm->dir == 2) {
+                rarm->dir = 3;
+                rarm->x0 -= 20* 2;
+                rarm->y0 -= 20* 2;
+                rarm->x1 -= 20* 1;
+                rarm->y1 -= 20* 1;
+                rarm->x2 -= 20* 0;
+                rarm->y2 -= 20* 0;
+                rarm->x3 += 20* 1;
+                rarm->y3 -= 20* 1;
             }
-            else if(rarm.dir == 3) {
-                rarm.dir = 0;
-                rarm.x0 += 20* 2;
-                rarm.y0 -= 20* 2;
-                rarm.x1 += 20* 1;
-                rarm.y1 -= 20* 1;
-                rarm.x2 += 20* 0;
-                rarm.y2 -= 20* 0;
-                rarm.x3 += 20* 1;
-                rarm.y3 += 20* 1;
+            else if(rarm->dir == 3) {
+                rarm->dir = 0;
+                rarm->x0 += 20* 2;
+                rarm->y0 -= 20* 2;
+                rarm->x1 += 20* 1;
+                rarm->y1 -= 20* 1;
+                rarm->x2 += 20* 0;
+                rarm->y2 -= 20* 0;
+                rarm->x3 += 20* 1;
+                rarm->y3 += 20* 1;
             }
 
-            if(rarm.x0 > 400 || rarm.x1 > 400 || rarm.x2 > 400 || rarm.x3 > 400 ||
-               rarm.x0 < 220 || rarm.x1 < 220 || rarm.x2 < 220 || rarm.x3 < 220) {
-                rarm.dir = rarmdir;
-                rarm.x0 = rarmx0;
-                rarm.y0 = rarmy0;
-                rarm.x1 = rarmx1;
-                rarm.y1 = rarmy1;
-                rarm.x2 = rarmx2;
-                rarm.y2 = rarmy2;
-                rarm.x3 = rarmx3;
-                rarm.y3 = rarmy3;
+            if(rarm->x0 > 400 || rarm->x1 > 400 || rarm->x2 > 400 || rarm->x3 > 400 ||
+               rarm->x0 < 220 || rarm->x1 < 220 || rarm->x2 < 220 || rarm->x3 < 220) {
+                rarm->dir = rarmdir;
+                rarm->x0 = rarmx0;
+                rarm->y0 = rarmy0;
+                rarm->x1 = rarmx1;
+                rarm->y1 = rarmy1;
+                rarm->x2 = rarmx2;
+                rarm->y2 = rarmy2;
+                rarm->x3 = rarmx3;
+                rarm->y3 = rarmy3;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rarm.x0, rarm.y0, rarm.x0 + 20, rarm.y0 + 20};
+            RECT rrect3 = {rarm->x0, rarm->y0, rarm->x0 + 20, rarm->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rarm.x1, rarm.y1, rarm.x1 + 20, rarm.y1 + 20};
+            RECT rrect4 = {rarm->x1, rarm->y1, rarm->x1 + 20, rarm->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rarm.x2, rarm.y2, rarm.x2 + 20, rarm.y2 + 20};
+            RECT rrect5 = {rarm->x2, rarm->y2, rarm->x2 + 20, rarm->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rarm.x3, rarm.y3, rarm.x3 + 20, rarm.y3 + 20};
+            RECT rrect6 = {rarm->x3, rarm->y3, rarm->x3 + 20, rarm->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
@@ -2416,86 +2437,86 @@ public:
 
             int lshx0, lshy0, lshx1, lshy1, lshx2, lshy2, lshx3, lshy3, lshdir;
 
-            lshdir = lsh.dir;
-            lshx0 = lsh.x0;
-            lshy0 = lsh.y0;
-            lshx1 = lsh.x1;
-            lshy1 = lsh.y1;
-            lshx2 = lsh.x2;
-            lshy2 = lsh.y2;
-            lshx3 = lsh.x3;
-            lshy3 = lsh.y3;
+            lshdir = lsh->dir;
+            lshx0 = lsh->x0;
+            lshy0 = lsh->y0;
+            lshx1 = lsh->x1;
+            lshy1 = lsh->y1;
+            lshx2 = lsh->x2;
+            lshy2 = lsh->y2;
+            lshx3 = lsh->x3;
+            lshy3 = lsh->y3;
 
-            if(lsh.dir == 0) {
-                lsh.dir = 1;
-                lsh.x0 += 20* 1;
-                lsh.y0 += 20* 1;
-                lsh.x1 += 20* 1;
-                lsh.y1 -= 20* 1;
-                lsh.x2 += 20* 0;
-                lsh.y2 += 20* 0;
-                lsh.x3 += 20* 0;
-                lsh.y3 -= 20* 2;
+            if(lsh->dir == 0) {
+                lsh->dir = 1;
+                lsh->x0 += 20* 1;
+                lsh->y0 += 20* 1;
+                lsh->x1 += 20* 1;
+                lsh->y1 -= 20* 1;
+                lsh->x2 += 20* 0;
+                lsh->y2 += 20* 0;
+                lsh->x3 += 20* 0;
+                lsh->y3 -= 20* 2;
             }
-            else if(lsh.dir == 1) {
-                lsh.dir = 2;
-                lsh.x0 -= 20* 1;
-                lsh.y0 += 20* 1;
-                lsh.x1 += 20* 1;
-                lsh.y1 += 20* 1;
-                lsh.x2 -= 20* 0;
-                lsh.y2 += 20* 0;
-                lsh.x3 += 20* 2;
-                lsh.y3 -= 20* 0;
+            else if(lsh->dir == 1) {
+                lsh->dir = 2;
+                lsh->x0 -= 20* 1;
+                lsh->y0 += 20* 1;
+                lsh->x1 += 20* 1;
+                lsh->y1 += 20* 1;
+                lsh->x2 -= 20* 0;
+                lsh->y2 += 20* 0;
+                lsh->x3 += 20* 2;
+                lsh->y3 -= 20* 0;
             }
-            else if(lsh.dir == 2) {
-                lsh.dir = 3;
-                lsh.x0 -= 20* 1;
-                lsh.y0 -= 20* 1;
-                lsh.x1 -= 20* 1;
-                lsh.y1 += 20* 1;
-                lsh.x2 -= 20* 0;
-                lsh.y2 -= 20* 0;
-                lsh.x3 -= 20* 0;
-                lsh.y3 += 20* 2;
+            else if(lsh->dir == 2) {
+                lsh->dir = 3;
+                lsh->x0 -= 20* 1;
+                lsh->y0 -= 20* 1;
+                lsh->x1 -= 20* 1;
+                lsh->y1 += 20* 1;
+                lsh->x2 -= 20* 0;
+                lsh->y2 -= 20* 0;
+                lsh->x3 -= 20* 0;
+                lsh->y3 += 20* 2;
             }
-            else if(lsh.dir == 3) {
-                lsh.dir = 0;
-                lsh.x0 += 20* 1;
-                lsh.y0 -= 20* 1;
-                lsh.x1 -= 20* 1;
-                lsh.y1 -= 20* 1;
-                lsh.x2 += 20* 0;
-                lsh.y2 -= 20* 0;
-                lsh.x3 -= 20* 2;
-                lsh.y3 += 20* 0;
+            else if(lsh->dir == 3) {
+                lsh->dir = 0;
+                lsh->x0 += 20* 1;
+                lsh->y0 -= 20* 1;
+                lsh->x1 -= 20* 1;
+                lsh->y1 -= 20* 1;
+                lsh->x2 += 20* 0;
+                lsh->y2 -= 20* 0;
+                lsh->x3 -= 20* 2;
+                lsh->y3 += 20* 0;
             }
 
-            if(lsh.x0 > 400 || lsh.x1 > 400 || lsh.x2 > 400 || lsh.x3 > 400 ||
-               lsh.x0 < 220 || lsh.x1 < 220 || lsh.x2 < 220 || lsh.x3 < 220) {
-                lsh.dir = lshdir;
-                lsh.x0 = lshx0;
-                lsh.y0 = lshy0;
-                lsh.x1 = lshx1;
-                lsh.y1 = lshy1;
-                lsh.x2 = lshx2;
-                lsh.y2 = lshy2;
-                lsh.x3 = lshx3;
-                lsh.y3 = lshy3;
+            if(lsh->x0 > 400 || lsh->x1 > 400 || lsh->x2 > 400 || lsh->x3 > 400 ||
+               lsh->x0 < 220 || lsh->x1 < 220 || lsh->x2 < 220 || lsh->x3 < 220) {
+                lsh->dir = lshdir;
+                lsh->x0 = lshx0;
+                lsh->y0 = lshy0;
+                lsh->x1 = lshx1;
+                lsh->y1 = lshy1;
+                lsh->x2 = lshx2;
+                lsh->y2 = lshy2;
+                lsh->x3 = lshx3;
+                lsh->y3 = lshy3;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lsh.x0, lsh.y0, lsh.x0 + 20, lsh.y0 + 20};
+            RECT rrect3 = {lsh->x0, lsh->y0, lsh->x0 + 20, lsh->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lsh.x1, lsh.y1, lsh.x1 + 20, lsh.y1 + 20};
+            RECT rrect4 = {lsh->x1, lsh->y1, lsh->x1 + 20, lsh->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lsh.x2, lsh.y2, lsh.x2 + 20, lsh.y2 + 20};
+            RECT rrect5 = {lsh->x2, lsh->y2, lsh->x2 + 20, lsh->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lsh.x3, lsh.y3, lsh.x3 + 20, lsh.y3 + 20};
+            RECT rrect6 = {lsh->x3, lsh->y3, lsh->x3 + 20, lsh->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
@@ -2503,86 +2524,86 @@ public:
 
             int rshx0, rshy0, rshx1, rshy1, rshx2, rshy2, rshx3, rshy3, rshdir;
 
-            rshdir = rsh.dir;
-            rshx0 = rsh.x0;
-            rshy0 = rsh.y0;
-            rshx1 = rsh.x1;
-            rshy1 = rsh.y1;
-            rshx2 = rsh.x2;
-            rshy2 = rsh.y2;
-            rshx3 = rsh.x3;
-            rshy3 = rsh.y3;
+            rshdir = rsh->dir;
+            rshx0 = rsh->x0;
+            rshy0 = rsh->y0;
+            rshx1 = rsh->x1;
+            rshy1 = rsh->y1;
+            rshx2 = rsh->x2;
+            rshy2 = rsh->y2;
+            rshx3 = rsh->x3;
+            rshy3 = rsh->y3;
 
-            if(rsh.dir == 0) {
-                rsh.dir = 1;
-                rsh.x0 += 20* 1;
-                rsh.y0 += 20* 1;
-                rsh.x1 += 20* 0;
-                rsh.y1 += 20* 0;
-                rsh.x2 -= 20* 1;
-                rsh.y2 += 20* 1;
-                rsh.x3 -= 20* 2;
-                rsh.y3 += 20* 0;
+            if(rsh->dir == 0) {
+                rsh->dir = 1;
+                rsh->x0 += 20* 1;
+                rsh->y0 += 20* 1;
+                rsh->x1 += 20* 0;
+                rsh->y1 += 20* 0;
+                rsh->x2 -= 20* 1;
+                rsh->y2 += 20* 1;
+                rsh->x3 -= 20* 2;
+                rsh->y3 += 20* 0;
             }
-            else if(rsh.dir == 1) {
-                rsh.dir = 2;
-                rsh.x0 -= 20* 1;
-                rsh.y0 += 20* 1;
-                rsh.x1 += 20* 0;
-                rsh.y1 += 20* 0;
-                rsh.x2 -= 20* 1;
-                rsh.y2 -= 20* 1;
-                rsh.x3 -= 20* 0;
-                rsh.y3 -= 20* 2;
+            else if(rsh->dir == 1) {
+                rsh->dir = 2;
+                rsh->x0 -= 20* 1;
+                rsh->y0 += 20* 1;
+                rsh->x1 += 20* 0;
+                rsh->y1 += 20* 0;
+                rsh->x2 -= 20* 1;
+                rsh->y2 -= 20* 1;
+                rsh->x3 -= 20* 0;
+                rsh->y3 -= 20* 2;
             }
-            else if(rsh.dir == 2) {
-                rsh.dir = 3;
-                rsh.x0 -= 20* 1;
-                rsh.y0 -= 20* 1;
-                rsh.x1 -= 20* 0;
-                rsh.y1 -= 20* 0;
-                rsh.x2 += 20* 1;
-                rsh.y2 -= 20* 1;
-                rsh.x3 += 20* 2;
-                rsh.y3 -= 20* 0;
+            else if(rsh->dir == 2) {
+                rsh->dir = 3;
+                rsh->x0 -= 20* 1;
+                rsh->y0 -= 20* 1;
+                rsh->x1 -= 20* 0;
+                rsh->y1 -= 20* 0;
+                rsh->x2 += 20* 1;
+                rsh->y2 -= 20* 1;
+                rsh->x3 += 20* 2;
+                rsh->y3 -= 20* 0;
             }
-            else if(rsh.dir == 3) {
-                rsh.dir = 0;
-                rsh.x0 += 20* 1;
-                rsh.y0 -= 20* 1;
-                rsh.x1 += 20* 0;
-                rsh.y1 -= 20* 0;
-                rsh.x2 += 20* 1;
-                rsh.y2 += 20* 1;
-                rsh.x3 += 20* 0;
-                rsh.y3 += 20* 2;
+            else if(rsh->dir == 3) {
+                rsh->dir = 0;
+                rsh->x0 += 20* 1;
+                rsh->y0 -= 20* 1;
+                rsh->x1 += 20* 0;
+                rsh->y1 -= 20* 0;
+                rsh->x2 += 20* 1;
+                rsh->y2 += 20* 1;
+                rsh->x3 += 20* 0;
+                rsh->y3 += 20* 2;
             }
 
-            if(rsh.x0 > 400 || rsh.x1 > 400 || rsh.x2 > 400 || rsh.x3 > 400 ||
-               rsh.x0 < 220 || rsh.x1 < 220 || rsh.x2 < 220 || rsh.x3 < 220) {
-                rsh.dir = rshdir;
-                rsh.x0 = rshx0;
-                rsh.y0 = rshy0;
-                rsh.x1 = rshx1;
-                rsh.y1 = rshy1;
-                rsh.x2 = rshx2;
-                rsh.y2 = rshy2;
-                rsh.x3 = rshx3;
-                rsh.y3 = rshy3;
+            if(rsh->x0 > 400 || rsh->x1 > 400 || rsh->x2 > 400 || rsh->x3 > 400 ||
+               rsh->x0 < 220 || rsh->x1 < 220 || rsh->x2 < 220 || rsh->x3 < 220) {
+                rsh->dir = rshdir;
+                rsh->x0 = rshx0;
+                rsh->y0 = rshy0;
+                rsh->x1 = rshx1;
+                rsh->y1 = rshy1;
+                rsh->x2 = rshx2;
+                rsh->y2 = rshy2;
+                rsh->x3 = rshx3;
+                rsh->y3 = rshy3;
             }
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rsh.x0, rsh.y0, rsh.x0 + 20, rsh.y0 + 20};
+            RECT rrect3 = {rsh->x0, rsh->y0, rsh->x0 + 20, rsh->y0 + 20};
             FillRect(hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rsh.x1, rsh.y1, rsh.x1 + 20, rsh.y1 + 20};
+            RECT rrect4 = {rsh->x1, rsh->y1, rsh->x1 + 20, rsh->y1 + 20};
             FillRect(hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rsh.x2, rsh.y2, rsh.x2 + 20, rsh.y2 + 20};
+            RECT rrect5 = {rsh->x2, rsh->y2, rsh->x2 + 20, rsh->y2 + 20};
             FillRect(hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rsh.x3, rsh.y3, rsh.x3 + 20, rsh.y3 + 20};
+            RECT rrect6 = {rsh->x3, rsh->y3, rsh->x3 + 20, rsh->y3 + 20};
             FillRect(hdc2, &rrect6, brush);
             DeleteObject(brush);
         }
@@ -2678,7 +2699,7 @@ public:
     }
 };
 
-Mein mein;
+Mein* mein = new Mein();
 
 DWORD WINAPI downs(void* data) {
 
@@ -2686,448 +2707,448 @@ DWORD WINAPI downs(void* data) {
 
     do {
 
-        mein.hdcMems = CreateCompatibleDC(mein.hdc2);
+        mein->hdcMems = CreateCompatibleDC(mein->hdc2);
 
         HBRUSH brush = CreateSolidBrush(RGB(225, 122, 185));
 
         RECT rrect3 = {219, 20, 420, 690};
-        FillRect(mein.hdc2, &rrect3, brush);
+        FillRect(mein->hdc2, &rrect3, brush);
         DeleteObject(brush);
 
-        if(mein.choice == "sq" && (sq.y0 <= 630 && sq.y1 <= 630 && sq.y2 <= 630 && sq.y3 <= 630)) {
+        if(mein->choice == "sq" && (sq->y0 <= 630 && sq->y1 <= 630 && sq->y2 <= 630 && sq->y3 <= 630)) {
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {sq.x0, sq.y0, sq.x0 + 20, sq.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {sq->x0, sq->y0, sq->x0 + 20, sq->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {sq.x1, sq.y1, sq.x1 + 20, sq.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {sq->x1, sq->y1, sq->x1 + 20, sq->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {sq.x2, sq.y2, sq.x2 + 20, sq.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {sq->x2, sq->y2, sq->x2 + 20, sq->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {sq.x3, sq.y3, sq.x3 + 20, sq.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {sq->x3, sq->y3, sq->x3 + 20, sq->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(sq.y0 > 650 || sq.y1 > 650 || sq.y2 > 650 || sq.y3 > 650) {
-                mein.b[sq.x0][sq.y0] = 1;
-                mein.b[sq.x1][sq.y1] = 1;
-                mein.b[sq.x2][sq.y2] = 1;
-                mein.b[sq.x3][sq.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(sq->y0 > 650 || sq->y1 > 650 || sq->y2 > 650 || sq->y3 > 650) {
+                mein->b[sq->x0][sq->y0] = 1;
+                mein->b[sq->x1][sq->y1] = 1;
+                mein->b[sq->x2][sq->y2] = 1;
+                mein->b[sq->x3][sq->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[sq.x0][sq.y0+20] == 1) {
+            if(mein->b[sq->x0][sq->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[sq.x1][sq.y1+20] == 1) {
+            else if(mein->b[sq->x1][sq->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[sq.x2][sq.y2+20] == 1) {
+            else if(mein->b[sq->x2][sq->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[sq.x3][sq.y3+20] == 1) {
+            else if(mein->b[sq->x3][sq->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[sq.x0][sq.y0] = 1;
-                mein.b[sq.x1][sq.y1] = 1;
-                mein.b[sq.x2][sq.y2] = 1;
-                mein.b[sq.x3][sq.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[sq->x0][sq->y0] = 1;
+                mein->b[sq->x1][sq->y1] = 1;
+                mein->b[sq->x2][sq->y2] = 1;
+                mein->b[sq->x3][sq->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
         }
-        else if(mein.choice == "lne" && (lne.y0 <= 580 || lne.y1 <= 580 || lne.y2 <= 580 || lne.y3 <= 580)) {
-    //        lne.y0 += 20;
-    //        lne.y1 += 20;
-    //        lne.y2 += 20;
-    //        lne.y3 += 20;
+        else if(mein->choice == "lne" && (lne->y0 <= 580 || lne->y1 <= 580 || lne->y2 <= 580 || lne->y3 <= 580)) {
+    //        lne->y0 += 20;
+    //        lne->y1 += 20;
+    //        lne->y2 += 20;
+    //        lne->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lne.x0, lne.y0, lne.x0 + 20, lne.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {lne->x0, lne->y0, lne->x0 + 20, lne->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lne.x1, lne.y1, lne.x1 + 20, lne.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {lne->x1, lne->y1, lne->x1 + 20, lne->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lne.x2, lne.y2, lne.x2 + 20, lne.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {lne->x2, lne->y2, lne->x2 + 20, lne->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lne.x3, lne.y3, lne.x3 + 20, lne.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {lne->x3, lne->y3, lne->x3 + 20, lne->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(lne.y0 > 650 || lne.y1 > 650 || lne.y2 > 650 || lne.y3 > 650) {
-                mein.b[lne.x0][lne.y0] = 1;
-                mein.b[lne.x1][lne.y1] = 1;
-                mein.b[lne.x2][lne.y2] = 1;
-                mein.b[lne.x3][lne.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(lne->y0 > 650 || lne->y1 > 650 || lne->y2 > 650 || lne->y3 > 650) {
+                mein->b[lne->x0][lne->y0] = 1;
+                mein->b[lne->x1][lne->y1] = 1;
+                mein->b[lne->x2][lne->y2] = 1;
+                mein->b[lne->x3][lne->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[lne.x0][lne.y0+20] == 1) {
+            if(mein->b[lne->x0][lne->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lne.x1][lne.y1+20] == 1) {
+            else if(mein->b[lne->x1][lne->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lne.x2][lne.y2+20] == 1) {
+            else if(mein->b[lne->x2][lne->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lne.x3][lne.y3+20] == 1) {
+            else if(mein->b[lne->x3][lne->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[lne.x0][lne.y0] = 1;
-                mein.b[lne.x1][lne.y1] = 1;
-                mein.b[lne.x2][lne.y2] = 1;
-                mein.b[lne.x3][lne.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[lne->x0][lne->y0] = 1;
+                mein->b[lne->x1][lne->y1] = 1;
+                mein->b[lne->x2][lne->y2] = 1;
+                mein->b[lne->x3][lne->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
         }
-        else if(mein.choice == "ht" && (ht.y0 <= 650 && ht.y1 <= 650 && ht.y2 <= 650 && ht.y3 <= 650)) {
-    //        ht.y0 += 20;
-    //        ht.y1 += 20;
-    //        ht.y2 += 20;
-    //        ht.y3 += 20;
+        else if(mein->choice == "ht" && (ht->y0 <= 650 && ht->y1 <= 650 && ht->y2 <= 650 && ht->y3 <= 650)) {
+    //        ht->y0 += 20;
+    //        ht->y1 += 20;
+    //        ht->y2 += 20;
+    //        ht->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {ht.x0, ht.y0, ht.x0 + 20, ht.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {ht->x0, ht->y0, ht->x0 + 20, ht->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {ht.x1, ht.y1, ht.x1 + 20, ht.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {ht->x1, ht->y1, ht->x1 + 20, ht->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {ht.x2, ht.y2, ht.x2 + 20, ht.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {ht->x2, ht->y2, ht->x2 + 20, ht->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {ht.x3, ht.y3, ht.x3 + 20, ht.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {ht->x3, ht->y3, ht->x3 + 20, ht->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(ht.y0 > 650 || ht.y1 > 650 || ht.y2 > 650 || ht.y3 > 650) {
-                mein.b[ht.x0][ht.y0] = 1;
-                mein.b[ht.x1][ht.y1] = 1;
-                mein.b[ht.x2][ht.y2] = 1;
-                mein.b[ht.x3][ht.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(ht->y0 > 650 || ht->y1 > 650 || ht->y2 > 650 || ht->y3 > 650) {
+                mein->b[ht->x0][ht->y0] = 1;
+                mein->b[ht->x1][ht->y1] = 1;
+                mein->b[ht->x2][ht->y2] = 1;
+                mein->b[ht->x3][ht->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[ht.x0][ht.y0+20] == 1) {
+            if(mein->b[ht->x0][ht->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[ht.x1][ht.y1+20] == 1) {
+            else if(mein->b[ht->x1][ht->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[ht.x2][ht.y2+20] == 1) {
+            else if(mein->b[ht->x2][ht->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[ht.x3][ht.y3+20] == 1) {
+            else if(mein->b[ht->x3][ht->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[ht.x0][ht.y0] = 1;
-                mein.b[ht.x1][ht.y1] = 1;
-                mein.b[ht.x2][ht.y2] = 1;
-                mein.b[ht.x3][ht.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[ht->x0][ht->y0] = 1;
+                mein->b[ht->x1][ht->y1] = 1;
+                mein->b[ht->x2][ht->y2] = 1;
+                mein->b[ht->x3][ht->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
         }
-        else if(mein.choice == "larm" && (larm.y0 <= 650 && larm.y1 <= 650 && larm.y2 <= 650 && larm.y3 <= 650)) {
-    //        larm.y0 += 20;
-    //        larm.y1 += 20;
-    //        larm.y2 += 20;
-    //        larm.y3 += 20;
+        else if(mein->choice == "larm" && (larm->y0 <= 650 && larm->y1 <= 650 && larm->y2 <= 650 && larm->y3 <= 650)) {
+    //        larm->y0 += 20;
+    //        larm->y1 += 20;
+    //        larm->y2 += 20;
+    //        larm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {larm.x0, larm.y0, larm.x0 + 20, larm.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {larm->x0, larm->y0, larm->x0 + 20, larm->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {larm.x1, larm.y1, larm.x1 + 20, larm.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {larm->x1, larm->y1, larm->x1 + 20, larm->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {larm.x2, larm.y2, larm.x2 + 20, larm.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {larm->x2, larm->y2, larm->x2 + 20, larm->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {larm.x3, larm.y3, larm.x3 + 20, larm.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {larm->x3, larm->y3, larm->x3 + 20, larm->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(larm.y0 > 650 || larm.y1 > 650 || larm.y2 > 650 || larm.y3 > 650) {
-                mein.b[larm.x0][larm.y0] = 1;
-                mein.b[larm.x1][larm.y1] = 1;
-                mein.b[larm.x2][larm.y2] = 1;
-                mein.b[larm.x3][larm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(larm->y0 > 650 || larm->y1 > 650 || larm->y2 > 650 || larm->y3 > 650) {
+                mein->b[larm->x0][larm->y0] = 1;
+                mein->b[larm->x1][larm->y1] = 1;
+                mein->b[larm->x2][larm->y2] = 1;
+                mein->b[larm->x3][larm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[larm.x0][larm.y0+20] == 1) {
+            if(mein->b[larm->x0][larm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[larm.x1][larm.y1+20] == 1) {
+            else if(mein->b[larm->x1][larm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[larm.x2][larm.y2+20] == 1) {
+            else if(mein->b[larm->x2][larm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[larm.x3][larm.y3+20] == 1) {
+            else if(mein->b[larm->x3][larm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[larm.x0][larm.y0] = 1;
-                mein.b[larm.x1][larm.y1] = 1;
-                mein.b[larm.x2][larm.y2] = 1;
-                mein.b[larm.x3][larm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[larm->x0][larm->y0] = 1;
+                mein->b[larm->x1][larm->y1] = 1;
+                mein->b[larm->x2][larm->y2] = 1;
+                mein->b[larm->x3][larm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(250, 50, 250));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "rarm" && (rarm.y0 <= 650 && rarm.y1 <= 650 && rarm.y2 <= 650 && rarm.y3 <= 650)) {
-    //        rarm.y0 += 20;
-    //        rarm.y1 += 20;
-    //        rarm.y2 += 20;
-    //        rarm.y3 += 20;
+        else if(mein->choice == "rarm" && (rarm->y0 <= 650 && rarm->y1 <= 650 && rarm->y2 <= 650 && rarm->y3 <= 650)) {
+    //        rarm->y0 += 20;
+    //        rarm->y1 += 20;
+    //        rarm->y2 += 20;
+    //        rarm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rarm.x0, rarm.y0, rarm.x0 + 20, rarm.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {rarm->x0, rarm->y0, rarm->x0 + 20, rarm->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rarm.x1, rarm.y1, rarm.x1 + 20, rarm.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {rarm->x1, rarm->y1, rarm->x1 + 20, rarm->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rarm.x2, rarm.y2, rarm.x2 + 20, rarm.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {rarm->x2, rarm->y2, rarm->x2 + 20, rarm->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rarm.x3, rarm.y3, rarm.x3 + 20, rarm.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {rarm->x3, rarm->y3, rarm->x3 + 20, rarm->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rarm.y0 > 650 || rarm.y1 > 650 || rarm.y2 > 650 || rarm.y3 > 650) {
-                mein.b[rarm.x0][rarm.y0] = 1;
-                mein.b[rarm.x1][rarm.y1] = 1;
-                mein.b[rarm.x2][rarm.y2] = 1;
-                mein.b[rarm.x3][rarm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(rarm->y0 > 650 || rarm->y1 > 650 || rarm->y2 > 650 || rarm->y3 > 650) {
+                mein->b[rarm->x0][rarm->y0] = 1;
+                mein->b[rarm->x1][rarm->y1] = 1;
+                mein->b[rarm->x2][rarm->y2] = 1;
+                mein->b[rarm->x3][rarm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[rarm.x0][rarm.y0+20] == 1) {
+            if(mein->b[rarm->x0][rarm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rarm.x1][rarm.y1+20] == 1) {
+            else if(mein->b[rarm->x1][rarm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rarm.x2][rarm.y2+20] == 1) {
+            else if(mein->b[rarm->x2][rarm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rarm.x3][rarm.y3+20] == 1) {
+            else if(mein->b[rarm->x3][rarm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[rarm.x0][rarm.y0] = 1;
-                mein.b[rarm.x1][rarm.y1] = 1;
-                mein.b[rarm.x2][rarm.y2] = 1;
-                mein.b[rarm.x3][rarm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[rarm->x0][rarm->y0] = 1;
+                mein->b[rarm->x1][rarm->y1] = 1;
+                mein->b[rarm->x2][rarm->y2] = 1;
+                mein->b[rarm->x3][rarm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "lsh" && (lsh.y0 <= 650 && lsh.y1 <= 650 && lsh.y2 <= 650 && lsh.y3 <= 650)) {
-    //        lsh.y0 += 20;
-    //        lsh.y1 += 20;
-    //        lsh.y2 += 20;
-    //        lsh.y3 += 20;
+        else if(mein->choice == "lsh" && (lsh->y0 <= 650 && lsh->y1 <= 650 && lsh->y2 <= 650 && lsh->y3 <= 650)) {
+    //        lsh->y0 += 20;
+    //        lsh->y1 += 20;
+    //        lsh->y2 += 20;
+    //        lsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lsh.x0, lsh.y0, lsh.x0 + 20, lsh.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {lsh->x0, lsh->y0, lsh->x0 + 20, lsh->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lsh.x1, lsh.y1, lsh.x1 + 20, lsh.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {lsh->x1, lsh->y1, lsh->x1 + 20, lsh->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lsh.x2, lsh.y2, lsh.x2 + 20, lsh.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {lsh->x2, lsh->y2, lsh->x2 + 20, lsh->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lsh.x3, lsh.y3, lsh.x3 + 20, lsh.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {lsh->x3, lsh->y3, lsh->x3 + 20, lsh->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(lsh.y0 > 650 || lsh.y1 > 650 || lsh.y2 > 650 || lsh.y3 > 650) {
-                mein.b[lsh.x0][lsh.y0] = 1;
-                mein.b[lsh.x1][lsh.y1] = 1;
-                mein.b[lsh.x2][lsh.y2] = 1;
-                mein.b[lsh.x3][lsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(lsh->y0 > 650 || lsh->y1 > 650 || lsh->y2 > 650 || lsh->y3 > 650) {
+                mein->b[lsh->x0][lsh->y0] = 1;
+                mein->b[lsh->x1][lsh->y1] = 1;
+                mein->b[lsh->x2][lsh->y2] = 1;
+                mein->b[lsh->x3][lsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[lsh.x0][lsh.y0+20] == 1) {
+            if(mein->b[lsh->x0][lsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lsh.x1][lsh.y1+20] == 1) {
+            else if(mein->b[lsh->x1][lsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lsh.x2][lsh.y2+20] == 1) {
+            else if(mein->b[lsh->x2][lsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lsh.x3][lsh.y3+20] == 1) {
+            else if(mein->b[lsh->x3][lsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[lsh.x0][lsh.y0] = 1;
-                mein.b[lsh.x1][lsh.y1] = 1;
-                mein.b[lsh.x2][lsh.y2] = 1;
-                mein.b[lsh.x3][lsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[lsh->x0][lsh->y0] = 1;
+                mein->b[lsh->x1][lsh->y1] = 1;
+                mein->b[lsh->x2][lsh->y2] = 1;
+                mein->b[lsh->x3][lsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "rsh" && (rsh.y0 <= 650 && rsh.y1 <= 650 && rsh.y2 <= 650 && rsh.y3 <= 650)) {
-    //        rsh.y0 += 20;
-    //        rsh.y1 += 20;
-    //        rsh.y2 += 20;
-    //        rsh.y3 += 20;
+        else if(mein->choice == "rsh" && (rsh->y0 <= 650 && rsh->y1 <= 650 && rsh->y2 <= 650 && rsh->y3 <= 650)) {
+    //        rsh->y0 += 20;
+    //        rsh->y1 += 20;
+    //        rsh->y2 += 20;
+    //        rsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rsh.x0, rsh.y0, rsh.x0 + 20, rsh.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {rsh->x0, rsh->y0, rsh->x0 + 20, rsh->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rsh.x1, rsh.y1, rsh.x1 + 20, rsh.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {rsh->x1, rsh->y1, rsh->x1 + 20, rsh->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rsh.x2, rsh.y2, rsh.x2 + 20, rsh.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {rsh->x2, rsh->y2, rsh->x2 + 20, rsh->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rsh.x3, rsh.y3, rsh.x3 + 20, rsh.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {rsh->x3, rsh->y3, rsh->x3 + 20, rsh->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rsh.y0 > 650 || rsh.y1 > 650 || rsh.y2 > 650 || rsh.y3 > 650) {
-                mein.b[rsh.x0][rsh.y0] = 1;
-                mein.b[rsh.x1][rsh.y1] = 1;
-                mein.b[rsh.x2][rsh.y2] = 1;
-                mein.b[rsh.x3][rsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(rsh->y0 > 650 || rsh->y1 > 650 || rsh->y2 > 650 || rsh->y3 > 650) {
+                mein->b[rsh->x0][rsh->y0] = 1;
+                mein->b[rsh->x1][rsh->y1] = 1;
+                mein->b[rsh->x2][rsh->y2] = 1;
+                mein->b[rsh->x3][rsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[rsh.x0][rsh.y0+20] == 1) {
+            if(mein->b[rsh->x0][rsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rsh.x1][rsh.y1+20] == 1) {
+            else if(mein->b[rsh->x1][rsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rsh.x2][rsh.y2+20] == 1) {
+            else if(mein->b[rsh->x2][rsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rsh.x3][rsh.y3+20] == 1) {
+            else if(mein->b[rsh->x3][rsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[rsh.x0][rsh.y0] = 1;
-                mein.b[rsh.x1][rsh.y1] = 1;
-                mein.b[rsh.x2][rsh.y2] = 1;
-                mein.b[rsh.x3][rsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[rsh->x0][rsh->y0] = 1;
+                mein->b[rsh->x1][rsh->y1] = 1;
+                mein->b[rsh->x2][rsh->y2] = 1;
+                mein->b[rsh->x3][rsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
@@ -3139,526 +3160,526 @@ DWORD WINAPI downs(void* data) {
         //FillRect(hdc2, &ect3, brus);
         DeleteObject(brus);
 
-        if(mein.fist) {
+        if(mein->fist) {
             //thread = CreateThread(NULL, 0, downs, NULL, 0, NULL);
             //srand(time(NULL));
-            mein.prep();
+            mein->prep();
         }
 
         for(int i=0; i<700; i++) {
             for(int j=0; j<720; j++) {
-                if(mein.b[i][j] == 1) {
+                if(mein->b[i][j] == 1) {
                     HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                     RECT rrect6 = {i, j, i + 20, j + 20};
-                    FillRect(mein.hdc2, &rrect6, brush);
+                    FillRect(mein->hdc2, &rrect6, brush);
                     DeleteObject(brush);
                 }
             }
         }
 
-        mein.erasePreview();
-        mein.printMiscLabels(mein.level);
-        mein.showNextPiece();
+        mein->erasePreview();
+        mein->printMiscLabels(mein->level);
+        mein->showNextPiece();
         for(int x=0; x<4; x++) {
-            mein.clearLine();
+            mein->clearLine();
         }
 
         usleep(1103000);
 
-        if(mein.choice == "sq") {
+        if(mein->choice == "sq") {
 
-            sq.y0 += 20;
-            sq.y1 += 20;
-            sq.y2 += 20;
-            sq.y3 += 20;
+            sq->y0 += 20;
+            sq->y1 += 20;
+            sq->y2 += 20;
+            sq->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {sq.x0, sq.y0, sq.x0 + 20, sq.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {sq->x0, sq->y0, sq->x0 + 20, sq->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {sq.x1, sq.y1, sq.x1 + 20, sq.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {sq->x1, sq->y1, sq->x1 + 20, sq->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {sq.x2, sq.y2, sq.x2 + 20, sq.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {sq->x2, sq->y2, sq->x2 + 20, sq->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {sq.x3, sq.y3, sq.x3 + 20, sq.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {sq->x3, sq->y3, sq->x3 + 20, sq->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(sq.y0 > 650 || sq.y1 > 650 || sq.y2 > 650 || sq.y3 > 650) {
-                mein.b[sq.x0][sq.y0] = 1;
-                mein.b[sq.x1][sq.y1] = 1;
-                mein.b[sq.x2][sq.y2] = 1;
-                mein.b[sq.x3][sq.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(sq->y0 > 650 || sq->y1 > 650 || sq->y2 > 650 || sq->y3 > 650) {
+                mein->b[sq->x0][sq->y0] = 1;
+                mein->b[sq->x1][sq->y1] = 1;
+                mein->b[sq->x2][sq->y2] = 1;
+                mein->b[sq->x3][sq->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[sq.x0][sq.y0+20] == 1) {
+            if(mein->b[sq->x0][sq->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[sq.x1][sq.y1+20] == 1) {
+            else if(mein->b[sq->x1][sq->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[sq.x2][sq.y2+20] == 1) {
+            else if(mein->b[sq->x2][sq->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[sq.x3][sq.y3+20] == 1) {
+            else if(mein->b[sq->x3][sq->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[sq.x0][sq.y0] = 1;
-                mein.b[sq.x1][sq.y1] = 1;
-                mein.b[sq.x2][sq.y2] = 1;
-                mein.b[sq.x3][sq.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);
-                SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[sq->x0][sq->y0] = 1;
+                mein->b[sq->x1][sq->y1] = 1;
+                mein->b[sq->x2][sq->y2] = 1;
+                mein->b[sq->x3][sq->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);
+                SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "lne") {
+        else if(mein->choice == "lne") {
 
-            lne.y0 += 20;
-            lne.y1 += 20;
-            lne.y2 += 20;
-            lne.y3 += 20;
+            lne->y0 += 20;
+            lne->y1 += 20;
+            lne->y2 += 20;
+            lne->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lne.x0, lne.y0, lne.x0 + 20, lne.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {lne->x0, lne->y0, lne->x0 + 20, lne->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lne.x1, lne.y1, lne.x1 + 20, lne.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {lne->x1, lne->y1, lne->x1 + 20, lne->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lne.x2, lne.y2, lne.x2 + 20, lne.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {lne->x2, lne->y2, lne->x2 + 20, lne->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lne.x3, lne.y3, lne.x3 + 20, lne.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {lne->x3, lne->y3, lne->x3 + 20, lne->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(lne.y0 > 650 || lne.y1 > 650 || lne.y2 > 650 || lne.y3 > 650) {
-                mein.b[lne.x0][lne.y0] = 1;
-                mein.b[lne.x1][lne.y1] = 1;
-                mein.b[lne.x2][lne.y2] = 1;
-                mein.b[lne.x3][lne.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(lne->y0 > 650 || lne->y1 > 650 || lne->y2 > 650 || lne->y3 > 650) {
+                mein->b[lne->x0][lne->y0] = 1;
+                mein->b[lne->x1][lne->y1] = 1;
+                mein->b[lne->x2][lne->y2] = 1;
+                mein->b[lne->x3][lne->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[lne.x0][lne.y0+20] == 1) {
+            if(mein->b[lne->x0][lne->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lne.x1][lne.y1+20] == 1) {
+            else if(mein->b[lne->x1][lne->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lne.x2][lne.y2+20] == 1) {
+            else if(mein->b[lne->x2][lne->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lne.x3][lne.y3+20] == 1) {
+            else if(mein->b[lne->x3][lne->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[lne.x0][lne.y0] = 1;
-                mein.b[lne.x1][lne.y1] = 1;
-                mein.b[lne.x2][lne.y2] = 1;
-                mein.b[lne.x3][lne.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[lne->x0][lne->y0] = 1;
+                mein->b[lne->x1][lne->y1] = 1;
+                mein->b[lne->x2][lne->y2] = 1;
+                mein->b[lne->x3][lne->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "ht") {
+        else if(mein->choice == "ht") {
 
-            ht.y0 += 20;
-            ht.y1 += 20;
-            ht.y2 += 20;
-            ht.y3 += 20;
+            ht->y0 += 20;
+            ht->y1 += 20;
+            ht->y2 += 20;
+            ht->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {ht.x0, ht.y0, ht.x0 + 20, ht.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {ht->x0, ht->y0, ht->x0 + 20, ht->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {ht.x1, ht.y1, ht.x1 + 20, ht.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {ht->x1, ht->y1, ht->x1 + 20, ht->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {ht.x2, ht.y2, ht.x2 + 20, ht.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {ht->x2, ht->y2, ht->x2 + 20, ht->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {ht.x3, ht.y3, ht.x3 + 20, ht.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {ht->x3, ht->y3, ht->x3 + 20, ht->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(ht.y0 > 650 || ht.y1 > 650 || ht.y2 > 650 || ht.y3 > 650) {
-                mein.b[ht.x0][ht.y0] = 1;
-                mein.b[ht.x1][ht.y1] = 1;
-                mein.b[ht.x2][ht.y2] = 1;
-                mein.b[ht.x3][ht.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(ht->y0 > 650 || ht->y1 > 650 || ht->y2 > 650 || ht->y3 > 650) {
+                mein->b[ht->x0][ht->y0] = 1;
+                mein->b[ht->x1][ht->y1] = 1;
+                mein->b[ht->x2][ht->y2] = 1;
+                mein->b[ht->x3][ht->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[ht.x0][ht.y0+20] == 1) {
+            if(mein->b[ht->x0][ht->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[ht.x1][ht.y1+20] == 1) {
+            else if(mein->b[ht->x1][ht->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[ht.x2][ht.y2+20] == 1) {
+            else if(mein->b[ht->x2][ht->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[ht.x3][ht.y3+20] == 1) {
+            else if(mein->b[ht->x3][ht->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[ht.x0][ht.y0] = 1;
-                mein.b[ht.x1][ht.y1] = 1;
-                mein.b[ht.x2][ht.y2] = 1;
-                mein.b[ht.x3][ht.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[ht->x0][ht->y0] = 1;
+                mein->b[ht->x1][ht->y1] = 1;
+                mein->b[ht->x2][ht->y2] = 1;
+                mein->b[ht->x3][ht->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "larm") {
+        else if(mein->choice == "larm") {
 
-            larm.y0 += 20;
-            larm.y1 += 20;
-            larm.y2 += 20;
-            larm.y3 += 20;
+            larm->y0 += 20;
+            larm->y1 += 20;
+            larm->y2 += 20;
+            larm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {larm.x0, larm.y0, larm.x0 + 20, larm.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {larm->x0, larm->y0, larm->x0 + 20, larm->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {larm.x1, larm.y1, larm.x1 + 20, larm.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {larm->x1, larm->y1, larm->x1 + 20, larm->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {larm.x2, larm.y2, larm.x2 + 20, larm.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {larm->x2, larm->y2, larm->x2 + 20, larm->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {larm.x3, larm.y3, larm.x3 + 20, larm.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {larm->x3, larm->y3, larm->x3 + 20, larm->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(larm.y0 > 650 || larm.y1 > 650 || larm.y2 > 650 || larm.y3 > 650) {
-                mein.b[larm.x0][larm.y0] = 1;
-                mein.b[larm.x1][larm.y1] = 1;
-                mein.b[larm.x2][larm.y2] = 1;
-                mein.b[larm.x3][larm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(larm->y0 > 650 || larm->y1 > 650 || larm->y2 > 650 || larm->y3 > 650) {
+                mein->b[larm->x0][larm->y0] = 1;
+                mein->b[larm->x1][larm->y1] = 1;
+                mein->b[larm->x2][larm->y2] = 1;
+                mein->b[larm->x3][larm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[larm.x0][larm.y0+20] == 1) {
+            if(mein->b[larm->x0][larm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[larm.x1][larm.y1+20] == 1) {
+            else if(mein->b[larm->x1][larm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[larm.x2][larm.y2+20] == 1) {
+            else if(mein->b[larm->x2][larm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[larm.x3][larm.y3+20] == 1) {
+            else if(mein->b[larm->x3][larm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[larm.x0][larm.y0] = 1;
-                mein.b[larm.x1][larm.y1] = 1;
-                mein.b[larm.x2][larm.y2] = 1;
-                mein.b[larm.x3][larm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[larm->x0][larm->y0] = 1;
+                mein->b[larm->x1][larm->y1] = 1;
+                mein->b[larm->x2][larm->y2] = 1;
+                mein->b[larm->x3][larm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "rarm") {
+        else if(mein->choice == "rarm") {
 
-            rarm.y0 += 20;
-            rarm.y1 += 20;
-            rarm.y2 += 20;
-            rarm.y3 += 20;
+            rarm->y0 += 20;
+            rarm->y1 += 20;
+            rarm->y2 += 20;
+            rarm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rarm.x0, rarm.y0, rarm.x0 + 20, rarm.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {rarm->x0, rarm->y0, rarm->x0 + 20, rarm->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rarm.x1, rarm.y1, rarm.x1 + 20, rarm.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {rarm->x1, rarm->y1, rarm->x1 + 20, rarm->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rarm.x2, rarm.y2, rarm.x2 + 20, rarm.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {rarm->x2, rarm->y2, rarm->x2 + 20, rarm->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rarm.x3, rarm.y3, rarm.x3 + 20, rarm.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {rarm->x3, rarm->y3, rarm->x3 + 20, rarm->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rarm.y0 > 650 || rarm.y1 > 650 || rarm.y2 > 650 || rarm.y3 > 650) {
-                mein.b[rarm.x0][rarm.y0] = 1;
-                mein.b[rarm.x1][rarm.y1] = 1;
-                mein.b[rarm.x2][rarm.y2] = 1;
-                mein.b[rarm.x3][rarm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(rarm->y0 > 650 || rarm->y1 > 650 || rarm->y2 > 650 || rarm->y3 > 650) {
+                mein->b[rarm->x0][rarm->y0] = 1;
+                mein->b[rarm->x1][rarm->y1] = 1;
+                mein->b[rarm->x2][rarm->y2] = 1;
+                mein->b[rarm->x3][rarm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[rarm.x0][rarm.y0+20] == 1) {
+            if(mein->b[rarm->x0][rarm->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rarm.x1][rarm.y1+20] == 1) {
+            else if(mein->b[rarm->x1][rarm->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rarm.x2][rarm.y2+20] == 1) {
+            else if(mein->b[rarm->x2][rarm->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rarm.x3][rarm.y3+20] == 1) {
+            else if(mein->b[rarm->x3][rarm->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[rarm.x0][rarm.y0] = 1;
-                mein.b[rarm.x1][rarm.y1] = 1;
-                mein.b[rarm.x2][rarm.y2] = 1;
-                mein.b[rarm.x3][rarm.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[rarm->x0][rarm->y0] = 1;
+                mein->b[rarm->x1][rarm->y1] = 1;
+                mein->b[rarm->x2][rarm->y2] = 1;
+                mein->b[rarm->x3][rarm->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "lsh") {
+        else if(mein->choice == "lsh") {
 
-            lsh.y0 += 20;
-            lsh.y1 += 20;
-            lsh.y2 += 20;
-            lsh.y3 += 20;
+            lsh->y0 += 20;
+            lsh->y1 += 20;
+            lsh->y2 += 20;
+            lsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {lsh.x0, lsh.y0, lsh.x0 + 20, lsh.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {lsh->x0, lsh->y0, lsh->x0 + 20, lsh->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {lsh.x1, lsh.y1, lsh.x1 + 20, lsh.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {lsh->x1, lsh->y1, lsh->x1 + 20, lsh->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {lsh.x2, lsh.y2, lsh.x2 + 20, lsh.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {lsh->x2, lsh->y2, lsh->x2 + 20, lsh->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {lsh.x3, lsh.y3, lsh.x3 + 20, lsh.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {lsh->x3, lsh->y3, lsh->x3 + 20, lsh->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(lsh.y0 > 650 || lsh.y1 > 650 || lsh.y2 > 650 || lsh.y3 > 650) {
-                mein.b[lsh.x0][lsh.y0] = 1;
-                mein.b[lsh.x1][lsh.y1] = 1;
-                mein.b[lsh.x2][lsh.y2] = 1;
-                mein.b[lsh.x3][lsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(lsh->y0 > 650 || lsh->y1 > 650 || lsh->y2 > 650 || lsh->y3 > 650) {
+                mein->b[lsh->x0][lsh->y0] = 1;
+                mein->b[lsh->x1][lsh->y1] = 1;
+                mein->b[lsh->x2][lsh->y2] = 1;
+                mein->b[lsh->x3][lsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[lsh.x0][lsh.y0+20] == 1) {
+            if(mein->b[lsh->x0][lsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lsh.x1][lsh.y1+20] == 1) {
+            else if(mein->b[lsh->x1][lsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lsh.x2][lsh.y2+20] == 1) {
+            else if(mein->b[lsh->x2][lsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[lsh.x3][lsh.y3+20] == 1) {
+            else if(mein->b[lsh->x3][lsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[lsh.x0][lsh.y0] = 1;
-                mein.b[lsh.x1][lsh.y1] = 1;
-                mein.b[lsh.x2][lsh.y2] = 1;
-                mein.b[lsh.x3][lsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[lsh->x0][lsh->y0] = 1;
+                mein->b[lsh->x1][lsh->y1] = 1;
+                mein->b[lsh->x2][lsh->y2] = 1;
+                mein->b[lsh->x3][lsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
         }
-        else if(mein.choice == "rsh") {
+        else if(mein->choice == "rsh") {
 
-            rsh.y0 += 20;
-            rsh.y1 += 20;
-            rsh.y2 += 20;
-            rsh.y3 += 20;
+            rsh->y0 += 20;
+            rsh->y1 += 20;
+            rsh->y2 += 20;
+            rsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
-            RECT rrect3 = {rsh.x0, rsh.y0, rsh.x0 + 20, rsh.y0 + 20};
-            FillRect(mein.hdc2, &rrect3, brush);
+            RECT rrect3 = {rsh->x0, rsh->y0, rsh->x0 + 20, rsh->y0 + 20};
+            FillRect(mein->hdc2, &rrect3, brush);
 
-            RECT rrect4 = {rsh.x1, rsh.y1, rsh.x1 + 20, rsh.y1 + 20};
-            FillRect(mein.hdc2, &rrect4, brush);
+            RECT rrect4 = {rsh->x1, rsh->y1, rsh->x1 + 20, rsh->y1 + 20};
+            FillRect(mein->hdc2, &rrect4, brush);
 
-            RECT rrect5 = {rsh.x2, rsh.y2, rsh.x2 + 20, rsh.y2 + 20};
-            FillRect(mein.hdc2, &rrect5, brush);
+            RECT rrect5 = {rsh->x2, rsh->y2, rsh->x2 + 20, rsh->y2 + 20};
+            FillRect(mein->hdc2, &rrect5, brush);
 
-            RECT rrect6 = {rsh.x3, rsh.y3, rsh.x3 + 20, rsh.y3 + 20};
-            FillRect(mein.hdc2, &rrect6, brush);
+            RECT rrect6 = {rsh->x3, rsh->y3, rsh->x3 + 20, rsh->y3 + 20};
+            FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(rsh.y0 > 650 || rsh.y1 > 650 || rsh.y2 > 650 || rsh.y3 > 650) {
-                mein.b[rsh.x0][rsh.y0] = 1;
-                mein.b[rsh.x1][rsh.y1] = 1;
-                mein.b[rsh.x2][rsh.y2] = 1;
-                mein.b[rsh.x3][rsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+            if(rsh->y0 > 650 || rsh->y1 > 650 || rsh->y2 > 650 || rsh->y3 > 650) {
+                mein->b[rsh->x0][rsh->y0] = 1;
+                mein->b[rsh->x1][rsh->y1] = 1;
+                mein->b[rsh->x2][rsh->y2] = 1;
+                mein->b[rsh->x3][rsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
 
             BOOLEAN flag = FALSE;
-            if(mein.b[rsh.x0][rsh.y0+20] == 1) {
+            if(mein->b[rsh->x0][rsh->y0+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rsh.x1][rsh.y1+20] == 1) {
+            else if(mein->b[rsh->x1][rsh->y1+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rsh.x2][rsh.y2+20] == 1) {
+            else if(mein->b[rsh->x2][rsh->y2+20] == 1) {
                 flag = TRUE;
             }
-            else if(mein.b[rsh.x3][rsh.y3+20] == 1) {
+            else if(mein->b[rsh->x3][rsh->y3+20] == 1) {
                 flag = TRUE;
             }
             if(flag) {
                 //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
-                mein.b[rsh.x0][rsh.y0] = 1;
-                mein.b[rsh.x1][rsh.y1] = 1;
-                mein.b[rsh.x2][rsh.y2] = 1;
-                mein.b[rsh.x3][rsh.y3] = 1;
-                mein.blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein.blocks,mein.points,mein.lines);SetWindowText(mein.hwnd,aa);
-                mein.prep();
+                mein->b[rsh->x0][rsh->y0] = 1;
+                mein->b[rsh->x1][rsh->y1] = 1;
+                mein->b[rsh->x2][rsh->y2] = 1;
+                mein->b[rsh->x3][rsh->y3] = 1;
+                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->prep();
             }
-            if(mein.level < 40 && mein.lines >= mein.linenext) {mein.level++;mein.linenext+=10;mein.sleeptime-=15;}
+            if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
@@ -3672,8 +3693,8 @@ DWORD WINAPI downs(void* data) {
 // Step 4: the Window Procedure
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    DeleteObject(mein.hdc2);
-    mein.hdc2 = GetDC(hwnd);
+    DeleteObject(mein->hdc2);
+    mein->hdc2 = GetDC(hwnd);
 
     switch(msg)
     {
@@ -3683,20 +3704,20 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case VK_LEFT: 
 
-            mein.goLeft();
+            mein->goLeft();
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
@@ -3705,20 +3726,20 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case VK_RIGHT: 
 
-            mein.goRight();
+            mein->goRight();
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
@@ -3727,20 +3748,20 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case VK_UP: 
 
-            mein.rotate();
+            mein->rotate();
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
@@ -3748,20 +3769,20 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break; 
 
         case VK_DOWN: 
-            mein.goDown();
+            mein->goDown();
             for(int i=0; i<700; i++) {
                 for(int j=0; j<700; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
 
-                        HGDIOBJ hOldBsh = SelectObject(mein.hdc2, GetStockObject(NULL_BRUSH));
-                        HGDIOBJ hOldPen = SelectObject(mein.hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
-                        Rectangle(mein.hdc2, i, j, i + 20, j + 20);
-                        DeleteObject(SelectObject(mein.hdc2, hOldPen));
-                        SelectObject(mein.hdc2, hOldBsh);
+                        HGDIOBJ hOldBsh = SelectObject(mein->hdc2, GetStockObject(NULL_BRUSH));
+                        HGDIOBJ hOldPen = SelectObject(mein->hdc2, CreatePen(PS_SOLID, 1, RGB(80, 80, 80)));
+                        Rectangle(mein->hdc2, i, j, i + 20, j + 20);
+                        DeleteObject(SelectObject(mein->hdc2, hOldPen));
+                        SelectObject(mein->hdc2, hOldBsh);
                     }
                 }
             }
@@ -3769,36 +3790,36 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case VK_SPACE:
             do {
 
-            } while (mein.goDown());
+            } while (mein->goDown());
             break;
         }
         case WM_PAINT:
         {
-            if(mein.fist) {
+            if(mein->fist) {
                 HBRUSH brush = CreateSolidBrush(RGB(50, 230, 7));
                 RECT rrect = {0, 0, 640, 750};
-                FillRect(mein.hdc2, &rrect, brush);
+                FillRect(mein->hdc2, &rrect, brush);
                 DeleteObject(brush);
                 HBRUSH brush0 = CreateSolidBrush(RGB(0, 180, 230));
                 RECT rrect9 = {199, 0, 440, 710};
-                FillRect(mein.hdc2, &rrect9, brush0);
+                FillRect(mein->hdc2, &rrect9, brush0);
                 DeleteObject(brush0);
                 HBRUSH brush2 = CreateSolidBrush(RGB(5, 200, 112));
                 RECT rrect3 = {209, 10, 430, 700};
-                FillRect(mein.hdc2, &rrect3, brush2);
+                FillRect(mein->hdc2, &rrect3, brush2);
                 DeleteObject(brush2);
 
-                mein.threa = CreateThread(0, 0, downs, 0, 0, NULL);
+                mein->threa = CreateThread(0, 0, downs, 0, 0, NULL);
                 srand(time(NULL));
-                mein.prep();
+                mein->prep();
             }
 
             for(int i=0; i<700; i++) {
                 for(int j=0; j<720; j++) {
-                    if(mein.b[i][j] == 1) {
+                    if(mein->b[i][j] == 1) {
                         HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
                         RECT rrect6 = {i, j, i + 20, j + 20};
-                        FillRect(mein.hdc2, &rrect6, brush);
+                        FillRect(mein->hdc2, &rrect6, brush);
                         DeleteObject(brush);
                     }
                 }
@@ -3816,11 +3837,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                             DEFAULT_PITCH | FF_ROMAN,
                            "Helvetica");
 
-            char aa[16];sprintf(aa,"LEVEL: %d of 40",mein.level);
+            char aa[16];sprintf(aa,"LEVEL: %d of 40",mein->level);
 
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 450, 20, aa, 15);
-            TextOut(mein.hdc2, 50, 260, "PREVIEW", 7);
+            SelectObject(mein->hdc2, font);
+            TextOut(mein->hdc2, 450, 20, aa, 15);
+            TextOut(mein->hdc2, 50, 260, "PREVIEW", 7);
             DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
@@ -3832,13 +3853,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             HBRUSH brush1 = CreateSolidBrush(RGB(255, 255, 0));
             RECT rrect1 = {40, 310, 150, 420};
-            FillRect(mein.hdc2, &rrect1, brush1);
+            FillRect(mein->hdc2, &rrect1, brush1);
             DeleteObject(brush1);
 
-            char dd[16];sprintf(dd,"Level: %d", mein.level);
+            char dd[16];sprintf(dd,"Level: %d", mein->level);
 
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 50, 320, dd, 9);
+            SelectObject(mein->hdc2, font);
+            TextOut(mein->hdc2, 50, 320, dd, 9);
             DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
@@ -3848,10 +3869,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                             DEFAULT_PITCH | FF_ROMAN,
                            "Helvetica");
 
-            char cc[16];sprintf(cc,"Blocks: %d", mein.blocks);
+            char cc[16];sprintf(cc,"Blocks: %d", mein->blocks);
 
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 50, 340, cc, 10);
+            SelectObject(mein->hdc2, font);
+            TextOut(mein->hdc2, 50, 340, cc, 10);
             DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
@@ -3861,10 +3882,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                             DEFAULT_PITCH | FF_ROMAN,
                            "Helvetica");
 
-            char bb[16];sprintf(bb,"Lines: %d", mein.lines);
+            char bb[16];sprintf(bb,"Lines: %d", mein->lines);
 
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 50, 360, bb, 9);
+            SelectObject(mein->hdc2, font);
+            TextOut(mein->hdc2, 50, 360, bb, 9);
             DeleteObject(font);
 
             font = CreateFont(26, 0, 0, 0,
@@ -3874,8 +3895,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                             DEFAULT_PITCH | FF_ROMAN,
                            "Helvetica");
 
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 450, 480, "MPC Martus", 10);
+            SelectObject(mein->hdc2, font);
+            TextOut(mein->hdc2, 450, 480, "MPC Martus", 10);
             DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
@@ -3885,20 +3906,20 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                             DEFAULT_PITCH | FF_ROMAN,
                            "Verdana");
 
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 10, 640, "By OkelyKodely", 14);
-            SelectObject(mein.hdc2, font);
-            TextOut(mein.hdc2, 10, 680, "I MADE THIS!", 12);
+            SelectObject(mein->hdc2, font);
+            TextOut(mein->hdc2, 10, 640, "By OkelyKodely", 14);
+            SelectObject(mein->hdc2, font);
+            TextOut(mein->hdc2, 10, 680, "I MADE THIS!", 12);
             DeleteObject(font);
 
 //            HBRUSH brush11 = CreateSolidBrush(RGB(255, 0, 0));
 //            RECT rrect11 = {0, 12, 143, 233};
-//            FillRect(mein.hdc2, &rrect11, brush11);
+//            FillRect(mein->hdc2, &rrect11, brush11);
 //            DeleteObject(brush11);
 //
 //            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 200));
 //            RECT rrect5 = {0, 20, 129, 220};
-//            FillRect(mein.hdc2, &rrect5, brush);
+//            FillRect(mein->hdc2, &rrect5, brush);
 //            DeleteObject(brush);
             
             EndPaint (hwnd, &ps);
@@ -3908,7 +3929,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         {
 //            int y = 600; int h = 48;
 //            int x = 443; int w = 124;
-//  	    mein.hwnd_new_game = CreateWindowEx(0, "BUTTON", "> exit(); <", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+//  	    mein->hwnd_new_game = CreateWindowEx(0, "BUTTON", "> exit(); <", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
 //								x, y, w, h, hwnd, (HMENU) PLAY_AGAIN_BUTTON, GetModuleHandle(NULL), NULL);
         }
         case WM_COMMAND:
@@ -3916,12 +3937,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             {
                 case PLAY_AGAIN_BUTTON:
                     if (HIWORD(wParam) == BN_CLICKED) {
-                        GetCurrentDir( mein.buff, FILENAME_MAX );
+                        GetCurrentDir( mein->buff, FILENAME_MAX );
                         STARTUPINFO startUpInfo = { 0 };
                         PROCESS_INFORMATION procInfo = { 0 };
                         startUpInfo.cb = sizeof( startUpInfo );
-                        //CreateProcess( "\\martus.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
-                        system("\\martus.exe");
+                        //CreateProcess( "\\martus->exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
+                        system("\\martus->exe");
                         exit(0);
                     }
                 break;
@@ -3988,6 +4009,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     HWND hWnd = GetConsoleWindow();
     ShowWindow(hWnd, SW_HIDE);
+    
+    SetWindowText(hwnd, "TETRIS");
 
     // Step 3: The Message Loop
     while(GetMessage(&Msg, NULL, 0, 0) > 0)
