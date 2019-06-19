@@ -21,7 +21,16 @@ using namespace std;
 #define GetCurrentDir getcwd
 #endif
 
+BOOL dontplay = FALSE;
+
 const char g_szClassName[] = "Martus";
+
+DWORD WINAPI callMe(void *data) {
+  
+    PlaySound(TEXT("Tetris.wav"), NULL, SND_LOOP | SND_ASYNC);
+    
+    return 0;
+}
 
 class Mein {
 public:
@@ -312,7 +321,7 @@ public:
         FillRect(mm->hdc2, &rrect3, brush);
         DeleteObject(brush);
           
-        if(mm->choice == "ht" && (y0 <= 650 && y1 <= 650 && y2 <= 650 && y3 <= 650)) {
+        if(mm->choice == "ht" && (y0 <= 630 && y1 <= 630 && y2 <= 630 && y3 <= 630)) {
             if(mm->b[x0][y0+20] == 0 &&
                mm->b[x1][y1+20] == 0 &&
                mm->b[x2][y2+20] == 0 &&
@@ -2721,7 +2730,7 @@ DWORD WINAPI downs(void* data) {
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
         }
-        else if(mein->choice == "ht" && (mein->ht->y0 <= 650 && mein->ht->y1 <= 650 && mein->ht->y2 <= 650 && mein->ht->y3 <= 650)) {
+        else if(mein->choice == "ht" && (mein->ht->y0 <= 630 && mein->ht->y1 <= 630 && mein->ht->y2 <= 630 && mein->ht->y3 <= 630)) {
     //        ht->y0 += 20;
     //        ht->y1 += 20;
     //        ht->y2 += 20;
@@ -2742,7 +2751,7 @@ DWORD WINAPI downs(void* data) {
             FillRect(mein->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            if(mein->ht->y0 > 650 || mein->ht->y1 > 650 || mein->ht->y2 > 650 || mein->ht->y3 > 650) {
+            if(mein->ht->y0 > 630 || mein->ht->y1 > 630 || mein->ht->y2 > 630 || mein->ht->y3 > 630) {
                 mein->b[mein->ht->x0][mein->ht->y0] = 1;
                 mein->b[mein->ht->x1][mein->ht->y1] = 1;
                 mein->b[mein->ht->x2][mein->ht->y2] = 1;
@@ -3703,7 +3712,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 }
             }
 
-            break; 
+            break;
 
         case VK_DOWN:
             if(mein->choice == "sq")
@@ -3775,15 +3784,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         case WM_PAINT:
         {
             if(mein->fist) {
+
+                mein->thrad = CreateThread(NULL, 0, callMe, NULL, 0, NULL);
+
+                HBRUSH brush79 = CreateSolidBrush(RGB(136, 0, 0));
+                RECT rrect79 = {0, 0, 22640, 22750};
+                FillRect(mein->hdc2, &rrect79, brush79);
+                DeleteObject(brush79);
                 HBRUSH brush = CreateSolidBrush(RGB(50, 230, 7));
                 RECT rrect = {0, 0, 640, 750};
                 FillRect(mein->hdc2, &rrect, brush);
                 DeleteObject(brush);
-                HBRUSH brush0 = CreateSolidBrush(RGB(0, 180, 230));
+                HBRUSH brush0 = CreateSolidBrush(RGB(255, 180, 230));
                 RECT rrect9 = {199, 0, 440, 710};
                 FillRect(mein->hdc2, &rrect9, brush0);
                 DeleteObject(brush0);
-                HBRUSH brush2 = CreateSolidBrush(RGB(5, 200, 112));
+                HBRUSH brush2 = CreateSolidBrush(RGB(255, 200, 112));
                 RECT rrect3 = {209, 10, 430, 700};
                 FillRect(mein->hdc2, &rrect3, brush2);
                 DeleteObject(brush2);
@@ -3820,7 +3836,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
             SelectObject(mein->hdc2, font);
             TextOut(mein->hdc2, 450, 20, aa, 15);
-            TextOut(mein->hdc2, 50, 260, "PREVIEW", 7);
+            TextOut(mein->hdc2, 0, 240, "PREVIEW", 7);
             DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
@@ -3851,7 +3867,16 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             char cc[16];sprintf(cc,"Blocks: %d", mein->blocks);
 
             SelectObject(mein->hdc2, font);
-            TextOut(mein->hdc2, 50, 340, cc, 10);
+            if(mein->blocks < 10)
+                TextOut(mein->hdc2, 50, 340, cc, 9);
+            else if(mein->blocks > 9 && mein->blocks < 100)
+                TextOut(mein->hdc2, 50, 340, cc, 10);
+            else if(mein->blocks > 99 && mein->blocks < 1000)
+                TextOut(mein->hdc2, 50, 340, cc, 11);
+            else if(mein->blocks > 999 && mein->blocks < 10000)
+                TextOut(mein->hdc2, 50, 340, cc, 12);
+            else
+                TextOut(mein->hdc2, 50, 340, cc, 13);
             DeleteObject(font);
 
             font = CreateFont(16, 0, 0, 0,
@@ -3864,7 +3889,16 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             char bb[16];sprintf(bb,"Lines: %d", mein->lines);
 
             SelectObject(mein->hdc2, font);
-            TextOut(mein->hdc2, 50, 360, bb, 9);
+            if(mein->lines < 10)
+                TextOut(mein->hdc2, 50, 360, bb, 8);
+            else if(mein->lines > 9 && mein->lines < 100)
+                TextOut(mein->hdc2, 50, 360, bb, 9);
+            else if(mein->lines > 99 && mein->lines < 1000)
+                TextOut(mein->hdc2, 50, 360, bb, 10);
+            else if(mein->lines > 999 && mein->lines < 10000)
+                TextOut(mein->hdc2, 50, 360, bb, 11);
+            else
+                TextOut(mein->hdc2, 50, 360, bb, 12);
             DeleteObject(font);
 
             font = CreateFont(26, 0, 0, 0,
@@ -3906,24 +3940,26 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         break;
         case WM_CREATE:
         {
-//            int y = 600; int h = 48;
-//            int x = 443; int w = 124;
-//  	    mein->hwnd_new_game = CreateWindowEx(0, "BUTTON", "> exit(); <", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
-//								x, y, w, h, hwnd, (HMENU) PLAY_AGAIN_BUTTON, GetModuleHandle(NULL), NULL);
+            int y = 600; int h = 48;
+            int x = 443; int w = 124;
+  	    mein->hwnd_new_game = CreateWindowEx(0, "BUTTON", "Turn Music Off", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+								x, y, w, h, hwnd, (HMENU) PLAY_AGAIN_BUTTON, GetModuleHandle(NULL), NULL);
         }
         case WM_COMMAND:
             switch(LOWORD(wParam))
             {
                 case PLAY_AGAIN_BUTTON:
                     if (HIWORD(wParam) == BN_CLICKED) {
-                        GetCurrentDir( mein->buff, FILENAME_MAX );
-                        STARTUPINFO startUpInfo = { 0 };
-                        PROCESS_INFORMATION procInfo = { 0 };
-                        startUpInfo.cb = sizeof( startUpInfo );
-                        //CreateProcess( "\\martus->exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startUpInfo, &procInfo );
-                        system("\\martus->exe");
-                        exit(0);
+                        if(!dontplay) {
+                            SetWindowText(mein->hwnd_new_game, "Turn Music On");
+                            PlaySound(NULL,NULL,0);
+                        } else {
+                            SetWindowText(mein->hwnd_new_game, "Turn Music Off");
+                            PlaySound(TEXT("Tetris.wav"), NULL, SND_LOOP | SND_ASYNC);
+                        }
+                        dontplay = !dontplay;
                     }
+                    SetFocus(hwnd);
                 break;
             }
         break;
@@ -3968,13 +4004,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     }
 
     // Step 2: Creating the Window
-    hwnd = CreateWindowEx(
-        WS_EX_CLIENTEDGE,
-        g_szClassName,
-        "",
-        WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, CW_USEDEFAULT, 640, 750,
-        NULL, NULL, hInstance, NULL);
+    hwnd = CreateWindow(g_szClassName, NULL, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,
+      0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), 
+	  NULL, NULL, hInstance, NULL);
 
     if(hwnd == NULL)
     {
@@ -3982,6 +4014,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
+
+    SetWindowLong(hwnd, GWL_STYLE,
+               GetWindowLong(hwnd, GWL_STYLE) & ~WS_MINIMIZEBOX);
 
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
