@@ -5,18 +5,15 @@
 #include <mmsystem.h>
 #include <unistd.h>
 #include <mmsystem.h>
-#include "martus.h"
+#include "martusdef.h"
 
 using namespace std;
 
 Martus* ourMartus = new Martus();
 
 DWORD WINAPI downs(void* data) {
-
     BOOLEAN downIt = TRUE;
-
     do {
-
         ourMartus->hdcMems = CreateCompatibleDC(ourMartus->hdc2);
 
         HBRUSH brush = CreateSolidBrush(RGB(225, 122, 185));
@@ -952,13 +949,12 @@ DWORD WINAPI downs(void* data) {
 
     return 0;
 }
-
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     DeleteObject(ourMartus->hdc2);
     ourMartus->hdc2 = GetDC(hwnd);
 
-    switch(msg)
-    {
+    switch(msg) {
+        
         case WM_KEYDOWN: 
             switch (wParam) 
             { 
@@ -1279,12 +1275,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     }
     return 0;
 }
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-    LPSTR lpCmdLine, int nCmdShow)
-{
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     WNDCLASSEX wc;
     HWND hwnd;
+    
     MSG Msg;
 
     wc.cbSize        = sizeof(WNDCLASSEX);
@@ -1300,26 +1294,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     wc.lpszClassName = g_szClassName;
     wc.hIconSm       = LoadIcon(NULL, IDI_APPLICATION);
 
-    if(!RegisterClassEx(&wc))
-    {
-        MessageBox(NULL, "Window Registration Failed!", "Error!",
-            MB_ICONEXCLAMATION | MB_OK);
+    if(!RegisterClassEx(&wc)) {
+        MessageBox(NULL, "Window Registration Failed!", "Error!", MB_ICONEXCLAMATION | MB_OK);
+        
         return 0;
     }
 
-    hwnd = CreateWindow(g_szClassName, NULL, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,
-      0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), 
-	  NULL, NULL, hInstance, NULL);
+    hwnd = CreateWindow(g_szClassName, NULL, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX, 0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), NULL, NULL, hInstance, NULL);
 
-    if(hwnd == NULL)
-    {
-        MessageBox(NULL, "Window Creation Failed!", "Error!",
-            MB_ICONEXCLAMATION | MB_OK);
+    if(hwnd == NULL) {
+        MessageBox(NULL, "Window Creation Failed!", "Error!", MB_ICONEXCLAMATION | MB_OK);
+        
         return 0;
     }
 
-    SetWindowLong(hwnd, GWL_STYLE,
-               GetWindowLong(hwnd, GWL_STYLE) & ~WS_MINIMIZEBOX);
+    SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_MINIMIZEBOX);
 
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
@@ -1329,10 +1318,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     
     SetWindowText(hwnd, "TETRIS");
 
-    while(GetMessage(&Msg, NULL, 0, 0) > 0)
-    {
+    while(GetMessage(&Msg, NULL, 0, 0) > 0) {
         TranslateMessage(&Msg);
         DispatchMessage(&Msg);
     }
+    
     return Msg.wParam;
 }
