@@ -21,16 +21,9 @@ using namespace std;
 #define GetCurrentDir getcwd
 #endif
 
-BOOL dontplay = FALSE;
+BOOL dontplay = TRUE;
 
 const char g_szClassName[] = "Martus";
-
-DWORD WINAPI callMe(void *data) {
-  
-    PlaySound(TEXT("Tetris.wav"), NULL, SND_LOOP | SND_ASYNC);
-    
-    return 0;
-}
 
 class Mein {
 public:
@@ -242,7 +235,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -286,8 +279,6 @@ public:
             FillRect(mm->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
-
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
                 flag = TRUE;
@@ -306,7 +297,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -347,8 +338,6 @@ public:
             FillRect(mm->hdc2, &rrect6, brush);
             DeleteObject(brush);
 
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
-
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
                 flag = TRUE;
@@ -368,7 +357,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             } else
                 canGoDown = FALSE;
@@ -536,7 +525,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,"sdf");
+                    mm->blocks++;
                     mm->prep();
                 } else {
                 }
@@ -560,7 +549,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 } else
                     canGoDown = FALSE;
@@ -769,7 +758,7 @@ public:
             FillRect(mm->hdc2, &rrect3, brush);
             DeleteObject(brush);
 
-            if(mm->choice == "lne" && (y0 <= 580 || y1 <= 580 || y2 <= 580 || y3 <= 580)) {
+            if(mm->choice == "lne" && (y0 <= 630 || y1 <= 630 || y2 <= 630 || y3 <= 630)) {
                 y0 += 20;
                 y1 += 20;
                 y2 += 20;
@@ -795,7 +784,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 } else {
                 }
@@ -819,7 +808,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 } else
                     canGoDown = FALSE;
@@ -985,11 +974,9 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 }
-
-                ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
                 BOOLEAN flag = FALSE;
                 if(mm->b[x0][y0+20] == 1) {
@@ -1009,7 +996,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 }
                 if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -1075,11 +1062,9 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 }
-
-                ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
                 BOOLEAN flag = FALSE;
                 if(mm->b[x0][y0+20] == 1) {
@@ -1099,7 +1084,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 }
                 if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -1156,7 +1141,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 } else {
                 }
@@ -1180,7 +1165,7 @@ public:
                     mm->b[x1][y1] = 1;
                     mm->b[x2][y2] = 1;
                     mm->b[x3][y3] = 1;
-                    mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                    mm->blocks++;
                     mm->prep();
                 } else
                     canGoDown = FALSE;
@@ -1361,11 +1346,9 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
-
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
@@ -1385,7 +1368,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -1451,11 +1434,9 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
-
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
@@ -1475,7 +1456,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -1532,7 +1513,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             } else {
             }
@@ -1556,7 +1537,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             } else
                 canGoDown = FALSE;
@@ -1738,11 +1719,9 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
-
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
@@ -1762,7 +1741,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -1828,11 +1807,9 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
-
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
@@ -1852,7 +1829,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -1910,7 +1887,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             } else {
             }
@@ -1934,7 +1911,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             } else
                 canGoDown = FALSE;
@@ -2116,11 +2093,9 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
-
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
@@ -2140,7 +2115,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -2206,11 +2181,9 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
-
-            ////thrad = CreateThread(0, 0, moveSound, 0, 0, NULL);
 
             BOOLEAN flag = FALSE;
             if(mm->b[x0][y0+20] == 1) {
@@ -2230,7 +2203,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             }
             if(mm->level < 40 && mm->lines >= mm->linenext) {mm->level++;mm->linenext+=10;mm->sleeptime-=15;}
@@ -2287,7 +2260,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             } else {
             }
@@ -2311,7 +2284,7 @@ public:
                 mm->b[x1][y1] = 1;
                 mm->b[x2][y2] = 1;
                 mm->b[x3][y3] = 1;
-                mm->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mm->blocks,mm->points,mm->lines);SetWindowText(mm->hwnd,aa);
+                mm->blocks++;
                 mm->prep();
             } else
                 canGoDown = FALSE;
@@ -2562,8 +2535,6 @@ public:
                 }
 
                 if(clearThisLine == 10) {
-                    char aa[10];
-                    sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",blocks,points,lines);SetWindowText(hwnd,aa);
                     clearBlocks[count] = j;
                     count++;
                     lines++;
@@ -2606,8 +2577,6 @@ public:
 
         } while(cc < 35);
     }
-
-    void printMiscLabels(int stage) {    }
 };
 
 Mein* mein = new Mein();
@@ -2648,7 +2617,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->sq->x1][mein->sq->y1] = 1;
                 mein->b[mein->sq->x2][mein->sq->y2] = 1;
                 mein->b[mein->sq->x3][mein->sq->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -2666,21 +2635,16 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->sq->x0][mein->sq->y0] = 1;
                 mein->b[mein->sq->x1][mein->sq->y1] = 1;
                 mein->b[mein->sq->x2][mein->sq->y2] = 1;
                 mein->b[mein->sq->x3][mein->sq->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
         }
-        else if(mein->choice == "lne" && (mein->lne->y0 <= 580 || mein->lne->y1 <= 580 || mein->lne->y2 <= 580 || mein->lne->y3 <= 580)) {
-    //        lne->y0 += 20;
-    //        lne->y1 += 20;
-    //        lne->y2 += 20;
-    //        lne->y3 += 20;
+        else if(mein->choice == "lne" && (mein->lne->y0 <= 630 || mein->lne->y1 <= 630 || mein->lne->y2 <= 630 || mein->lne->y3 <= 630)) {
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
@@ -2702,7 +2666,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->lne->x1][mein->lne->y1] = 1;
                 mein->b[mein->lne->x2][mein->lne->y2] = 1;
                 mein->b[mein->lne->x3][mein->lne->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -2720,21 +2684,16 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->lne->x0][mein->lne->y0] = 1;
                 mein->b[mein->lne->x1][mein->lne->y1] = 1;
                 mein->b[mein->lne->x2][mein->lne->y2] = 1;
                 mein->b[mein->lne->x3][mein->lne->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
         }
         else if(mein->choice == "ht" && (mein->ht->y0 <= 630 && mein->ht->y1 <= 630 && mein->ht->y2 <= 630 && mein->ht->y3 <= 630)) {
-    //        ht->y0 += 20;
-    //        ht->y1 += 20;
-    //        ht->y2 += 20;
-    //        ht->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
@@ -2756,7 +2715,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->ht->x1][mein->ht->y1] = 1;
                 mein->b[mein->ht->x2][mein->ht->y2] = 1;
                 mein->b[mein->ht->x3][mein->ht->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -2774,21 +2733,16 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->ht->x0][mein->ht->y0] = 1;
                 mein->b[mein->ht->x1][mein->ht->y1] = 1;
                 mein->b[mein->ht->x2][mein->ht->y2] = 1;
                 mein->b[mein->ht->x3][mein->ht->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
         }
         else if(mein->choice == "larm" && (mein->larm->y0 <= 650 && mein->larm->y1 <= 650 && mein->larm->y2 <= 650 && mein->larm->y3 <= 650)) {
-    //        larm->y0 += 20;
-    //        larm->y1 += 20;
-    //        larm->y2 += 20;
-    //        larm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
@@ -2810,7 +2764,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->larm->x1][mein->larm->y1] = 1;
                 mein->b[mein->larm->x2][mein->larm->y2] = 1;
                 mein->b[mein->larm->x3][mein->larm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -2828,12 +2782,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->larm->x0][mein->larm->y0] = 1;
                 mein->b[mein->larm->x1][mein->larm->y1] = 1;
                 mein->b[mein->larm->x2][mein->larm->y2] = 1;
                 mein->b[mein->larm->x3][mein->larm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -2855,10 +2808,6 @@ DWORD WINAPI downs(void* data) {
             }
         }
         else if(mein->choice == "rarm" && (mein->rarm->y0 <= 650 && mein->rarm->y1 <= 650 && mein->rarm->y2 <= 650 && mein->rarm->y3 <= 650)) {
-    //        rarm->y0 += 20;
-    //        rarm->y1 += 20;
-    //        rarm->y2 += 20;
-    //        rarm->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
@@ -2880,7 +2829,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->rarm->x1][mein->rarm->y1] = 1;
                 mein->b[mein->rarm->x2][mein->rarm->y2] = 1;
                 mein->b[mein->rarm->x3][mein->rarm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -2898,12 +2847,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->rarm->x0][mein->rarm->y0] = 1;
                 mein->b[mein->rarm->x1][mein->rarm->y1] = 1;
                 mein->b[mein->rarm->x2][mein->rarm->y2] = 1;
                 mein->b[mein->rarm->x3][mein->rarm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -2925,10 +2873,6 @@ DWORD WINAPI downs(void* data) {
             }
         }
         else if(mein->choice == "lsh" && (mein->lsh->y0 <= 650 && mein->lsh->y1 <= 650 && mein->lsh->y2 <= 650 && mein->lsh->y3 <= 650)) {
-    //        lsh->y0 += 20;
-    //        lsh->y1 += 20;
-    //        lsh->y2 += 20;
-    //        lsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
@@ -2950,7 +2894,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->lsh->x1][mein->lsh->y1] = 1;
                 mein->b[mein->lsh->x2][mein->lsh->y2] = 1;
                 mein->b[mein->lsh->x3][mein->lsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -2968,12 +2912,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->lsh->x0][mein->lsh->y0] = 1;
                 mein->b[mein->lsh->x1][mein->lsh->y1] = 1;
                 mein->b[mein->lsh->x2][mein->lsh->y2] = 1;
                 mein->b[mein->lsh->x3][mein->lsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -2995,10 +2938,6 @@ DWORD WINAPI downs(void* data) {
             }
         }
         else if(mein->choice == "rsh" && (mein->rsh->y0 <= 650 && mein->rsh->y1 <= 650 && mein->rsh->y2 <= 650 && mein->rsh->y3 <= 650)) {
-    //        rsh->y0 += 20;
-    //        rsh->y1 += 20;
-    //        rsh->y2 += 20;
-    //        rsh->y3 += 20;
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
 
@@ -3020,7 +2959,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->rsh->x1][mein->rsh->y1] = 1;
                 mein->b[mein->rsh->x2][mein->rsh->y2] = 1;
                 mein->b[mein->rsh->x3][mein->rsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3038,12 +2977,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->rsh->x0][mein->rsh->y0] = 1;
                 mein->b[mein->rsh->x1][mein->rsh->y1] = 1;
                 mein->b[mein->rsh->x2][mein->rsh->y2] = 1;
                 mein->b[mein->rsh->x3][mein->rsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3065,15 +3003,7 @@ DWORD WINAPI downs(void* data) {
             }
         }
 
-        HBRUSH brus = CreateSolidBrush(RGB(255, 255, 255));
-
-        RECT ect3 = {219, 20, 420, 690};
-        //FillRect(hdc2, &ect3, brus);
-        DeleteObject(brus);
-
         if(mein->fist) {
-            //thread = CreateThread(NULL, 0, downs, NULL, 0, NULL);
-            //srand(time(NULL));
             mein->prep();
         }
 
@@ -3089,8 +3019,8 @@ DWORD WINAPI downs(void* data) {
         }
 
         mein->erasePreview();
-        mein->printMiscLabels(mein->level);
         mein->showNextPiece();
+
         for(int x=0; x<4; x++) {
             mein->clearLine();
         }
@@ -3124,7 +3054,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->sq->x1][mein->sq->y1] = 1;
                 mein->b[mein->sq->x2][mein->sq->y2] = 1;
                 mein->b[mein->sq->x3][mein->sq->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3142,13 +3072,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->sq->x0][mein->sq->y0] = 1;
                 mein->b[mein->sq->x1][mein->sq->y1] = 1;
                 mein->b[mein->sq->x2][mein->sq->y2] = 1;
                 mein->b[mein->sq->x3][mein->sq->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);
-                SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3196,7 +3124,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->lne->x1][mein->lne->y1] = 1;
                 mein->b[mein->lne->x2][mein->lne->y2] = 1;
                 mein->b[mein->lne->x3][mein->lne->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3214,12 +3142,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->lne->x0][mein->lne->y0] = 1;
                 mein->b[mein->lne->x1][mein->lne->y1] = 1;
                 mein->b[mein->lne->x2][mein->lne->y2] = 1;
                 mein->b[mein->lne->x3][mein->lne->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3267,7 +3194,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->ht->x1][mein->ht->y1] = 1;
                 mein->b[mein->ht->x2][mein->ht->y2] = 1;
                 mein->b[mein->ht->x3][mein->ht->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3285,12 +3212,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->ht->x0][mein->ht->y0] = 1;
                 mein->b[mein->ht->x1][mein->ht->y1] = 1;
                 mein->b[mein->ht->x2][mein->ht->y2] = 1;
                 mein->b[mein->ht->x3][mein->ht->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3338,7 +3264,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->larm->x1][mein->larm->y1] = 1;
                 mein->b[mein->larm->x2][mein->larm->y2] = 1;
                 mein->b[mein->larm->x3][mein->larm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3356,12 +3282,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->larm->x0][mein->larm->y0] = 1;
                 mein->b[mein->larm->x1][mein->larm->y1] = 1;
                 mein->b[mein->larm->x2][mein->larm->y2] = 1;
                 mein->b[mein->larm->x3][mein->larm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3409,7 +3334,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->rarm->x1][mein->rarm->y1] = 1;
                 mein->b[mein->rarm->x2][mein->rarm->y2] = 1;
                 mein->b[mein->rarm->x3][mein->rarm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3427,12 +3352,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->rarm->x0][mein->rarm->y0] = 1;
                 mein->b[mein->rarm->x1][mein->rarm->y1] = 1;
                 mein->b[mein->rarm->x2][mein->rarm->y2] = 1;
                 mein->b[mein->rarm->x3][mein->rarm->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3480,7 +3404,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->lsh->x1][mein->lsh->y1] = 1;
                 mein->b[mein->lsh->x2][mein->lsh->y2] = 1;
                 mein->b[mein->lsh->x3][mein->lsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3498,12 +3422,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->lsh->x0][mein->lsh->y0] = 1;
                 mein->b[mein->lsh->x1][mein->lsh->y1] = 1;
                 mein->b[mein->lsh->x2][mein->lsh->y2] = 1;
                 mein->b[mein->lsh->x3][mein->lsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3551,7 +3474,7 @@ DWORD WINAPI downs(void* data) {
                 mein->b[mein->rsh->x1][mein->rsh->y1] = 1;
                 mein->b[mein->rsh->x2][mein->rsh->y2] = 1;
                 mein->b[mein->rsh->x3][mein->rsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
 
@@ -3569,12 +3492,11 @@ DWORD WINAPI downs(void* data) {
                 flag = TRUE;
             }
             if(flag) {
-                //thrad = CreateThread(NULL, 0, fallSound, NULL, 0, NULL);
                 mein->b[mein->rsh->x0][mein->rsh->y0] = 1;
                 mein->b[mein->rsh->x1][mein->rsh->y1] = 1;
                 mein->b[mein->rsh->x2][mein->rsh->y2] = 1;
                 mein->b[mein->rsh->x3][mein->rsh->y3] = 1;
-                mein->blocks++;char aa[10];sprintf(aa,"Blocks: %d, Points: %d, Lines: %d",mein->blocks,mein->points,mein->lines);SetWindowText(mein->hwnd,aa);
+                mein->blocks++;
                 mein->prep();
             }
             if(mein->level < 40 && mein->lines >= mein->linenext) {mein->level++;mein->linenext+=10;mein->sleeptime-=15;}
@@ -3746,46 +3668,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 }
             }
             break;
-//        case VK_SPACE:
-//            if(mein->choice == "ht")
-//                do {
-//
-//                } while (mein->ht->goDown());
-//            else if(mein->choice == "sq")
-//                do {
-//
-//                } while (mein->sq->goDown());
-//            else if(mein->choice == "lne")
-//                do {
-//
-//                } while (mein->lne->goDown());
-//            else if(mein->choice == "sq")
-//                do {
-//
-//                } while (mein->sq->goDown());
-//            else if(mein->choice == "lsh")
-//                do {
-//
-//                } while (mein->lsh->goDown());
-//            else if(mein->choice == "rsh")
-//                do {
-//
-//                } while (mein->rsh->goDown());
-//            else if(mein->choice == "larm")
-//                do {
-//
-//                } while (mein->larm->goDown());
-//            else if(mein->choice == "rarm")
-//                do {
-//
-//                } while (mein->rarm->goDown());
-//            break;
         }
         case WM_PAINT:
         {
             if(mein->fist) {
-
-                mein->thrad = CreateThread(NULL, 0, callMe, NULL, 0, NULL);
 
                 HBRUSH brush79 = CreateSolidBrush(RGB(136, 0, 0));
                 RECT rrect79 = {0, 0, 22640, 22750};
@@ -3924,16 +3810,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             SelectObject(mein->hdc2, font);
             TextOut(mein->hdc2, 10, 680, "I MADE THIS!", 12);
             DeleteObject(font);
-
-//            HBRUSH brush11 = CreateSolidBrush(RGB(255, 0, 0));
-//            RECT rrect11 = {0, 12, 143, 233};
-//            FillRect(mein->hdc2, &rrect11, brush11);
-//            DeleteObject(brush11);
-//
-//            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 200));
-//            RECT rrect5 = {0, 20, 129, 220};
-//            FillRect(mein->hdc2, &rrect5, brush);
-//            DeleteObject(brush);
             
             EndPaint (hwnd, &ps);
         }
@@ -3942,7 +3818,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         {
             int y = 600; int h = 48;
             int x = 443; int w = 124;
-  	    mein->hwnd_new_game = CreateWindowEx(0, "BUTTON", "Turn Music Off", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+  	    mein->hwnd_new_game = CreateWindowEx(0, "BUTTON", "Turn Music On", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
 								x, y, w, h, hwnd, (HMENU) PLAY_AGAIN_BUTTON, GetModuleHandle(NULL), NULL);
         }
         case WM_COMMAND:
@@ -3982,7 +3858,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     HWND hwnd;
     MSG Msg;
 
-    //Step 1: Registering the Window Class
     wc.cbSize        = sizeof(WNDCLASSEX);
     wc.style         = 0;
     wc.lpfnWndProc   = WndProc;
@@ -4003,7 +3878,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         return 0;
     }
 
-    // Step 2: Creating the Window
     hwnd = CreateWindow(g_szClassName, NULL, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,
       0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), 
 	  NULL, NULL, hInstance, NULL);
@@ -4026,7 +3900,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     
     SetWindowText(hwnd, "TETRIS");
 
-    // Step 3: The Message Loop
     while(GetMessage(&Msg, NULL, 0, 0) > 0)
     {
         TranslateMessage(&Msg);
