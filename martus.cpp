@@ -14,7 +14,7 @@ Martus* ourMartus = new Martus();
 DWORD WINAPI downs(void* data) {
     BOOLEAN downIt = TRUE;
     do {
-        ourMartus->hdcMems = CreateCompatibleDC(ourMartus->hdc2);
+        ourMartus->hdcMem = CreateCompatibleDC(ourMartus->hdc2);
 
         HBRUSH brush = CreateSolidBrush(RGB(225, 122, 185));
 
@@ -25,7 +25,7 @@ DWORD WINAPI downs(void* data) {
         if(ourMartus->choice == "sq" && (ourMartus->sq->y0 <= 630 && ourMartus->sq->y1 <= 630 && ourMartus->sq->y2 <= 630 && ourMartus->sq->y3 <= 630)) {
 
             HBRUSH brush = CreateSolidBrush(RGB(80, 80, 80));
-
+            
             RECT rrect3 = {ourMartus->sq->x0, ourMartus->sq->y0, ourMartus->sq->x0 + 20, ourMartus->sq->y0 + 20};
             FillRect(ourMartus->hdc2, &rrect3, brush);
 
@@ -1092,6 +1092,745 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     }
                 }
             }
+
+            HPEN hPenOld;
+            HPEN hLinePen;
+            COLORREF qLineColor;
+            qLineColor = RGB(0, 77, 0);
+            hLinePen = CreatePen(PS_SOLID, 3, qLineColor);
+            hPenOld = (HPEN)SelectObject(ourMartus->hdc2, hLinePen);
+            if(ourMartus->choice == "sq") {
+                if (ourMartus->sq->y0 >= ourMartus->sq->y1 &&
+                        ourMartus->sq->y0 >= ourMartus->sq->y2 &&
+                        ourMartus->sq->y0 >= ourMartus->sq->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y0+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y0+20);
+                }
+                else if (ourMartus->sq->y1 >= ourMartus->sq->y0 &&
+                        ourMartus->sq->y1 >= ourMartus->sq->y1 &&
+                        ourMartus->sq->y1 >= ourMartus->sq->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y1+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y1+20);
+                }
+                else if (ourMartus->sq->y2 >= ourMartus->sq->y0 &&
+                        ourMartus->sq->y2 >= ourMartus->sq->y1 &&
+                        ourMartus->sq->y2 >= ourMartus->sq->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y2+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y2+20);
+                }
+                else if (ourMartus->sq->y3 >= ourMartus->sq->y0 &&
+                        ourMartus->sq->y3 >= ourMartus->sq->y1 &&
+                        ourMartus->sq->y3 >= ourMartus->sq->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y3+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y3+20);
+                }
+
+                if (ourMartus->sq->y0 <= ourMartus->sq->y1 &&
+                        ourMartus->sq->y0 <= ourMartus->sq->y2 &&
+                        ourMartus->sq->y0 <= ourMartus->sq->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y0, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y0);
+                }
+                else if (ourMartus->sq->y1 <= ourMartus->sq->y0 &&
+                        ourMartus->sq->y1 <= ourMartus->sq->y1 &&
+                        ourMartus->sq->y1 <= ourMartus->sq->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y1, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y1);
+                }
+                else if (ourMartus->sq->y2 <= ourMartus->sq->y0 &&
+                        ourMartus->sq->y2 <= ourMartus->sq->y1 &&
+                        ourMartus->sq->y2 <= ourMartus->sq->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y2, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y2);
+                }
+                else if (ourMartus->sq->y3 <= ourMartus->sq->y0 &&
+                        ourMartus->sq->y3 <= ourMartus->sq->y1 &&
+                        ourMartus->sq->y3 <= ourMartus->sq->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->sq->y3, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->sq->y3);
+                }
+            }
+
+            if(ourMartus->choice == "lne") {
+                if (ourMartus->lne->y0 >= ourMartus->lne->y1 &&
+                        ourMartus->lne->y0 >= ourMartus->lne->y2 &&
+                        ourMartus->lne->y0 >= ourMartus->lne->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y0+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y0+20);
+                }
+                else if (ourMartus->lne->y1 >= ourMartus->lne->y0 &&
+                        ourMartus->lne->y1 >= ourMartus->lne->y1 &&
+                        ourMartus->lne->y1 >= ourMartus->lne->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y1+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y1+20);
+                }
+                else if (ourMartus->lne->y2 >= ourMartus->lne->y0 &&
+                        ourMartus->lne->y2 >= ourMartus->lne->y1 &&
+                        ourMartus->lne->y2 >= ourMartus->lne->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y2+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y2+20);
+                }
+                else if (ourMartus->lne->y3 >= ourMartus->lne->y0 &&
+                        ourMartus->lne->y3 >= ourMartus->lne->y1 &&
+                        ourMartus->lne->y3 >= ourMartus->lne->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y3+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y3+20);
+                }
+
+                if (ourMartus->lne->y0 <= ourMartus->lne->y1 &&
+                        ourMartus->lne->y0 <= ourMartus->lne->y2 &&
+                        ourMartus->lne->y0 <= ourMartus->lne->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y0, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y0);
+                }
+                else if (ourMartus->lne->y1 <= ourMartus->lne->y0 &&
+                        ourMartus->lne->y1 <= ourMartus->lne->y1 &&
+                        ourMartus->lne->y1 <= ourMartus->lne->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y1, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y1);
+                }
+                else if (ourMartus->lne->y2 <= ourMartus->lne->y0 &&
+                        ourMartus->lne->y2 <= ourMartus->lne->y1 &&
+                        ourMartus->lne->y2 <= ourMartus->lne->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y2, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y2);
+                }
+                else if (ourMartus->lne->y3 <= ourMartus->lne->y0 &&
+                        ourMartus->lne->y3 <= ourMartus->lne->y1 &&
+                        ourMartus->lne->y3 <= ourMartus->lne->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->lne->y3, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->lne->y3);
+                }
+            }
+
+            if(ourMartus->choice == "rarm") {
+                if(ourMartus->rarm->dir == 1) {
+                    if (ourMartus->rarm->y0 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y0 >= ourMartus->rarm->y2 &&
+                            ourMartus->rarm->y0 >= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y0+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y0+40);
+                    }
+                    else if (ourMartus->rarm->y1 >= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y1 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y1 >= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y1+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y1+40);
+                    }
+                    else if (ourMartus->rarm->y2 >= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y2 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y2 >= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y2+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y2+40);
+                    }
+                    else if (ourMartus->rarm->y3 >= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y3 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y3 >= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y3+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y3+40);
+                    }
+                } else {
+                    if (ourMartus->rarm->y0 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y0 >= ourMartus->rarm->y2 &&
+                            ourMartus->rarm->y0 >= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y0+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y0+20);
+                    }
+                    else if (ourMartus->rarm->y1 >= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y1 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y1 >= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y1+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y1+20);
+                    }
+                    else if (ourMartus->rarm->y2 >= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y2 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y2 >= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y2+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y2+20);
+                    }
+                    else if (ourMartus->rarm->y3 >= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y3 >= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y3 >= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y3+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y3+20);
+                    }
+                }
+
+                if(ourMartus->rarm->dir == 0) {
+                    if (ourMartus->rarm->y0 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y2 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y0);
+                    }
+                    else if (ourMartus->rarm->y1 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y1-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y1-0);
+                    }
+                    else if (ourMartus->rarm->y2 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y2, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y2);
+                    }
+                    else if (ourMartus->rarm->y3 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y3, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y3);
+                    }
+                } else if(ourMartus->rarm->dir == 1) {
+                    if (ourMartus->rarm->y0 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y2 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y0+0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y0+0);
+                    }
+                    else if (ourMartus->rarm->y1 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y1, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y1);
+                    }
+                    else if (ourMartus->rarm->y2 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y2+0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y2+0);
+                    }
+                    else if (ourMartus->rarm->y3 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y3, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y3);
+                    }
+                } else if(ourMartus->rarm->dir == 2) {
+                    if (ourMartus->rarm->y0 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y2 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y0-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y0-0);
+                    }
+                    else if (ourMartus->rarm->y1 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y1-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y1-0);
+                    }
+                    else if (ourMartus->rarm->y2 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y2-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y2-0);
+                    }
+                    else if (ourMartus->rarm->y3 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y3-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y3-0);
+                    }
+                } else {
+                    if (ourMartus->rarm->y0 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y2 &&
+                            ourMartus->rarm->y0 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y0-20+0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y0-20+0);
+                    }
+                    else if (ourMartus->rarm->y1 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y1 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y1-20+0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y1-20+0);
+                    }
+                    else if (ourMartus->rarm->y2 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y2 <= ourMartus->rarm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y2+0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y2+0);
+                    }
+                    else if (ourMartus->rarm->y3 <= ourMartus->rarm->y0 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y1 &&
+                            ourMartus->rarm->y3 <= ourMartus->rarm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rarm->y3+0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rarm->y3+0);
+                    }
+                }
+            }
+
+            if(ourMartus->choice == "larm") {
+                if(ourMartus->larm->dir == 3) {
+                    if (ourMartus->larm->y0 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y0 >= ourMartus->larm->y2 &&
+                            ourMartus->larm->y0 >= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y0+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y0+40);
+                    }
+                    else if (ourMartus->larm->y1 >= ourMartus->larm->y0 &&
+                            ourMartus->larm->y1 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y1 >= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y1+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y1+40);
+                    }
+                    else if (ourMartus->larm->y2 >= ourMartus->larm->y0 &&
+                            ourMartus->larm->y2 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y2 >= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y2+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y2+40);
+                    }
+                    else if (ourMartus->larm->y3 >= ourMartus->larm->y0 &&
+                            ourMartus->larm->y3 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y3 >= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y3+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y3+40);
+                    }
+                } else {
+                    if (ourMartus->larm->y0 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y0 >= ourMartus->larm->y2 &&
+                            ourMartus->larm->y0 >= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y0+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y0+20);
+                    }
+                    else if (ourMartus->larm->y1 >= ourMartus->larm->y0 &&
+                            ourMartus->larm->y1 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y1 >= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y1+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y1+20);
+                    }
+                    else if (ourMartus->larm->y2 >= ourMartus->larm->y0 &&
+                            ourMartus->larm->y2 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y2 >= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y2+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y2+20);
+                    }
+                    else if (ourMartus->larm->y3 >= ourMartus->larm->y0 &&
+                            ourMartus->larm->y3 >= ourMartus->larm->y1 &&
+                            ourMartus->larm->y3 >= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y3+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y3+20);
+                    }
+                }
+
+                if(ourMartus->larm->dir == 0) {
+                    if (ourMartus->larm->y0 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y0 <= ourMartus->larm->y2 &&
+                            ourMartus->larm->y0 <= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y0);
+                    }
+                    else if (ourMartus->larm->y1 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y1 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y1 <= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y1-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y1-0);
+                    }
+                    else if (ourMartus->larm->y2 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y2 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y2 <= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y2, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y2);
+                    }
+                    else if (ourMartus->larm->y3 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y3 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y3 <= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y3, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y3);
+                    }
+                } else if(ourMartus->larm->dir == 3) {
+                    if (ourMartus->larm->y0 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y0 <= ourMartus->larm->y2 &&
+                            ourMartus->larm->y0 <= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y0);
+                    }
+                    else if (ourMartus->larm->y1 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y1 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y1 <= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y1, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y1);
+                    }
+                    else if (ourMartus->larm->y2 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y2 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y2 <= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y2, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y2);
+                    }
+                    else if (ourMartus->larm->y3 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y3 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y3 <= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y3, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y3);
+                    }
+                } else {
+                    if (ourMartus->larm->y0 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y0 <= ourMartus->larm->y2 &&
+                            ourMartus->larm->y0 <= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y0-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y0-20);
+                    }
+                    else if (ourMartus->larm->y1 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y1 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y1 <= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y1-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y1-20);
+                    }
+                    else if (ourMartus->larm->y2 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y2 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y2 <= ourMartus->larm->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y2, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y2);
+                    }
+                    else if (ourMartus->larm->y3 <= ourMartus->larm->y0 &&
+                            ourMartus->larm->y3 <= ourMartus->larm->y1 &&
+                            ourMartus->larm->y3 <= ourMartus->larm->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->larm->y3, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->larm->y3);
+                    }
+                }
+            }
+
+            if(ourMartus->choice == "ht") {
+                if (ourMartus->ht->y0 >= ourMartus->ht->y1 &&
+                        ourMartus->ht->y0 >= ourMartus->ht->y2 &&
+                        ourMartus->ht->y0 >= ourMartus->ht->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y0+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y0+20);
+                }
+                else if (ourMartus->ht->y1 >= ourMartus->ht->y0 &&
+                        ourMartus->ht->y1 >= ourMartus->ht->y1 &&
+                        ourMartus->ht->y1 >= ourMartus->ht->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y1+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y1+20);
+                }
+                else if (ourMartus->ht->y2 >= ourMartus->ht->y0 &&
+                        ourMartus->ht->y2 >= ourMartus->ht->y1 &&
+                        ourMartus->ht->y2 >= ourMartus->ht->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y2+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y2+20);
+                }
+                else if (ourMartus->ht->y3 >= ourMartus->ht->y0 &&
+                        ourMartus->ht->y3 >= ourMartus->ht->y1 &&
+                        ourMartus->ht->y3 >= ourMartus->ht->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y3+20, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y3+20);
+                }
+
+                if (ourMartus->ht->y0 <= ourMartus->ht->y1 &&
+                        ourMartus->ht->y0 <= ourMartus->ht->y2 &&
+                        ourMartus->ht->y0 <= ourMartus->ht->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y0, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y0);
+                }
+                else if (ourMartus->ht->y1 <= ourMartus->ht->y0 &&
+                        ourMartus->ht->y1 <= ourMartus->ht->y1 &&
+                        ourMartus->ht->y1 <= ourMartus->ht->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y1, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y1);
+                }
+                else if (ourMartus->ht->y2 <= ourMartus->ht->y0 &&
+                        ourMartus->ht->y2 <= ourMartus->ht->y1 &&
+                        ourMartus->ht->y2 <= ourMartus->ht->y3) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y2, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y2);
+                }
+                else if (ourMartus->ht->y3 <= ourMartus->ht->y0 &&
+                        ourMartus->ht->y3 <= ourMartus->ht->y1 &&
+                        ourMartus->ht->y3 <= ourMartus->ht->y2) {
+                    MoveToEx(ourMartus->hdc2, 224, ourMartus->ht->y3, NULL);
+                    LineTo(ourMartus->hdc2, 415, ourMartus->ht->y3);
+                }
+            }
+
+            if(ourMartus->choice == "lsh") {
+                if(ourMartus->lsh->dir == 0) {
+                    if (ourMartus->lsh->y0 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y0 >= ourMartus->lsh->y2 &&
+                            ourMartus->lsh->y0 >= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y0+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y0+40);
+                    }
+                    else if (ourMartus->lsh->y1 >= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y1 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y1 >= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y1+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y1+40);
+                    }
+                    else if (ourMartus->lsh->y2 >= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y2 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y2 >= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y2+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y2+40);
+                    }
+                    else if (ourMartus->lsh->y3 >= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y3 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y3 >= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y3+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y3+40);
+                    }
+                } else {
+                    if (ourMartus->lsh->y0 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y0 >= ourMartus->lsh->y2 &&
+                            ourMartus->lsh->y0 >= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y0+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y0+20);
+                    }
+                    else if (ourMartus->lsh->y1 >= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y1 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y1 >= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y1+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y1+20);
+                    }
+                    else if (ourMartus->lsh->y2 >= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y2 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y2 >= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y2+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y2+20);
+                    }
+                    else if (ourMartus->lsh->y3 >= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y3 >= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y3 >= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y3+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y3+20);
+                    }
+                }
+
+                if(ourMartus->lsh->dir == 3) {
+                    if (ourMartus->lsh->y0 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y0 <= ourMartus->lsh->y2 &&
+                            ourMartus->lsh->y0 <= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y0-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y0-0);
+                    }
+                    else if (ourMartus->lsh->y1 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y1 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y1 <= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y1-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y1-0);
+                    }
+                    else if (ourMartus->lsh->y2 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y2 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y2 <= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y2-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y2-0);
+                    }
+                    else if (ourMartus->lsh->y3 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y3 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y3 <= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y3-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y3-0);
+                    }
+                } else if(ourMartus->lsh->dir == 2) {
+                    if (ourMartus->lsh->y0 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y0 <= ourMartus->lsh->y2 &&
+                            ourMartus->lsh->y0 <= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y0-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y0-20);
+                    }
+                    else if (ourMartus->lsh->y1 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y1 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y1 <= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y1-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y1-20);
+                    }
+                    else if (ourMartus->lsh->y2 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y2 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y2 <= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y2-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y2-20);
+                    }
+                    else if (ourMartus->lsh->y3 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y3 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y3 <= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y3-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y3-20);
+                    }
+                } else {
+                    if (ourMartus->lsh->y0 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y0 <= ourMartus->lsh->y2 &&
+                            ourMartus->lsh->y0 <= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y0);
+                    }
+                    else if (ourMartus->lsh->y1 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y1 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y1 <= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y1, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y1);
+                    }
+                    else if (ourMartus->lsh->y2 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y2 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y2 <= ourMartus->lsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y2, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y2);
+                    }
+                    else if (ourMartus->lsh->y3 <= ourMartus->lsh->y0 &&
+                            ourMartus->lsh->y3 <= ourMartus->lsh->y1 &&
+                            ourMartus->lsh->y3 <= ourMartus->lsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->lsh->y3, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->lsh->y3);
+                    }
+                }
+            }
+
+            if(ourMartus->choice == "rsh") {
+                if(ourMartus->rsh->dir == 0) {
+                    if (ourMartus->rsh->y0 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y0 >= ourMartus->rsh->y2 &&
+                            ourMartus->rsh->y0 >= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y0+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y0+40);
+                    }
+                    else if (ourMartus->rsh->y1 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y1 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y1 >= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y1+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y1+40);
+                    }
+                    else if (ourMartus->rsh->y2 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y2 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y2 >= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y2+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y2+40);
+                    }
+                    else if (ourMartus->rsh->y3 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y3 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y3 >= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y3+40, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y3+40);
+                    }
+                } else if(ourMartus->rsh->dir == 2) {
+                    if (ourMartus->rsh->y0 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y0 >= ourMartus->rsh->y2 &&
+                            ourMartus->rsh->y0 >= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y0+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y0+20);
+                    }
+                    else if (ourMartus->rsh->y1 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y1 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y1 >= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y1+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y1+20);
+                    }
+                    else if (ourMartus->rsh->y2 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y2 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y2 >= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y2+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y2+20);
+                    }
+                    else if (ourMartus->rsh->y3 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y3 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y3 >= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y3+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y3+20);
+                    }
+                } else {
+                    if (ourMartus->rsh->y0 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y0 >= ourMartus->rsh->y2 &&
+                            ourMartus->rsh->y0 >= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y0+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y0+20);
+                    }
+                    else if (ourMartus->rsh->y1 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y1 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y1 >= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y1+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y1+20);
+                    }
+                    else if (ourMartus->rsh->y2 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y2 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y2 >= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y2+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y2+20);
+                    }
+                    else if (ourMartus->rsh->y3 >= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y3 >= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y3 >= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y3+20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y3+20);
+                    }
+                }
+
+                if(ourMartus->rsh->dir == 0) {
+                    if (ourMartus->rsh->y0 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y0 <= ourMartus->rsh->y2 &&
+                            ourMartus->rsh->y0 <= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y0-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y0-0);
+                    }
+                    else if (ourMartus->rsh->y1 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y1 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y1 <= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y1-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y1-0);
+                    }
+                    else if (ourMartus->rsh->y2 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y2 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y2 <= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y2-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y2-0);
+                    }
+                    else if (ourMartus->rsh->y3 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y3 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y3 <= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y3-0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y3-0);
+                    }
+                } else if(ourMartus->rsh->dir == 2) {
+                    if (ourMartus->rsh->y0 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y0 <= ourMartus->rsh->y2 &&
+                            ourMartus->rsh->y0 <= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y0-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y0-20);
+                    }
+                    else if (ourMartus->rsh->y1 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y1 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y1 <= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y1-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y1-20);
+                    }
+                    else if (ourMartus->rsh->y2 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y2 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y2 <= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y2-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y2-20);
+                    }
+                    else if (ourMartus->rsh->y3 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y3 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y3 <= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y3-20, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y3-20);
+                    }
+                } else {
+                    if (ourMartus->rsh->y0 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y0 <= ourMartus->rsh->y2 &&
+                            ourMartus->rsh->y0 <= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y0, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y0);
+                    }
+                    else if (ourMartus->rsh->y1 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y1 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y1 <= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y1, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y1);
+                    }
+                    else if (ourMartus->rsh->y2 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y2 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y2 <= ourMartus->rsh->y3) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y2, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y2);
+                    }
+                    else if (ourMartus->rsh->y3 <= ourMartus->rsh->y0 &&
+                            ourMartus->rsh->y3 <= ourMartus->rsh->y1 &&
+                            ourMartus->rsh->y3 <= ourMartus->rsh->y2) {
+                        MoveToEx(ourMartus->hdc2, 224, ourMartus->rsh->y3, NULL);
+                        LineTo(ourMartus->hdc2, 415, ourMartus->rsh->y3);
+                    }
+                }
+            }
+
+            SelectObject(ourMartus->hdc2, hPenOld);
+            DeleteObject(hLinePen);
             break;
         }
         case WM_PAINT:
@@ -1102,7 +1841,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 RECT rrect79 = {0, 0, 22640, 22750};
                 FillRect(ourMartus->hdc2, &rrect79, brush79);
                 DeleteObject(brush79);
-                HBRUSH brush = CreateSolidBrush(RGB(50, 230, 7));
+                HBRUSH brush = CreateSolidBrush(RGB(50, 30, 7));
                 RECT rrect = {0, 0, 640, 750};
                 FillRect(ourMartus->hdc2, &rrect, brush);
                 DeleteObject(brush);

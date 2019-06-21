@@ -2311,8 +2311,8 @@ void Martus::prep() {
         choice = choicepre;
     }
     fist = FALSE;
-    cout << choice;
-    cout << "\n";
+    //cout << choice;
+    //cout << "\n";
     int r = rand() % 7;
     if(r == 1)
       choicepre = "sq";
